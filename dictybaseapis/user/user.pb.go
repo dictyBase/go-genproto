@@ -8,9 +8,9 @@ import fmt "fmt"
 import math "math"
 import _ "google.golang.org/genproto/googleapis/api/annotations"
 import google_protobuf1 "google.golang.org/genproto/protobuf/field_mask"
-import google_protobuf4 "github.com/golang/protobuf/ptypes/timestamp"
+import google_protobuf3 "github.com/golang/protobuf/ptypes/timestamp"
 import google_protobuf2 "github.com/golang/protobuf/ptypes/empty"
-import google_protobuf3 "github.com/golang/protobuf/ptypes/any"
+import google_protobuf4 "github.com/golang/protobuf/ptypes/any"
 import dictybase_api_jsonapi "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
 import dictybase_api_jsonapi1 "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
 
@@ -144,7 +144,7 @@ func (m *CreateUserRequest_Data) GetRelationships() *NewUserRelationships {
 type User struct {
 	Data     *UserData                    `protobuf:"bytes,1,opt,name=data" json:"data,omitempty"`
 	Links    *dictybase_api_jsonapi.Links `protobuf:"bytes,2,opt,name=links" json:"links,omitempty"`
-	Included []*google_protobuf3.Any      `protobuf:"bytes,3,rep,name=included" json:"included,omitempty"`
+	Included []*google_protobuf4.Any      `protobuf:"bytes,3,rep,name=included" json:"included,omitempty"`
 }
 
 func (m *User) Reset()                    { *m = User{} }
@@ -166,7 +166,7 @@ func (m *User) GetLinks() *dictybase_api_jsonapi.Links {
 	return nil
 }
 
-func (m *User) GetIncluded() []*google_protobuf3.Any {
+func (m *User) GetIncluded() []*google_protobuf4.Any {
 	if m != nil {
 		return m.Included
 	}
@@ -178,7 +178,7 @@ type UserCollection struct {
 	Data     []*UserData                            `protobuf:"bytes,1,rep,name=data" json:"data,omitempty"`
 	Links    *dictybase_api_jsonapi.PaginationLinks `protobuf:"bytes,2,opt,name=links" json:"links,omitempty"`
 	Meta     *dictybase_api_jsonapi.Meta            `protobuf:"bytes,3,opt,name=meta" json:"meta,omitempty"`
-	Included []*google_protobuf3.Any                `protobuf:"bytes,4,rep,name=included" json:"included,omitempty"`
+	Included []*google_protobuf4.Any                `protobuf:"bytes,4,rep,name=included" json:"included,omitempty"`
 }
 
 func (m *UserCollection) Reset()                    { *m = UserCollection{} }
@@ -207,7 +207,7 @@ func (m *UserCollection) GetMeta() *dictybase_api_jsonapi.Meta {
 	return nil
 }
 
-func (m *UserCollection) GetIncluded() []*google_protobuf3.Any {
+func (m *UserCollection) GetIncluded() []*google_protobuf4.Any {
 	if m != nil {
 		return m.Included
 	}
@@ -294,8 +294,8 @@ type UserAttributes struct {
 	// Current status of user.
 	IsActive bool `protobuf:"varint,13,opt,name=is_active,json=isActive" json:"is_active,omitempty"`
 	// Timestamp for creation and update
-	CreatedAt *google_protobuf4.Timestamp `protobuf:"bytes,14,opt,name=created_at,json=createdAt" json:"created_at,omitempty"`
-	UpdatedAt *google_protobuf4.Timestamp `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt" json:"updated_at,omitempty"`
+	CreatedAt *google_protobuf3.Timestamp `protobuf:"bytes,14,opt,name=created_at,json=createdAt" json:"created_at,omitempty"`
+	UpdatedAt *google_protobuf3.Timestamp `protobuf:"bytes,15,opt,name=updated_at,json=updatedAt" json:"updated_at,omitempty"`
 }
 
 func (m *UserAttributes) Reset()                    { *m = UserAttributes{} }
@@ -394,14 +394,14 @@ func (m *UserAttributes) GetIsActive() bool {
 	return false
 }
 
-func (m *UserAttributes) GetCreatedAt() *google_protobuf4.Timestamp {
+func (m *UserAttributes) GetCreatedAt() *google_protobuf3.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
 	return nil
 }
 
-func (m *UserAttributes) GetUpdatedAt() *google_protobuf4.Timestamp {
+func (m *UserAttributes) GetUpdatedAt() *google_protobuf3.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
