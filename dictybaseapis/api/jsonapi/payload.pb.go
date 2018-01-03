@@ -18,6 +18,7 @@ It has these top-level messages:
 	GetRequest
 	RelationshipRequest
 	ListRequest
+	SimpleListRequest
 	DeleteRequest
 */
 package jsonapi

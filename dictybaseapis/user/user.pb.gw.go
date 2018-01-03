@@ -348,7 +348,7 @@ var (
 )
 
 func request_RoleService_ListRoles_0(ctx context.Context, marshaler runtime.Marshaler, client RoleServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq jsonapi.ListRequest
+	var protoReq jsonapi.SimpleListRequest
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_RoleService_ListRoles_0); err != nil {
@@ -639,7 +639,7 @@ var (
 )
 
 func request_PermissionService_ListPermissions_0(ctx context.Context, marshaler runtime.Marshaler, client PermissionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq jsonapi.ListRequest
+	var protoReq jsonapi.SimpleListRequest
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_PermissionService_ListPermissions_0); err != nil {
