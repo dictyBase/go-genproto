@@ -17,6 +17,7 @@ It has these top-level messages:
 	Meta
 	GetRequest
 	RelationshipRequest
+	RelationshipRequestWithPagination
 	ListRequest
 	SimpleListRequest
 	DeleteRequest
