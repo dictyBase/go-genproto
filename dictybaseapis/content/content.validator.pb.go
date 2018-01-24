@@ -13,6 +13,7 @@ It has these top-level messages:
 	ContentAttributes
 	ContentRequest
 	ContentIdRequest
+	NewContentAttributes
 	StoreContentRequest
 	ExistingContentAttributes
 	UpdateContentRequest
@@ -83,6 +84,21 @@ func (this *ContentRequest) Validate() error {
 func (this *ContentIdRequest) Validate() error {
 	return nil
 }
+func (this *NewContentAttributes) Validate() error {
+	if this.Name == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`value '%v' must not be an empty string`, this.Name))
+	}
+	if !(this.CreatedBy > 0) {
+		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must be greater than '0'`, this.CreatedBy))
+	}
+	if this.Content == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Content", fmt.Errorf(`value '%v' must not be an empty string`, this.Content))
+	}
+	if this.Namespace == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Namespace", fmt.Errorf(`value '%v' must not be an empty string`, this.Namespace))
+	}
+	return nil
+}
 func (this *StoreContentRequest) Validate() error {
 	if this.Data != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
@@ -96,21 +112,6 @@ func (this *StoreContentRequest_Data) Validate() error {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
 		}
-	}
-	return nil
-}
-func (this *StoreContentRequest_Data_NewContentAttributes) Validate() error {
-	if this.Name == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`value '%v' must not be an empty string`, this.Name))
-	}
-	if !(this.CreatedBy > 0) {
-		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must be greater than '0'`, this.CreatedBy))
-	}
-	if this.Content == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Content", fmt.Errorf(`value '%v' must not be an empty string`, this.Content))
-	}
-	if this.Namespace == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Namespace", fmt.Errorf(`value '%v' must not be an empty string`, this.Namespace))
 	}
 	return nil
 }
