@@ -17,7 +17,6 @@ It has these top-level messages:
 	StoreContentRequest
 	ExistingContentAttributes
 	UpdateContentRequest
-	UpdateContentIdRequest
 */
 package content
 
@@ -116,6 +115,12 @@ func (this *StoreContentRequest_Data) Validate() error {
 	return nil
 }
 func (this *ExistingContentAttributes) Validate() error {
+	if !(this.UpdatedBy > 0) {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must be greater than '0'`, this.UpdatedBy))
+	}
+	if this.Content == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Content", fmt.Errorf(`value '%v' must not be an empty string`, this.Content))
+	}
 	return nil
 }
 func (this *UpdateContentRequest) Validate() error {
@@ -132,27 +137,6 @@ func (this *UpdateContentRequest) Validate() error {
 	return nil
 }
 func (this *UpdateContentRequest_Data) Validate() error {
-	if this.Attributes != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
-		}
-	}
-	return nil
-}
-func (this *UpdateContentIdRequest) Validate() error {
-	if this.Data != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
-		}
-	}
-	if this.UpdateMask != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.UpdateMask); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("UpdateMask", err)
-		}
-	}
-	return nil
-}
-func (this *UpdateContentIdRequest_Data) Validate() error {
 	if this.Attributes != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
