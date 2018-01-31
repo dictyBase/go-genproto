@@ -20,6 +20,7 @@ It has these top-level messages:
 */
 package content
 
+import regexp "regexp"
 import fmt "fmt"
 import github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 import proto "github.com/golang/protobuf/proto"
@@ -83,9 +84,12 @@ func (this *ContentRequest) Validate() error {
 func (this *ContentIdRequest) Validate() error {
 	return nil
 }
+
+var _regex_NewContentAttributes_Name = regexp.MustCompile("[a-z,A-z,0-9]+")
+
 func (this *NewContentAttributes) Validate() error {
-	if this.Name == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`value '%v' must not be an empty string`, this.Name))
+	if !_regex_NewContentAttributes_Name.MatchString(this.Name) {
+		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`value '%v' must be a string conforming to regex "[a-z,A-z,0-9]+"`, this.Name))
 	}
 	if !(this.CreatedBy > 0) {
 		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must be greater than '0'`, this.CreatedBy))
