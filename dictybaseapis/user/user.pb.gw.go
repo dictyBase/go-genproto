@@ -648,7 +648,7 @@ var (
 )
 
 func request_PermissionService_GetPermission_0(ctx context.Context, marshaler runtime.Marshaler, client PermissionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq jsonapi.GetRequest
+	var protoReq jsonapi.GetRequestWithFields
 	var metadata runtime.ServerMetadata
 
 	var (

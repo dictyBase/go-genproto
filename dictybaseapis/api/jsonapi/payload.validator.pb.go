@@ -16,6 +16,7 @@ It has these top-level messages:
 	Pagination
 	Meta
 	GetRequest
+	GetRequestWithFields
 	RelationshipRequest
 	RelationshipRequestWithPagination
 	ListRequest
