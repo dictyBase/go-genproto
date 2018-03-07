@@ -1253,7 +1253,7 @@ type UserServiceClient interface {
 	GetUser(ctx context.Context, in *dictybase_api_jsonapi1.GetRequest, opts ...grpc.CallOption) (*User, error)
 	// Gets all related roles
 	GetRelatedRoles(ctx context.Context, in *dictybase_api_jsonapi1.RelationshipRequest, opts ...grpc.CallOption) (*RoleCollection, error)
-	// List all users
+	// List all users. Only *roles* relationship is allowed for inclusion.
 	ListUsers(ctx context.Context, in *dictybase_api_jsonapi1.ListRequest, opts ...grpc.CallOption) (*UserCollection, error)
 	// Create an user
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*User, error)
@@ -1365,7 +1365,7 @@ type UserServiceServer interface {
 	GetUser(context.Context, *dictybase_api_jsonapi1.GetRequest) (*User, error)
 	// Gets all related roles
 	GetRelatedRoles(context.Context, *dictybase_api_jsonapi1.RelationshipRequest) (*RoleCollection, error)
-	// List all users
+	// List all users. Only *roles* relationship is allowed for inclusion.
 	ListUsers(context.Context, *dictybase_api_jsonapi1.ListRequest) (*UserCollection, error)
 	// Create an user
 	CreateUser(context.Context, *CreateUserRequest) (*User, error)
@@ -1601,19 +1601,25 @@ type RoleServiceClient interface {
 	GetRelatedUsers(ctx context.Context, in *dictybase_api_jsonapi1.RelationshipRequestWithPagination, opts ...grpc.CallOption) (*UserCollection, error)
 	// Gets all related permissions
 	GetRelatedPermissions(ctx context.Context, in *dictybase_api_jsonapi1.RelationshipRequest, opts ...grpc.CallOption) (*PermissionCollection, error)
-	// List all roles
+	// List all roles. Both *users* and *permissions* relationships are allowed in the include parameter.
 	ListRoles(ctx context.Context, in *dictybase_api_jsonapi1.SimpleListRequest, opts ...grpc.CallOption) (*RoleCollection, error)
 	// Create an role
 	CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*Role, error)
+	// Create user relationship with role
 	CreateUserRelationship(ctx context.Context, in *dictybase_api_jsonapi.DataCollection, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
+	// Create permission relationship with role
 	CreatePermissionRelationship(ctx context.Context, in *dictybase_api_jsonapi.DataCollection, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
 	// Update an role
 	UpdateRole(ctx context.Context, in *UpdateRoleRequest, opts ...grpc.CallOption) (*Role, error)
+	// Update existing user relationship with role
 	UpdateUserRelationship(ctx context.Context, in *dictybase_api_jsonapi.DataCollection, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
+	// Update existing permission relationship with role
 	UpdatePermissionRelationship(ctx context.Context, in *dictybase_api_jsonapi.DataCollection, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
 	// Delete an role
 	DeleteRole(ctx context.Context, in *dictybase_api_jsonapi1.DeleteRequest, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
+	// Delete existing user relationship with role
 	DeleteUserRelationship(ctx context.Context, in *dictybase_api_jsonapi.DataCollection, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
+	// Delete existing permission relationship with role
 	DeletePermissionRelationship(ctx context.Context, in *dictybase_api_jsonapi.DataCollection, opts ...grpc.CallOption) (*google_protobuf3.Empty, error)
 }
 
@@ -1751,19 +1757,25 @@ type RoleServiceServer interface {
 	GetRelatedUsers(context.Context, *dictybase_api_jsonapi1.RelationshipRequestWithPagination) (*UserCollection, error)
 	// Gets all related permissions
 	GetRelatedPermissions(context.Context, *dictybase_api_jsonapi1.RelationshipRequest) (*PermissionCollection, error)
-	// List all roles
+	// List all roles. Both *users* and *permissions* relationships are allowed in the include parameter.
 	ListRoles(context.Context, *dictybase_api_jsonapi1.SimpleListRequest) (*RoleCollection, error)
 	// Create an role
 	CreateRole(context.Context, *CreateRoleRequest) (*Role, error)
+	// Create user relationship with role
 	CreateUserRelationship(context.Context, *dictybase_api_jsonapi.DataCollection) (*google_protobuf3.Empty, error)
+	// Create permission relationship with role
 	CreatePermissionRelationship(context.Context, *dictybase_api_jsonapi.DataCollection) (*google_protobuf3.Empty, error)
 	// Update an role
 	UpdateRole(context.Context, *UpdateRoleRequest) (*Role, error)
+	// Update existing user relationship with role
 	UpdateUserRelationship(context.Context, *dictybase_api_jsonapi.DataCollection) (*google_protobuf3.Empty, error)
+	// Update existing permission relationship with role
 	UpdatePermissionRelationship(context.Context, *dictybase_api_jsonapi.DataCollection) (*google_protobuf3.Empty, error)
 	// Delete an role
 	DeleteRole(context.Context, *dictybase_api_jsonapi1.DeleteRequest) (*google_protobuf3.Empty, error)
+	// Delete existing user relationship with role
 	DeleteUserRelationship(context.Context, *dictybase_api_jsonapi.DataCollection) (*google_protobuf3.Empty, error)
+	// Delete existing permission relationship with role
 	DeletePermissionRelationship(context.Context, *dictybase_api_jsonapi.DataCollection) (*google_protobuf3.Empty, error)
 }
 

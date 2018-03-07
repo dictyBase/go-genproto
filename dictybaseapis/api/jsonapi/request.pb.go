@@ -156,9 +156,20 @@ func (m *RelationshipRequestWithPagination) GetPagesize() int64 {
 // resources are expected to support pagination. Majority of the request
 // parameters are identical or similar to [jsonapi](http://jsonapi.org).
 type ListRequest struct {
-	// Identical as `GetRequest`
+	// include query parameter to retrieve any particular or particular
+	// combination of relationships. Multiple include values are delimited by
+	// comma(,).
+	//
+	// For example,
+	// /{resource_name}/13?include=baz
+	// /{resource_name}/13?include=baz,bot
 	Include string `protobuf:"bytes,1,opt,name=include" json:"include,omitempty"`
-	// Identical as `GetRequest`
+	// fields query parameter to retrieve any particular or any particular
+	// combination of attributes. Multiple fields values are delimited by comma(,).
+	//
+	// For example
+	// /{resource_name}/29?fields=foo
+	// /{resource_name}/?fields=foo,bar
 	Fields string `protobuf:"bytes,3,opt,name=fields" json:"fields,omitempty"`
 	// The page number to fetch
 	Pagenum int64 `protobuf:"varint,4,opt,name=pagenum" json:"pagenum,omitempty"`
@@ -232,9 +243,44 @@ func (m *ListRequest) GetFilter() string {
 // A `SimpleListRequest` is identical to `ListRequest` except it does not support
 // pagination. The rest of the parameters are identical to `ListRequest` definition.
 type SimpleListRequest struct {
+	// include query parameter to retrieve any particular or particular
+	// combination of relationships. Multiple include values are delimited by
+	// comma(,).
+	//
+	// For example,
+	// /{resource_name}/13?include=baz
+	// /{resource_name}/13?include=baz,bot
 	Include string `protobuf:"bytes,1,opt,name=include" json:"include,omitempty"`
-	Fields  string `protobuf:"bytes,2,opt,name=fields" json:"fields,omitempty"`
-	Filter  string `protobuf:"bytes,3,opt,name=filter" json:"filter,omitempty"`
+	// fields query parameter to retrieve any particular or any particular
+	// combination of attributes. Multiple fields values are delimited by comma(,).
+	//
+	// For example
+	// /{resource_name}/29?fields=foo
+	// /{resource_name}/?fields=foo,bar
+	Fields string `protobuf:"bytes,2,opt,name=fields" json:"fields,omitempty"`
+	// The `filter` query parameter restricts the data return by the
+	// collection. To use it, supply an attribute to filter, followed by a
+	// filter expression. It uses the following syntax...
+	//        attribute operator expression
+	// attribute - Any one of the valid attribute of the resource.
+	// operator - Defines the type of filter match to use. It could be any of
+	// the following four and all of them should be URL-encoded.
+	//
+	//              ==  Equals (URL encoding is %3D%3D)
+	//              !=  Not equals
+	//              =@  Contains substring
+	//              !@  Not contains substring
+	//
+	// expression - The value that will be included or excluded from the
+	// result. URL-reserved characters must be URL-encoded.
+	// For example, the following filter returns all users with last name `Gag`.
+	//           /users?filter=last_name%3D%3Dgag
+	//
+	// Filter can be combined using OR or AND boolean logic.
+	//   * The OR is represented using a comma(,).
+	//   * The AND is represented using a semi-colon(;).
+	//   * AND and OR operators can be combined and AND takes precedence over OR.
+	Filter string `protobuf:"bytes,3,opt,name=filter" json:"filter,omitempty"`
 }
 
 func (m *SimpleListRequest) Reset()                    { *m = SimpleListRequest{} }
