@@ -17,6 +17,9 @@ var _ = math.Inf
 func (this *GetRequest) Validate() error {
 	return nil
 }
+func (this *GetEmailRequest) Validate() error {
+	return nil
+}
 func (this *GetRequestWithFields) Validate() error {
 	return nil
 }
