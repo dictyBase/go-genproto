@@ -38,6 +38,9 @@ func (this *SimpleListRequest) Validate() error {
 func (this *DeleteRequest) Validate() error {
 	return nil
 }
+func (this *IdRequest) Validate() error {
+	return nil
+}
 func (this *HealthzIdRequest) Validate() error {
 	if !(this.Id > 0) {
 		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must be greater than '0'`, this.Id))

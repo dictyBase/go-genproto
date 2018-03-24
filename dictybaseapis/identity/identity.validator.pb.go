@@ -11,7 +11,7 @@ It has these top-level messages:
 	IdentityAttributes
 	IdentityData
 	Identity
-	IdentityReq
+	IdentityProviderReq
 	CreateIdentityReq
 	NewIdentityAttributes
 */
@@ -71,7 +71,7 @@ func (this *Identity) Validate() error {
 	}
 	return nil
 }
-func (this *IdentityReq) Validate() error {
+func (this *IdentityProviderReq) Validate() error {
 	return nil
 }
 func (this *CreateIdentityReq) Validate() error {

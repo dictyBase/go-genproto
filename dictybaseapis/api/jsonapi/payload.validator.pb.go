@@ -23,6 +23,7 @@ It has these top-level messages:
 	ListRequest
 	SimpleListRequest
 	DeleteRequest
+	IdRequest
 	HealthzIdRequest
 */
 package jsonapi

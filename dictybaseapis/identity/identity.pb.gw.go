@@ -29,8 +29,8 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_IdentityService_GetIdentity_0(ctx context.Context, marshaler runtime.Marshaler, client IdentityServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq IdentityReq
+func request_IdentityService_GetIdentityFromProvider_0(ctx context.Context, marshaler runtime.Marshaler, client IdentityServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq IdentityProviderReq
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -39,6 +39,17 @@ func request_IdentityService_GetIdentity_0(ctx context.Context, marshaler runtim
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["provider"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "provider")
+	}
+
+	protoReq.Provider, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "provider", err)
+	}
 
 	val, ok = pathParams["identifier"]
 	if !ok {
@@ -49,6 +60,33 @@ func request_IdentityService_GetIdentity_0(ctx context.Context, marshaler runtim
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "identifier", err)
+	}
+
+	msg, err := client.GetIdentityFromProvider(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func request_IdentityService_GetIdentity_0(ctx context.Context, marshaler runtime.Marshaler, client IdentityServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq jsonapi.IdRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
+	}
+
+	protoReq.Id, err = runtime.Int64(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
 	}
 
 	msg, err := client.GetIdentity(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -70,7 +108,7 @@ func request_IdentityService_CreateIdentity_0(ctx context.Context, marshaler run
 }
 
 func request_IdentityService_DeleteIdentity_0(ctx context.Context, marshaler runtime.Marshaler, client IdentityServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq IdentityReq
+	var protoReq jsonapi.IdRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -80,15 +118,15 @@ func request_IdentityService_DeleteIdentity_0(ctx context.Context, marshaler run
 		_   = err
 	)
 
-	val, ok = pathParams["identifier"]
+	val, ok = pathParams["id"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "identifier")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
 	}
 
-	protoReq.Identifier, err = runtime.String(val)
+	protoReq.Id, err = runtime.Int64(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "identifier", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
 	}
 
 	msg, err := client.DeleteIdentity(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -150,6 +188,35 @@ func RegisterIdentityServiceHandler(ctx context.Context, mux *runtime.ServeMux, 
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "IdentityServiceClient" to call the correct interceptors.
 func RegisterIdentityServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client IdentityServiceClient) error {
+
+	mux.Handle("GET", pattern_IdentityService_GetIdentityFromProvider_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_IdentityService_GetIdentityFromProvider_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_IdentityService_GetIdentityFromProvider_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
 
 	mux.Handle("GET", pattern_IdentityService_GetIdentity_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -271,16 +338,20 @@ func RegisterIdentityServiceHandlerClient(ctx context.Context, mux *runtime.Serv
 }
 
 var (
-	pattern_IdentityService_GetIdentity_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"identities", "identifier"}, ""))
+	pattern_IdentityService_GetIdentityFromProvider_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 1, 0, 4, 1, 5, 2}, []string{"identities", "provider", "identifier"}, ""))
+
+	pattern_IdentityService_GetIdentity_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"identities", "id"}, ""))
 
 	pattern_IdentityService_CreateIdentity_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"identities"}, ""))
 
-	pattern_IdentityService_DeleteIdentity_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"identities", "identifier"}, ""))
+	pattern_IdentityService_DeleteIdentity_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"identities", "id"}, ""))
 
 	pattern_IdentityService_Healthz_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"healthz"}, ""))
 )
 
 var (
+	forward_IdentityService_GetIdentityFromProvider_0 = runtime.ForwardResponseMessage
+
 	forward_IdentityService_GetIdentity_0 = runtime.ForwardResponseMessage
 
 	forward_IdentityService_CreateIdentity_0 = runtime.ForwardResponseMessage
