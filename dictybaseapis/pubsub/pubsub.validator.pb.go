@@ -8,7 +8,7 @@ It is generated from these files:
 	pubsub.proto
 
 It has these top-level messages:
-	Resource
+	Reply
 */
 package pubsub
 
@@ -23,7 +23,7 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-func (this *Resource) Validate() error {
+func (this *Reply) Validate() error {
 	if this.Status != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Status); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Status", err)
