@@ -25,6 +25,7 @@ It has these top-level messages:
 	DeleteRequest
 	IdRequest
 	HealthzIdRequest
+	ExistResponse
 */
 package jsonapi
 

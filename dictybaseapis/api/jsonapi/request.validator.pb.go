@@ -50,3 +50,6 @@ func (this *HealthzIdRequest) Validate() error {
 	}
 	return nil
 }
+func (this *ExistResponse) Validate() error {
+	return nil
+}
