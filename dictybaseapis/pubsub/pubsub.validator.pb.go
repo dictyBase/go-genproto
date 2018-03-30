@@ -10,6 +10,7 @@ It is generated from these files:
 It has these top-level messages:
 	Reply
 	UserReply
+	IdRequest
 */
 package pubsub
 
@@ -49,5 +50,8 @@ func (this *UserReply) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Status", err)
 		}
 	}
+	return nil
+}
+func (this *IdRequest) Validate() error {
 	return nil
 }
