@@ -10,6 +10,7 @@ It is generated from these files:
 It has these top-level messages:
 	Reply
 	IdentityReply
+	IdentityReq
 	UserReply
 	IdRequest
 */
@@ -47,6 +48,9 @@ func (this *IdentityReply) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Status", err)
 		}
 	}
+	return nil
+}
+func (this *IdentityReq) Validate() error {
 	return nil
 }
 func (this *UserReply) Validate() error {
