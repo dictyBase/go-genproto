@@ -346,7 +346,7 @@ var (
 
 	pattern_IdentityService_DeleteIdentity_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1}, []string{"identities", "id"}, ""))
 
-	pattern_IdentityService_Healthz_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"healthz"}, ""))
+	pattern_IdentityService_Healthz_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"identities", "healthz"}, ""))
 )
 
 var (
