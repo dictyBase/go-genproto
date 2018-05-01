@@ -1199,7 +1199,7 @@ var (
 
 	pattern_UserService_DeleteRoleRelationship_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 1, 0, 4, 1, 5, 1, 2, 2, 2, 3}, []string{"users", "id", "relationships", "roles"}, ""))
 
-	pattern_UserService_Healthz_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"users", "healthz"}, ""))
+	pattern_UserService_Healthz_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"healthz"}, ""))
 )
 
 var (
