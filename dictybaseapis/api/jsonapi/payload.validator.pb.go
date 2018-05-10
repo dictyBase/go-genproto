@@ -24,6 +24,7 @@ It has these top-level messages:
 	SimpleListRequest
 	DeleteRequest
 	IdRequest
+	IdResponse
 	HealthzIdRequest
 	ExistResponse
 */
