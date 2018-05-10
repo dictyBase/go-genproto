@@ -98,7 +98,7 @@ func request_IdentityService_CreateIdentity_0(ctx context.Context, marshaler run
 	var protoReq CreateIdentityReq
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
