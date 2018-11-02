@@ -828,14 +828,14 @@ func RegisterUserServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.Se
 	defer func() {
 		if err != nil {
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 			return
 		}
 		go func() {
 			<-ctx.Done()
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 		}()
 	}()
@@ -849,8 +849,8 @@ func RegisterUserServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 	return RegisterUserServiceHandlerClient(ctx, mux, NewUserServiceClient(conn))
 }
 
-// RegisterUserServiceHandler registers the http handlers for service UserService to "mux".
-// The handlers forward requests to the grpc endpoint over the given implementation of "UserServiceClient".
+// RegisterUserServiceHandlerClient registers the http handlers for service UserService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "UserServiceClient".
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "UserServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "UserServiceClient" to call the correct interceptors.
@@ -1236,14 +1236,14 @@ func RegisterRoleServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.Se
 	defer func() {
 		if err != nil {
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 			return
 		}
 		go func() {
 			<-ctx.Done()
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 		}()
 	}()
@@ -1257,8 +1257,8 @@ func RegisterRoleServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 	return RegisterRoleServiceHandlerClient(ctx, mux, NewRoleServiceClient(conn))
 }
 
-// RegisterRoleServiceHandler registers the http handlers for service RoleService to "mux".
-// The handlers forward requests to the grpc endpoint over the given implementation of "RoleServiceClient".
+// RegisterRoleServiceHandlerClient registers the http handlers for service RoleService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "RoleServiceClient".
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "RoleServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "RoleServiceClient" to call the correct interceptors.
@@ -1710,14 +1710,14 @@ func RegisterPermissionServiceHandlerFromEndpoint(ctx context.Context, mux *runt
 	defer func() {
 		if err != nil {
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 			return
 		}
 		go func() {
 			<-ctx.Done()
 			if cerr := conn.Close(); cerr != nil {
-				grpclog.Printf("Failed to close conn to %s: %v", endpoint, cerr)
+				grpclog.Infof("Failed to close conn to %s: %v", endpoint, cerr)
 			}
 		}()
 	}()
@@ -1731,8 +1731,8 @@ func RegisterPermissionServiceHandler(ctx context.Context, mux *runtime.ServeMux
 	return RegisterPermissionServiceHandlerClient(ctx, mux, NewPermissionServiceClient(conn))
 }
 
-// RegisterPermissionServiceHandler registers the http handlers for service PermissionService to "mux".
-// The handlers forward requests to the grpc endpoint over the given implementation of "PermissionServiceClient".
+// RegisterPermissionServiceHandlerClient registers the http handlers for service PermissionService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "PermissionServiceClient".
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "PermissionServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "PermissionServiceClient" to call the correct interceptors.
