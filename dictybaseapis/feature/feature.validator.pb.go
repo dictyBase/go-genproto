@@ -31,9 +31,6 @@ func (this *ReferenceFeatureFilter) Validate() error {
 func (this *LocatedFeatureFilter) Validate() error {
 	return nil
 }
-func (this *FeatureAnnotationFilter) Validate() error {
-	return nil
-}
 func (this *NewFeature) Validate() error {
 	if this.Data != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
@@ -375,6 +372,6 @@ func (this *FeatureLocation) Validate() error {
 func (this *Organism) Validate() error {
 	return nil
 }
-func (this *ListRequest) Validate() error {
+func (this *ListParameters) Validate() error {
 	return nil
 }
