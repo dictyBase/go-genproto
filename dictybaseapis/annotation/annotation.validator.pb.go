@@ -7,7 +7,6 @@ import fmt "fmt"
 import github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 import proto "github.com/golang/protobuf/proto"
 import math "math"
-import _ "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
 import _ "github.com/golang/protobuf/ptypes/empty"
 import _ "github.com/golang/protobuf/ptypes/timestamp"
 import _ "github.com/mwitkow/go-proto-validators"
@@ -44,17 +43,12 @@ func (this *TaggedAnnotationCollection) Validate() error {
 			}
 		}
 	}
-	if this.Links != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Links); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Links", err)
-		}
+	if nil == this.Meta {
+		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
 	}
-	if nil == this.Pagination {
-		return github_com_mwitkow_go_proto_validators.FieldError("Pagination", fmt.Errorf("message must exist"))
-	}
-	if this.Pagination != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Pagination); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Pagination", err)
+	if this.Meta != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
 		}
 	}
 	return nil
@@ -193,5 +187,8 @@ func (this *TaggedAnnotationUpdateAttributes) Validate() error {
 	return nil
 }
 func (this *ListParameters) Validate() error {
+	return nil
+}
+func (this *Meta) Validate() error {
 	return nil
 }
