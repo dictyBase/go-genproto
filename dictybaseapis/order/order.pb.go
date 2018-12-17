@@ -861,9 +861,9 @@ type ListParameters struct {
 	//   * courier            - The courier used for delivery (string)
 	//   * payment            - Type of payment being used (string)
 	//   * status             - The status of the order (string)
-	//   * created_at         - When the items are ordered (number), a numeric
-	//                          timestamp indicating the number of milliseconds elapsed since the UNIX
-	//                          epoch.
+	//   * created_at         - Date the items are ordered (number), can be in the
+	//                          following formats:
+	//                          YYYY-MM-DD, YYYY-MM, YYYY
 	//
 	// field_name - Any one of the allowed field_name of the `OrderAttributes` definition.
 	// operator - Defines the type of filter match to use. It could be any of
@@ -879,8 +879,15 @@ type ListParameters struct {
 	//              ==  Equals
 	//              >   Greater than
 	//              <   Less than
-	//              =<  Less than equal to
+	//              <=  Less than equal to
 	//              >=  Greater than equal to
+	//
+	//        Operators for dates
+	//              $==  Equals
+	//              $>   Greater than
+	//              $<   Less than
+	//              $<=  Less than equal to
+	//              $>=  Greater than equal to
 	//
 	// expression - The value that will be included or excluded from the
 	// result. URL-reserved characters must be URL-encoded for http request.
@@ -893,7 +900,8 @@ type ListParameters struct {
 	//   * The AND is represented using a semi-colon(;).
 	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "courier===FedEx;payment==="Credit"
+	//           filter: "courier===FedEx;payment===Credit"
+	//           filter: "created_at$>=20181201"
 	//
 	Filter               string   `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
