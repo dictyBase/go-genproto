@@ -140,11 +140,6 @@ func (this *Feature) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
 		}
 	}
-	if this.Links != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Links); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Links", err)
-		}
-	}
 	return nil
 }
 func (this *FeatureData) Validate() error {
@@ -325,6 +320,11 @@ func (this *FeatureConnection) Validate() error {
 	return nil
 }
 func (this *FeatureRelationship) Validate() error {
+	if this.Feature != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Feature); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Feature", err)
+		}
+	}
 	return nil
 }
 func (this *FeatureDbxref) Validate() error {
