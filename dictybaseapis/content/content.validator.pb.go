@@ -9,7 +9,6 @@ import github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-valid
 import proto "github.com/golang/protobuf/proto"
 import math "math"
 import _ "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
-import _ "github.com/golang/protobuf/ptypes/any"
 import _ "github.com/golang/protobuf/ptypes/empty"
 import _ "github.com/golang/protobuf/ptypes/timestamp"
 import _ "github.com/mwitkow/go-proto-validators"

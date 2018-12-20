@@ -178,13 +178,6 @@ func (this *FeatureAttributes) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", err)
 		}
 	}
-	for _, item := range this.Dbxref {
-		if item != nil {
-			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("Dbxref", err)
-			}
-		}
-	}
 	if this.Organism != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Organism); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Organism", err)
@@ -261,10 +254,10 @@ func (this *FeatureUpdateAttributes) Validate() error {
 	if !(this.UpdatedBy > 0) {
 		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must be greater than '0'`, this.UpdatedBy))
 	}
-	for _, item := range this.Dbxref {
+	for _, item := range this.Dbxrefs {
 		if item != nil {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("Dbxref", err)
+				return github_com_mwitkow_go_proto_validators.FieldError("Dbxrefs", err)
 			}
 		}
 	}
@@ -298,13 +291,6 @@ func (this *FeatureUpdateAttributes) Validate() error {
 		if item != nil {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
 				return github_com_mwitkow_go_proto_validators.FieldError("Publications", err)
-			}
-		}
-	}
-	for _, item := range this.Dbxrefs {
-		if item != nil {
-			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("Dbxrefs", err)
 			}
 		}
 	}
