@@ -323,8 +323,8 @@ func (this *FeatureDbxref) Validate() error {
 	return nil
 }
 func (this *Dbxref) Validate() error {
-	if this.Identifier == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Identifier", fmt.Errorf(`value '%v' must not be an empty string`, this.Identifier))
+	if this.DbxrefId == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("DbxrefId", fmt.Errorf(`value '%v' must not be an empty string`, this.DbxrefId))
 	}
 	if this.Database == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Database", fmt.Errorf(`value '%v' must not be an empty string`, this.Database))
