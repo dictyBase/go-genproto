@@ -255,6 +255,10 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.feature.Meta"><span class="badge">M</span>Meta</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.feature.NewFeature"><span class="badge">M</span>NewFeature</a>
                 </li>
               
@@ -386,13 +390,6 @@
                 </tr>
               
                 <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
                   <td>created_by</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
@@ -514,13 +511,6 @@ result of an automated analysis </p></td>
                   <td><p> </p></td>
                 </tr>
               
-                <tr>
-                  <td>links</td>
-                  <td><a href="#dictybase.api.jsonapi.Links">dictybase.api.jsonapi.Links</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
             </tbody>
           </table>
         
@@ -538,7 +528,7 @@ result of an automated analysis </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -635,7 +625,7 @@ result of an automated analysis </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -688,7 +678,7 @@ result of an automated analysis </p></td>
             <tbody>
               
                 <tr>
-                  <td>source_feature</td>
+                  <td>source_feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Source or reference feature(identifier) which this location is relative to </p></td>
@@ -769,7 +759,7 @@ subject. </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -799,7 +789,7 @@ subject. </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -836,10 +826,10 @@ subject. </p></td>
                 </tr>
               
                 <tr>
-                  <td>feature</td>
-                  <td><a href="#dictybase.feature.Feature">Feature</a></td>
+                  <td>feature_id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Related feature </p></td>
+                  <td><p>Related feature id </p></td>
                 </tr>
               
             </tbody>
@@ -859,7 +849,7 @@ subject. </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -971,13 +961,6 @@ Presence of this field allow partial updates. </p></td>
                 </tr>
               
                 <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
                   <td>updated_by</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
@@ -1058,17 +1041,17 @@ result of an automated analysis </p></td>
             <tbody>
               
                 <tr>
-                  <td>pagenum</td>
+                  <td>cursor</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
-                  <td><p>The page number to fetch </p></td>
+                  <td><p>A unique pointer to the next set of result in the list </p></td>
                 </tr>
               
                 <tr>
-                  <td>pagesize</td>
+                  <td>limit</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
-                  <td><p>Number of records per page </p></td>
+                  <td><p>Maximum number of records that can be fetch per request </p></td>
                 </tr>
               
                 <tr>
@@ -1140,7 +1123,7 @@ or more allowed fields. </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>unique id of the reference feature </p></td>
@@ -1188,6 +1171,45 @@ Filter can be combined using AND boolean logic. The AND is represented
 using a semi-colon(;).
 
           filter: &#34;start&gt;=89;end&lt;=7430&#34; </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.feature.Meta">Meta</h3>
+        <p>Metadata definition for traversing the collection</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>next_cursor</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>A unique pointer to the next set of result in the collection. Set the
+cursor value parameter to the value of next_cursor to retrieve the next
+set of collection using the same method </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Maximum number of records that can be fetch per request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>total</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Total number of records in the collection. </p></td>
                 </tr>
               
             </tbody>
@@ -1368,7 +1390,7 @@ result of an automated analysis </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
@@ -1470,15 +1492,8 @@ result of an automated analysis </p></td>
                 </tr>
               
                 <tr>
-                  <td>links</td>
-                  <td><a href="#dictybase.api.jsonapi.PaginationLinks">dictybase.api.jsonapi.PaginationLinks</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>pagination</td>
-                  <td><a href="#dictybase.api.jsonapi.Pagination">dictybase.api.jsonapi.Pagination</a></td>
+                  <td>meta</td>
+                  <td><a href="#dictybase.feature.Meta">Meta</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -1530,7 +1545,7 @@ result of an automated analysis </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>feature_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p> </p></td>
