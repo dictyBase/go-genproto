@@ -65,12 +65,6 @@ func (this *StockAttributes) Validate() error {
 	if this.UpdatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
 	}
-	if this.Summary == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Summary", fmt.Errorf(`value '%v' must not be an empty string`, this.Summary))
-	}
-	if this.EditableSummary == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EditableSummary", fmt.Errorf(`value '%v' must not be an empty string`, this.EditableSummary))
-	}
 	if this.StrainProperties != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.StrainProperties); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("StrainProperties", err)
@@ -89,6 +83,9 @@ func (this *StrainProperties) Validate() error {
 	}
 	if this.Descriptor_ == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Descriptor_", fmt.Errorf(`value '%v' must not be an empty string`, this.Descriptor_))
+	}
+	if this.Species == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Species", fmt.Errorf(`value '%v' must not be an empty string`, this.Species))
 	}
 	return nil
 }
@@ -120,15 +117,6 @@ func (this *NewStockAttributes) Validate() error {
 	}
 	if this.UpdatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
-	}
-	if this.Summary == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Summary", fmt.Errorf(`value '%v' must not be an empty string`, this.Summary))
-	}
-	if this.EditableSummary == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EditableSummary", fmt.Errorf(`value '%v' must not be an empty string`, this.EditableSummary))
-	}
-	if this.Depositor == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Depositor", fmt.Errorf(`value '%v' must not be an empty string`, this.Depositor))
 	}
 	if this.StrainProperties != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.StrainProperties); err != nil {
