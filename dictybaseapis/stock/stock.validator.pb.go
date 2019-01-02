@@ -197,13 +197,7 @@ func (this *StockCollection_Data) Validate() error {
 	}
 	return nil
 }
-func (this *ListParameters) Validate() error {
-	return nil
-}
-func (this *StrainListParameters) Validate() error {
-	return nil
-}
-func (this *PlasmidListParameters) Validate() error {
+func (this *StockParameters) Validate() error {
 	return nil
 }
 func (this *Meta) Validate() error {

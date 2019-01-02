@@ -179,10 +179,6 @@
             <ul>
               
                 <li>
-                  <a href="#dictybase.stock.ListParameters"><span class="badge">M</span>ListParameters</a>
-                </li>
-              
-                <li>
                   <a href="#dictybase.stock.Meta"><span class="badge">M</span>Meta</a>
                 </li>
               
@@ -196,10 +192,6 @@
               
                 <li>
                   <a href="#dictybase.stock.NewStockAttributes"><span class="badge">M</span>NewStockAttributes</a>
-                </li>
-              
-                <li>
-                  <a href="#dictybase.stock.PlasmidListParameters"><span class="badge">M</span>PlasmidListParameters</a>
                 </li>
               
                 <li>
@@ -231,6 +223,10 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.stock.StockParameters"><span class="badge">M</span>StockParameters</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.stock.StockUpdate"><span class="badge">M</span>StockUpdate</a>
                 </li>
               
@@ -240,10 +236,6 @@
               
                 <li>
                   <a href="#dictybase.stock.StockUpdateAttributes"><span class="badge">M</span>StockUpdateAttributes</a>
-                </li>
-              
-                <li>
-                  <a href="#dictybase.stock.StrainListParameters"><span class="badge">M</span>StrainListParameters</a>
                 </li>
               
                 <li>
@@ -275,98 +267,6 @@
       </div>
       <p></p>
 
-      
-        <h3 id="dictybase.stock.ListParameters">ListParameters</h3>
-        <p>ListParameters defines fields for manipulating output of Stock collection</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>cursor</td>
-                  <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p>A unique pointer to the next set of result in the list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>limit</td>
-                  <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p>Maximum number of records that can be fetch per request </p></td>
-                </tr>
-              
-                <tr>
-                  <td>filter</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The `filter` field restricts the data return by the collection. To use
-it, supply one or multiple allowed fields to filter followed
-by a filter expression. It uses the following syntax...
-       field_name operator expression
-
-The following fields of `StockAttributes` definition are allowed to
-be used for filtering
-  * depositor          - Depositor of the stock (string).
-  * summary            - Summary of the stock (string)
-  * created_at         - Date the stock was created (number), can be in the
-                         following formats:
-                         YYYY-MM-DD, YYYY-MM, YYYY
-  * updated_at         - Date the stock was updated (number), can be in the
-                         following formats:
-                         YYYY-MM-DD, YYYY-MM, YYYY
-
-field_name - Any one of the allowed field_name of the `StockAttributes` definition.
-operator - Defines the type of filter match to use. It could be any of
-the following four and all of them should be URL-encoded for http request.
-
-       Operators for strings
-             =~   Contains substring
-             !~   Not contains substring
-             ===  Equals
-             !==  Not equals
-
-       Operators for number
-             ==  Equals
-             &gt;   Greater than
-             &lt;   Less than
-             &lt;=  Less than equal to
-             &gt;=  Greater than equal to
-
-       Operators for dates
-             $==  Equals
-             $&gt;   Greater than
-             $&lt;   Less than
-             $&lt;=  Less than equal to
-             $&gt;=  Greater than equal to
-
-expression - The value that will be included or excluded from the
-result. URL-reserved characters must be URL-encoded for http request.
-
-          filter: &#34;created_at$&gt;=2018-12-01&#34;
-          filter: &#34;depositor===Costanza&#34;
-
-Filter can be combined using OR or AND boolean logic.
-  * The OR is represented using a comma(,).
-  * The AND is represented using a semi-colon(;).
-  * AND and OR operators can be combined and AND takes precedence over OR.
-
-          filter: &#34;depositor===Benes;created_at$&gt;=2018-12-01&#34;
-
-The sort field allow to sort the data return by the collection based on
-fields of `StockAttributes. To use it, supply a comma separated one
-or more allowed field from the definition of `StockAttributes`. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
       
         <h3 id="dictybase.stock.Meta">Meta</h3>
         <p>Metadata definition for traversing the collection</p>
@@ -545,98 +445,6 @@ set of collection using the same method </p></td>
                   <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
                   <td></td>
                   <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
-        <h3 id="dictybase.stock.PlasmidListParameters">PlasmidListParameters</h3>
-        <p>PlasmidListParameters defines fields for manipulating output of Stock plasmid collection</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>cursor</td>
-                  <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p>A unique pointer to the next set of result in the list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>limit</td>
-                  <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p>Maximum number of records that can be fetch per request </p></td>
-                </tr>
-              
-                <tr>
-                  <td>filter</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The `filter` field restricts the data return by the collection. To use
-it, supply one or multiple allowed fields to filter followed
-by a filter expression. It uses the following syntax...
-       field_name operator expression
-
-The following fields of `PlasmidProperties` definition are allowed to
-be used for filtering
-  * depositor          - Depositor of the plasmid (string).
-  * summary            - Summary of the plasmid (string)
-  * created_at         - Date the stock was created (number), can be in the
-                         following formats:
-                         YYYY-MM-DD, YYYY-MM, YYYY
-  * updated_at         - Date the stock was updated (number), can be in the
-                         following formats:
-                         YYYY-MM-DD, YYYY-MM, YYYY
-
-field_name - Any one of the allowed field_name of the `PlasmidProperties` definition.
-operator - Defines the type of filter match to use. It could be any of
-the following four and all of them should be URL-encoded for http request.
-
-       Operators for strings
-             =~   Contains substring
-             !~   Not contains substring
-             ===  Equals
-             !==  Not equals
-
-       Operators for number
-             ==  Equals
-             &gt;   Greater than
-             &lt;   Less than
-             &lt;=  Less than equal to
-             &gt;=  Greater than equal to
-
-       Operators for dates
-             $==  Equals
-             $&gt;   Greater than
-             $&lt;   Less than
-             $&lt;=  Less than equal to
-             $&gt;=  Greater than equal to
-
-expression - The value that will be included or excluded from the
-result. URL-reserved characters must be URL-encoded for http request.
-
-          filter: &#34;created_at$&gt;=2018-12-01&#34;
-          filter: &#34;depositor===Costanza&#34;
-
-Filter can be combined using OR or AND boolean logic.
-  * The OR is represented using a comma(,).
-  * The AND is represented using a semi-colon(;).
-  * AND and OR operators can be combined and AND takes precedence over OR.
-
-          filter: &#34;depositor===Benes;created_at$&gt;=2018-12-01&#34;
-
-The sort field allow to sort the data return by the collection based on
-fields of `PlasmidProperties. To use it, supply a comma separated one
-or more allowed field from the definition of `PlasmidProperties`. </p></td>
                 </tr>
               
             </tbody>
@@ -925,6 +733,104 @@ or more allowed field from the definition of `PlasmidProperties`. </p></td>
 
         
       
+        <h3 id="dictybase.stock.StockParameters">StockParameters</h3>
+        <p>StockParameters defines fields for manipulating output of Stock collection</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>cursor</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>A unique pointer to the next set of result in the list </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Maximum number of records that can be fetch per request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>filter</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The `filter` field restricts the data return by the collection. To use
+it, supply one or multiple allowed fields to filter followed
+by a filter expression. It uses the following syntax...
+       field_name operator expression
+
+The following fields of `StockAttributes` definition are allowed to
+be used for filtering
+  * stock_type         - Type of stock (string)
+  * depositor          - Depositor of the stock (string)
+  * parent             - Parental strain (string)
+  * plasmid            - Related plasmid for the strain (string)
+  * species            - The species of the strain (string)
+  * systematic_name    - Unambiguous name for the strain (string)
+  * summary            - Summary of the stock (string)
+  * name               - Name used for strain (string), searches in the &#34;names&#34; attribute
+  * created_at         - Date the stock was created (number), can be in the
+                         following formats:
+                         YYYY-MM-DD, YYYY-MM, YYYY
+  * updated_at         - Date the stock was updated (number), can be in the
+                         following formats:
+                         YYYY-MM-DD, YYYY-MM, YYYY
+
+field_name - Any one of the allowed field_name of the `StockAttributes` definition.
+operator - Defines the type of filter match to use. It could be any of
+the following four and all of them should be URL-encoded for http request.
+
+       Operators for strings
+             =~   Contains substring
+             !~   Not contains substring
+             ===  Equals
+             !==  Not equals
+
+       Operators for number
+             ==  Equals
+             &gt;   Greater than
+             &lt;   Less than
+             &lt;=  Less than equal to
+             &gt;=  Greater than equal to
+
+       Operators for dates
+             $==  Equals
+             $&gt;   Greater than
+             $&lt;   Less than
+             $&lt;=  Less than equal to
+             $&gt;=  Greater than equal to
+
+expression - The value that will be included or excluded from the
+result. URL-reserved characters must be URL-encoded for http request.
+
+          filter: &#34;created_at$&gt;=2018-12-01&#34;
+          filter: &#34;depositor===Costanza&#34;
+
+Filter can be combined using OR or AND boolean logic.
+  * The OR is represented using a comma(,).
+  * The AND is represented using a semi-colon(;).
+  * AND and OR operators can be combined and AND takes precedence over OR.
+
+          filter: &#34;depositor===Benes;created_at$&gt;=2018-12-01&#34;
+
+The sort field allow to sort the data return by the collection based on
+fields of `StockAttributes. To use it, supply a comma separated one
+or more allowed field from the definition of `StockAttributes`. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.stock.StockUpdate">StockUpdate</h3>
         <p>Definition for creating a new stock</p>
 
@@ -1056,103 +962,6 @@ or more allowed field from the definition of `PlasmidProperties`. </p></td>
                   <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
                   <td></td>
                   <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
-        <h3 id="dictybase.stock.StrainListParameters">StrainListParameters</h3>
-        <p>StrainListParameters defines fields for manipulating output of Stock strain collection</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>cursor</td>
-                  <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p>A unique pointer to the next set of result in the list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>limit</td>
-                  <td><a href="#int64">int64</a></td>
-                  <td></td>
-                  <td><p>Maximum number of records that can be fetch per request </p></td>
-                </tr>
-              
-                <tr>
-                  <td>filter</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>The `filter` field restricts the data return by the collection. To use
-it, supply one or multiple allowed fields to filter followed
-by a filter expression. It uses the following syntax...
-       field_name operator expression
-
-The following fields of `StrainProperties` definition are allowed to
-be used for filtering
-  * depositor          - Depositor of the stock (string).
-  * parent             - Parental strain (string)
-  * plasmid            - Related plasmid for the strain (string)
-  * species            - The species of the strain (string)
-  * systematic_name    - Unambiguous name for the strain (string)
-  * summary            - Summary of the stock (string)
-  * name               - Name used for strain (string), searches in the &#34;names&#34; attribute
-  * created_at         - Date the stock was created (number), can be in the
-                         following formats:
-                         YYYY-MM-DD, YYYY-MM, YYYY
-  * updated_at         - Date the stock was updated (number), can be in the
-                         following formats:
-                         YYYY-MM-DD, YYYY-MM, YYYY
-
-field_name - Any one of the allowed field_name of the `StrainProperties` definition.
-operator - Defines the type of filter match to use. It could be any of
-the following four and all of them should be URL-encoded for http request.
-
-       Operators for strings
-             =~   Contains substring
-             !~   Not contains substring
-             ===  Equals
-             !==  Not equals
-
-       Operators for number
-             ==  Equals
-             &gt;   Greater than
-             &lt;   Less than
-             &lt;=  Less than equal to
-             &gt;=  Greater than equal to
-
-       Operators for dates
-             $==  Equals
-             $&gt;   Greater than
-             $&lt;   Less than
-             $&lt;=  Less than equal to
-             $&gt;=  Greater than equal to
-
-expression - The value that will be included or excluded from the
-result. URL-reserved characters must be URL-encoded for http request.
-
-          filter: &#34;systematic_name===DBS0235459&#34;
-          filter: &#34;plasmid===pDeltaAA,p?AA&#34;
-
-Filter can be combined using OR or AND boolean logic.
-  * The OR is represented using a comma(,).
-  * The AND is represented using a semi-colon(;).
-  * AND and OR operators can be combined and AND takes precedence over OR.
-
-          filter: &#34;systematic_name===DBS0235459;plasmid===pDeltaAA,p?AA&#34;
-
-The sort field allow to sort the data return by the collection based on
-fields of `StrainProperties. To use it, supply a comma separated one
-or more allowed field from the definition of `StrainProperties`. </p></td>
                 </tr>
               
             </tbody>
@@ -1321,23 +1130,9 @@ or more allowed field from the definition of `StrainProperties`. </p></td>
             
               <tr>
                 <td>ListStocks</td>
-                <td><a href="#dictybase.stock.ListParameters">ListParameters</a></td>
+                <td><a href="#dictybase.stock.StockParameters">StockParameters</a></td>
                 <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
                 <td><p>List all stocks</p></td>
-              </tr>
-            
-              <tr>
-                <td>ListStrains</td>
-                <td><a href="#dictybase.stock.StrainListParameters">StrainListParameters</a></td>
-                <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
-                <td><p>List all strains</p></td>
-              </tr>
-            
-              <tr>
-                <td>ListPlasmids</td>
-                <td><a href="#dictybase.stock.PlasmidListParameters">PlasmidListParameters</a></td>
-                <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
-                <td><p>List all plasmids</p></td>
               </tr>
             
           </tbody>
