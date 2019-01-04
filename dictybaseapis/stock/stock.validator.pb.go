@@ -81,8 +81,8 @@ func (this *StrainProperties) Validate() error {
 	if this.SystematicName == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("SystematicName", fmt.Errorf(`value '%v' must not be an empty string`, this.SystematicName))
 	}
-	if this.Descriptor_ == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Descriptor_", fmt.Errorf(`value '%v' must not be an empty string`, this.Descriptor_))
+	if this.Label == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Label", fmt.Errorf(`value '%v' must not be an empty string`, this.Label))
 	}
 	if this.Species == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Species", fmt.Errorf(`value '%v' must not be an empty string`, this.Species))
