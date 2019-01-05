@@ -420,6 +420,13 @@ set of collection using the same method </p></td>
                 </tr>
               
                 <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
                   <td>publications</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
@@ -763,7 +770,7 @@ The following fields of `StockAttributes` definition are allowed to
 be used for filtering
   * stock_type         - Type of stock (string)
   * depositor          - Depositor of the stock (string)
-  * parent             - Parental strain (string)
+  * parent             - Parental strain (string) (currently not implemented)
   * plasmid            - Related plasmid for the strain (string)
   * species            - The species of the strain (string)
   * systematic_name    - Unambiguous name for the strain (string)
@@ -784,7 +791,7 @@ the following four and all of them should be URL-encoded for http request.
              =~   Contains substring
              !~   Not contains substring
              ===  Equals
-             !==  Not equals
+             !=   Not equals
 
        Operators for number
              ==  Equals
@@ -799,6 +806,12 @@ the following four and all of them should be URL-encoded for http request.
              $&lt;   Less than
              $&lt;=  Less than equal to
              $&gt;=  Greater than equal to
+
+       Operators for items in arrays
+             @=~   Contains substring
+             @!~   Not contains substring (not implemented yet)
+             @==   Equals
+             @!=   Not equals
 
 expression - The value that will be included or excluded from the
 result. URL-reserved characters must be URL-encoded for http request.
