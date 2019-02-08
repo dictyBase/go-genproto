@@ -761,7 +761,6 @@ by a filter expression. It uses the following syntax...
 
 The following fields of `StockAttributes` definition are allowed to
 be used for filtering
-  * stock_type         - Type of stock (string)
   * depositor          - Depositor of the stock (string)
   * parent             - Parental strain (string) (currently not implemented)
   * plasmid            - Related plasmid for the strain (string)
@@ -1128,10 +1127,17 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
               </tr>
             
               <tr>
-                <td>ListStocks</td>
+                <td>ListStrains</td>
                 <td><a href="#dictybase.stock.StockParameters">StockParameters</a></td>
                 <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
-                <td><p>List all stocks</p></td>
+                <td><p>List all strains</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListPlasmids</td>
+                <td><a href="#dictybase.stock.StockParameters">StockParameters</a></td>
+                <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
+                <td><p>List all plasmids</p></td>
               </tr>
             
           </tbody>
