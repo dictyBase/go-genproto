@@ -108,6 +108,44 @@ func (this *NewOrderAttributes) Validate() error {
 	}
 	return nil
 }
+func (this *ExistingOrder) Validate() error {
+	if nil == this.Data {
+		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
+	}
+	if this.Data != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+		}
+	}
+	return nil
+}
+func (this *ExistingOrder_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *ExistingOrderAttributes) Validate() error {
+	if nil == this.CreatedAt {
+		return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", fmt.Errorf("message must exist"))
+	}
+	if this.CreatedAt != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.CreatedAt); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", err)
+		}
+	}
+	if this.Purchaser == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Purchaser", fmt.Errorf(`value '%v' must not be an empty string`, this.Purchaser))
+	}
+	for _, item := range this.Items {
+		if item == "" {
+			return github_com_mwitkow_go_proto_validators.FieldError("Items", fmt.Errorf(`value '%v' must not be an empty string`, item))
+		}
+	}
+	return nil
+}
 func (this *OrderUpdate) Validate() error {
 	if nil == this.Data {
 		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))

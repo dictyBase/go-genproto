@@ -179,6 +179,18 @@
             <ul>
               
                 <li>
+                  <a href="#dictybase.stock.ExistingStock"><span class="badge">M</span>ExistingStock</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.ExistingStock.Data"><span class="badge">M</span>ExistingStock.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.ExistingStockAttributes"><span class="badge">M</span>ExistingStockAttributes</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.stock.Meta"><span class="badge">M</span>Meta</a>
                 </li>
               
@@ -267,6 +279,166 @@
       </div>
       <p></p>
 
+      
+        <h3 id="dictybase.stock.ExistingStock">ExistingStock</h3>
+        <p>Definition for loading an existing stock</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.ExistingStock.Data">ExistingStock.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.ExistingStock.Data">ExistingStock.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name, i.e. &#34;strain&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Existing stock ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.ExistingStockAttributes">ExistingStockAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.ExistingStockAttributes">ExistingStockAttributes</h3>
+        <p>Defines attributes for loading an existing stock</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp for creation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp for update </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who created stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>strain_properties</td>
+                  <td><a href="#dictybase.stock.StrainProperties">StrainProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>plasmid_properties</td>
+                  <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
       
         <h3 id="dictybase.stock.Meta">Meta</h3>
         <p>Metadata definition for traversing the collection</p>
@@ -1138,6 +1310,13 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
                 <td><a href="#dictybase.stock.StockParameters">StockParameters</a></td>
                 <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
                 <td><p>List all plasmids</p></td>
+              </tr>
+            
+              <tr>
+                <td>LoadStock</td>
+                <td><a href="#dictybase.stock.ExistingStock">ExistingStock</a></td>
+                <td><a href="#dictybase.stock.Stock">Stock</a></td>
+                <td><p>Load existing stock</p></td>
               </tr>
             
           </tbody>
