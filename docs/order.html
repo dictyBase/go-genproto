@@ -350,62 +350,6 @@
                 </tr>
               
                 <tr>
-                  <td>courier</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of courier for delivery </p></td>
-                </tr>
-              
-                <tr>
-                  <td>courier_account</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Account identification used for courier service </p></td>
-                </tr>
-              
-                <tr>
-                  <td>comments</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Any comments about the order </p></td>
-                </tr>
-              
-                <tr>
-                  <td>payment</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Type of payment being used </p></td>
-                </tr>
-              
-                <tr>
-                  <td>purchase_order_num</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Order number for purchase </p></td>
-                </tr>
-              
-                <tr>
-                  <td>status</td>
-                  <td><a href="#dictybase.order.OrderStatus">OrderStatus</a></td>
-                  <td></td>
-                  <td><p>Status of order </p></td>
-                </tr>
-              
-                <tr>
-                  <td>consumer</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Person (user) who is receiving the stocks in mail </p></td>
-                </tr>
-              
-                <tr>
-                  <td>payer</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Person (user) who is paying for the stocks </p></td>
-                </tr>
-              
-                <tr>
                   <td>purchaser</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -1156,6 +1100,13 @@ stocks such as plasmids and strains </p></td>
                 <td><a href="#dictybase.order.ExistingOrder">ExistingOrder</a></td>
                 <td><a href="#dictybase.order.Order">Order</a></td>
                 <td><p>Load existing order</p></td>
+              </tr>
+            
+              <tr>
+                <td>PrepareForOrder</td>
+                <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
+                <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
+                <td><p>Clear database before loading existing orders</p></td>
               </tr>
             
           </tbody>
