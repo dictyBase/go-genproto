@@ -136,6 +136,14 @@ func (this *ExistingOrderAttributes) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", err)
 		}
 	}
+	if nil == this.UpdatedAt {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", fmt.Errorf("message must exist"))
+	}
+	if this.UpdatedAt != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.UpdatedAt); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", err)
+		}
+	}
 	if this.Purchaser == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Purchaser", fmt.Errorf(`value '%v' must not be an empty string`, this.Purchaser))
 	}
