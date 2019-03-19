@@ -1081,7 +1081,7 @@ type TaggedAnnotationServiceClient interface {
 	GetAnnotation(ctx context.Context, in *AnnotationId, opts ...grpc.CallOption) (*TaggedAnnotation, error)
 	// Retrieves a single tagged annotation associated with an entry
 	GetEntryAnnotation(ctx context.Context, in *EntryAnnotationRequest, opts ...grpc.CallOption) (*TaggedAnnotation, error)
-	// Retrieves all tagged annotations
+	// List tagged annotations using pagination, ten entries are retrieved by default
 	ListAnnotations(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*TaggedAnnotationCollection, error)
 	// Create a tagged annotation
 	CreateAnnotation(ctx context.Context, in *NewTaggedAnnotation, opts ...grpc.CallOption) (*TaggedAnnotation, error)
@@ -1160,7 +1160,7 @@ type TaggedAnnotationServiceServer interface {
 	GetAnnotation(context.Context, *AnnotationId) (*TaggedAnnotation, error)
 	// Retrieves a single tagged annotation associated with an entry
 	GetEntryAnnotation(context.Context, *EntryAnnotationRequest) (*TaggedAnnotation, error)
-	// Retrieves all tagged annotations
+	// List tagged annotations using pagination, ten entries are retrieved by default
 	ListAnnotations(context.Context, *ListParameters) (*TaggedAnnotationCollection, error)
 	// Create a tagged annotation
 	CreateAnnotation(context.Context, *NewTaggedAnnotation) (*TaggedAnnotation, error)

@@ -1584,9 +1584,9 @@ type StockServiceClient interface {
 	UpdateStock(ctx context.Context, in *StockUpdate, opts ...grpc.CallOption) (*Stock, error)
 	// Remove an existing stock
 	RemoveStock(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*empty.Empty, error)
-	// List all strains
+	// List strains using pagination, ten entries are retrieved by default
 	ListStrains(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StockCollection, error)
-	// List all plasmids
+	// List plasmids using pagination, ten entries are retrieved by default
 	ListPlasmids(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StockCollection, error)
 	// Load existing stock
 	LoadStock(ctx context.Context, in *ExistingStock, opts ...grpc.CallOption) (*Stock, error)
@@ -1673,9 +1673,9 @@ type StockServiceServer interface {
 	UpdateStock(context.Context, *StockUpdate) (*Stock, error)
 	// Remove an existing stock
 	RemoveStock(context.Context, *StockId) (*empty.Empty, error)
-	// List all strains
+	// List strains using pagination, ten entries are retrieved by default
 	ListStrains(context.Context, *StockParameters) (*StockCollection, error)
-	// List all plasmids
+	// List plasmids using pagination, ten entries are retrieved by default
 	ListPlasmids(context.Context, *StockParameters) (*StockCollection, error)
 	// Load existing stock
 	LoadStock(context.Context, *ExistingStock) (*Stock, error)

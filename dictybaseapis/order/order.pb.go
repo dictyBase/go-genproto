@@ -1288,7 +1288,7 @@ type OrderServiceClient interface {
 	CreateOrder(ctx context.Context, in *NewOrder, opts ...grpc.CallOption) (*Order, error)
 	// Update an existing order
 	UpdateOrder(ctx context.Context, in *OrderUpdate, opts ...grpc.CallOption) (*Order, error)
-	// List all orders
+	// List orders using pagination, ten entries are retrieved by default
 	ListOrders(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*OrderCollection, error)
 	// Load existing order
 	LoadOrder(ctx context.Context, in *ExistingOrder, opts ...grpc.CallOption) (*Order, error)
@@ -1366,7 +1366,7 @@ type OrderServiceServer interface {
 	CreateOrder(context.Context, *NewOrder) (*Order, error)
 	// Update an existing order
 	UpdateOrder(context.Context, *OrderUpdate) (*Order, error)
-	// List all orders
+	// List orders using pagination, ten entries are retrieved by default
 	ListOrders(context.Context, *ListParameters) (*OrderCollection, error)
 	// Load existing order
 	LoadOrder(context.Context, *ExistingOrder) (*Order, error)
