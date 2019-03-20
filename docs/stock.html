@@ -207,6 +207,18 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.stock.Plasmid"><span class="badge">M</span>Plasmid</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.Plasmid.Data"><span class="badge">M</span>Plasmid.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.PlasmidAttributes"><span class="badge">M</span>PlasmidAttributes</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.stock.PlasmidProperties"><span class="badge">M</span>PlasmidProperties</a>
                 </li>
               
@@ -248,6 +260,18 @@
               
                 <li>
                   <a href="#dictybase.stock.StockUpdateAttributes"><span class="badge">M</span>StockUpdateAttributes</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.Strain"><span class="badge">M</span>Strain</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.Strain.Data"><span class="badge">M</span>Strain.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.StrainAttributes"><span class="badge">M</span>StrainAttributes</a>
                 </li>
               
                 <li>
@@ -618,6 +642,159 @@ set of collection using the same method </p></td>
 
         
       
+        <h3 id="dictybase.stock.Plasmid">Plasmid</h3>
+        <p>Definition of an individual plasmid</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.Plasmid.Data">Plasmid.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.Plasmid.Data">Plasmid.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name (&#34;strain&#34;, &#34;plasmid&#34;, etc) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique identifier for the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.PlasmidAttributes">PlasmidAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.PlasmidAttributes">PlasmidAttributes</h3>
+        <p>Definition of various stock attributes</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp for creation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp for update </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who created stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>plasmid_properties</td>
+                  <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.stock.PlasmidProperties">PlasmidProperties</h3>
         <p></p>
 
@@ -912,14 +1089,14 @@ set of collection using the same method </p></td>
                   <td>cursor</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
-                  <td><p>A unique pointer to the next set of result in the list </p></td>
+                  <td><p>A unique pointer to the next set of result in the list (default is 0) </p></td>
                 </tr>
               
                 <tr>
                   <td>limit</td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
-                  <td><p>Maximum number of records that can be fetch per request </p></td>
+                  <td><p>Maximum number of records that can be fetch per request (default is 10) </p></td>
                 </tr>
               
                 <tr>
@@ -1130,6 +1307,159 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
                 <tr>
                   <td>plasmid_properties</td>
                   <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.Strain">Strain</h3>
+        <p>Definition of an individual strain</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.Strain.Data">Strain.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.Strain.Data">Strain.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name (&#34;strain&#34;, &#34;plasmid&#34;, etc) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique identifier for the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.StrainAttributes">StrainAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.StrainAttributes">StrainAttributes</h3>
+        <p>Definition of various strain attributes</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp for creation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp for update </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who created stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>strain_properties</td>
+                  <td><a href="#dictybase.stock.StrainProperties">StrainProperties</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
