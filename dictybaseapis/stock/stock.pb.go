@@ -204,9 +204,9 @@ func (m *Strain) GetData() *Strain_Data {
 }
 
 type Strain_Data struct {
-	// Resource name ("strain", "plasmid", etc)
+	// Resource name
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	// Unique identifier for the stock
+	// Unique identifier for the strain
 	Id                   string            `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Attributes           *StrainAttributes `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
@@ -301,9 +301,9 @@ func (m *Plasmid) GetData() *Plasmid_Data {
 }
 
 type Plasmid_Data struct {
-	// Resource name ("strain", "plasmid", etc)
+	// Resource name
 	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	// Unique identifier for the stock
+	// Unique identifier for the plasmid
 	Id                   string             `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	Attributes           *PlasmidAttributes `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
@@ -977,6 +977,182 @@ func (m *NewStock_Data) GetAttributes() *NewStockAttributes {
 	return nil
 }
 
+// Definition for creating a new strain
+type NewStrain struct {
+	Data                 *NewStrain_Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *NewStrain) Reset()         { *m = NewStrain{} }
+func (m *NewStrain) String() string { return proto.CompactTextString(m) }
+func (*NewStrain) ProtoMessage()    {}
+func (*NewStrain) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{10}
+}
+
+func (m *NewStrain) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewStrain.Unmarshal(m, b)
+}
+func (m *NewStrain) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewStrain.Marshal(b, m, deterministic)
+}
+func (m *NewStrain) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewStrain.Merge(m, src)
+}
+func (m *NewStrain) XXX_Size() int {
+	return xxx_messageInfo_NewStrain.Size(m)
+}
+func (m *NewStrain) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewStrain.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NewStrain proto.InternalMessageInfo
+
+func (m *NewStrain) GetData() *NewStrain_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type NewStrain_Data struct {
+	// Resource name
+	Type                 string               `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Attributes           *NewStrainAttributes `protobuf:"bytes,2,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *NewStrain_Data) Reset()         { *m = NewStrain_Data{} }
+func (m *NewStrain_Data) String() string { return proto.CompactTextString(m) }
+func (*NewStrain_Data) ProtoMessage()    {}
+func (*NewStrain_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{10, 0}
+}
+
+func (m *NewStrain_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewStrain_Data.Unmarshal(m, b)
+}
+func (m *NewStrain_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewStrain_Data.Marshal(b, m, deterministic)
+}
+func (m *NewStrain_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewStrain_Data.Merge(m, src)
+}
+func (m *NewStrain_Data) XXX_Size() int {
+	return xxx_messageInfo_NewStrain_Data.Size(m)
+}
+func (m *NewStrain_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewStrain_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NewStrain_Data proto.InternalMessageInfo
+
+func (m *NewStrain_Data) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *NewStrain_Data) GetAttributes() *NewStrainAttributes {
+	if m != nil {
+		return m.Attributes
+	}
+	return nil
+}
+
+// Definition for creating a new plasmid
+type NewPlasmid struct {
+	Data                 *NewPlasmid_Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *NewPlasmid) Reset()         { *m = NewPlasmid{} }
+func (m *NewPlasmid) String() string { return proto.CompactTextString(m) }
+func (*NewPlasmid) ProtoMessage()    {}
+func (*NewPlasmid) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{11}
+}
+
+func (m *NewPlasmid) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewPlasmid.Unmarshal(m, b)
+}
+func (m *NewPlasmid) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewPlasmid.Marshal(b, m, deterministic)
+}
+func (m *NewPlasmid) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewPlasmid.Merge(m, src)
+}
+func (m *NewPlasmid) XXX_Size() int {
+	return xxx_messageInfo_NewPlasmid.Size(m)
+}
+func (m *NewPlasmid) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewPlasmid.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NewPlasmid proto.InternalMessageInfo
+
+func (m *NewPlasmid) GetData() *NewPlasmid_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type NewPlasmid_Data struct {
+	// Resource name
+	Type                 string                `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Attributes           *NewPlasmidAttributes `protobuf:"bytes,2,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *NewPlasmid_Data) Reset()         { *m = NewPlasmid_Data{} }
+func (m *NewPlasmid_Data) String() string { return proto.CompactTextString(m) }
+func (*NewPlasmid_Data) ProtoMessage()    {}
+func (*NewPlasmid_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{11, 0}
+}
+
+func (m *NewPlasmid_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewPlasmid_Data.Unmarshal(m, b)
+}
+func (m *NewPlasmid_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewPlasmid_Data.Marshal(b, m, deterministic)
+}
+func (m *NewPlasmid_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewPlasmid_Data.Merge(m, src)
+}
+func (m *NewPlasmid_Data) XXX_Size() int {
+	return xxx_messageInfo_NewPlasmid_Data.Size(m)
+}
+func (m *NewPlasmid_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewPlasmid_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NewPlasmid_Data proto.InternalMessageInfo
+
+func (m *NewPlasmid_Data) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *NewPlasmid_Data) GetAttributes() *NewPlasmidAttributes {
+	if m != nil {
+		return m.Attributes
+	}
+	return nil
+}
+
 // Defines attributes for creating a new stock
 type NewStockAttributes struct {
 	// User who created stock entry
@@ -1006,7 +1182,7 @@ func (m *NewStockAttributes) Reset()         { *m = NewStockAttributes{} }
 func (m *NewStockAttributes) String() string { return proto.CompactTextString(m) }
 func (*NewStockAttributes) ProtoMessage()    {}
 func (*NewStockAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{10}
+	return fileDescriptor_c87a7814fbd674bd, []int{12}
 }
 
 func (m *NewStockAttributes) XXX_Unmarshal(b []byte) error {
@@ -1097,6 +1273,230 @@ func (m *NewStockAttributes) GetPlasmidProperties() *PlasmidProperties {
 	return nil
 }
 
+// Defines attributes for creating a new strain
+type NewStrainAttributes struct {
+	// User who created stock entry
+	CreatedBy string `protobuf:"bytes,1,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	// User who updated stock entry
+	UpdatedBy string `protobuf:"bytes,2,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	// Summary of the stock
+	Summary string `protobuf:"bytes,3,opt,name=summary,proto3" json:"summary,omitempty"`
+	// Editable version of the stock summary (Slate JSON format)
+	EditableSummary string `protobuf:"bytes,4,opt,name=editable_summary,json=editableSummary,proto3" json:"editable_summary,omitempty"`
+	// List of associated genes
+	Genes []string `protobuf:"bytes,5,rep,name=genes,proto3" json:"genes,omitempty"`
+	// List of database cross references
+	Dbxrefs []string `protobuf:"bytes,6,rep,name=dbxrefs,proto3" json:"dbxrefs,omitempty"`
+	// Depositor of the stock
+	Depositor string `protobuf:"bytes,7,opt,name=depositor,proto3" json:"depositor,omitempty"`
+	// List of related publications
+	Publications         []string          `protobuf:"bytes,8,rep,name=publications,proto3" json:"publications,omitempty"`
+	StrainProperties     *StrainProperties `protobuf:"bytes,9,opt,name=strain_properties,json=strainProperties,proto3" json:"strain_properties,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *NewStrainAttributes) Reset()         { *m = NewStrainAttributes{} }
+func (m *NewStrainAttributes) String() string { return proto.CompactTextString(m) }
+func (*NewStrainAttributes) ProtoMessage()    {}
+func (*NewStrainAttributes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{13}
+}
+
+func (m *NewStrainAttributes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewStrainAttributes.Unmarshal(m, b)
+}
+func (m *NewStrainAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewStrainAttributes.Marshal(b, m, deterministic)
+}
+func (m *NewStrainAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewStrainAttributes.Merge(m, src)
+}
+func (m *NewStrainAttributes) XXX_Size() int {
+	return xxx_messageInfo_NewStrainAttributes.Size(m)
+}
+func (m *NewStrainAttributes) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewStrainAttributes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NewStrainAttributes proto.InternalMessageInfo
+
+func (m *NewStrainAttributes) GetCreatedBy() string {
+	if m != nil {
+		return m.CreatedBy
+	}
+	return ""
+}
+
+func (m *NewStrainAttributes) GetUpdatedBy() string {
+	if m != nil {
+		return m.UpdatedBy
+	}
+	return ""
+}
+
+func (m *NewStrainAttributes) GetSummary() string {
+	if m != nil {
+		return m.Summary
+	}
+	return ""
+}
+
+func (m *NewStrainAttributes) GetEditableSummary() string {
+	if m != nil {
+		return m.EditableSummary
+	}
+	return ""
+}
+
+func (m *NewStrainAttributes) GetGenes() []string {
+	if m != nil {
+		return m.Genes
+	}
+	return nil
+}
+
+func (m *NewStrainAttributes) GetDbxrefs() []string {
+	if m != nil {
+		return m.Dbxrefs
+	}
+	return nil
+}
+
+func (m *NewStrainAttributes) GetDepositor() string {
+	if m != nil {
+		return m.Depositor
+	}
+	return ""
+}
+
+func (m *NewStrainAttributes) GetPublications() []string {
+	if m != nil {
+		return m.Publications
+	}
+	return nil
+}
+
+func (m *NewStrainAttributes) GetStrainProperties() *StrainProperties {
+	if m != nil {
+		return m.StrainProperties
+	}
+	return nil
+}
+
+// Defines attributes for creating a new plasmid
+type NewPlasmidAttributes struct {
+	// User who created stock entry
+	CreatedBy string `protobuf:"bytes,1,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	// User who updated stock entry
+	UpdatedBy string `protobuf:"bytes,2,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	// Summary of the stock
+	Summary string `protobuf:"bytes,3,opt,name=summary,proto3" json:"summary,omitempty"`
+	// Editable version of the stock summary (Slate JSON format)
+	EditableSummary string `protobuf:"bytes,4,opt,name=editable_summary,json=editableSummary,proto3" json:"editable_summary,omitempty"`
+	// List of associated genes
+	Genes []string `protobuf:"bytes,5,rep,name=genes,proto3" json:"genes,omitempty"`
+	// List of database cross references
+	Dbxrefs []string `protobuf:"bytes,6,rep,name=dbxrefs,proto3" json:"dbxrefs,omitempty"`
+	// Depositor of the stock
+	Depositor string `protobuf:"bytes,7,opt,name=depositor,proto3" json:"depositor,omitempty"`
+	// List of related publications
+	Publications         []string           `protobuf:"bytes,8,rep,name=publications,proto3" json:"publications,omitempty"`
+	PlasmidProperties    *PlasmidProperties `protobuf:"bytes,9,opt,name=plasmid_properties,json=plasmidProperties,proto3" json:"plasmid_properties,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *NewPlasmidAttributes) Reset()         { *m = NewPlasmidAttributes{} }
+func (m *NewPlasmidAttributes) String() string { return proto.CompactTextString(m) }
+func (*NewPlasmidAttributes) ProtoMessage()    {}
+func (*NewPlasmidAttributes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{14}
+}
+
+func (m *NewPlasmidAttributes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewPlasmidAttributes.Unmarshal(m, b)
+}
+func (m *NewPlasmidAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewPlasmidAttributes.Marshal(b, m, deterministic)
+}
+func (m *NewPlasmidAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewPlasmidAttributes.Merge(m, src)
+}
+func (m *NewPlasmidAttributes) XXX_Size() int {
+	return xxx_messageInfo_NewPlasmidAttributes.Size(m)
+}
+func (m *NewPlasmidAttributes) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewPlasmidAttributes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_NewPlasmidAttributes proto.InternalMessageInfo
+
+func (m *NewPlasmidAttributes) GetCreatedBy() string {
+	if m != nil {
+		return m.CreatedBy
+	}
+	return ""
+}
+
+func (m *NewPlasmidAttributes) GetUpdatedBy() string {
+	if m != nil {
+		return m.UpdatedBy
+	}
+	return ""
+}
+
+func (m *NewPlasmidAttributes) GetSummary() string {
+	if m != nil {
+		return m.Summary
+	}
+	return ""
+}
+
+func (m *NewPlasmidAttributes) GetEditableSummary() string {
+	if m != nil {
+		return m.EditableSummary
+	}
+	return ""
+}
+
+func (m *NewPlasmidAttributes) GetGenes() []string {
+	if m != nil {
+		return m.Genes
+	}
+	return nil
+}
+
+func (m *NewPlasmidAttributes) GetDbxrefs() []string {
+	if m != nil {
+		return m.Dbxrefs
+	}
+	return nil
+}
+
+func (m *NewPlasmidAttributes) GetDepositor() string {
+	if m != nil {
+		return m.Depositor
+	}
+	return ""
+}
+
+func (m *NewPlasmidAttributes) GetPublications() []string {
+	if m != nil {
+		return m.Publications
+	}
+	return nil
+}
+
+func (m *NewPlasmidAttributes) GetPlasmidProperties() *PlasmidProperties {
+	if m != nil {
+		return m.PlasmidProperties
+	}
+	return nil
+}
+
 // Definition for loading an existing stock
 type ExistingStock struct {
 	Data                 *ExistingStock_Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
@@ -1109,7 +1509,7 @@ func (m *ExistingStock) Reset()         { *m = ExistingStock{} }
 func (m *ExistingStock) String() string { return proto.CompactTextString(m) }
 func (*ExistingStock) ProtoMessage()    {}
 func (*ExistingStock) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{11}
+	return fileDescriptor_c87a7814fbd674bd, []int{15}
 }
 
 func (m *ExistingStock) XXX_Unmarshal(b []byte) error {
@@ -1152,7 +1552,7 @@ func (m *ExistingStock_Data) Reset()         { *m = ExistingStock_Data{} }
 func (m *ExistingStock_Data) String() string { return proto.CompactTextString(m) }
 func (*ExistingStock_Data) ProtoMessage()    {}
 func (*ExistingStock_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{11, 0}
+	return fileDescriptor_c87a7814fbd674bd, []int{15, 0}
 }
 
 func (m *ExistingStock_Data) XXX_Unmarshal(b []byte) error {
@@ -1227,7 +1627,7 @@ func (m *ExistingStockAttributes) Reset()         { *m = ExistingStockAttributes
 func (m *ExistingStockAttributes) String() string { return proto.CompactTextString(m) }
 func (*ExistingStockAttributes) ProtoMessage()    {}
 func (*ExistingStockAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{12}
+	return fileDescriptor_c87a7814fbd674bd, []int{16}
 }
 
 func (m *ExistingStockAttributes) XXX_Unmarshal(b []byte) error {
@@ -1344,7 +1744,7 @@ func (m *StockUpdate) Reset()         { *m = StockUpdate{} }
 func (m *StockUpdate) String() string { return proto.CompactTextString(m) }
 func (*StockUpdate) ProtoMessage()    {}
 func (*StockUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{13}
+	return fileDescriptor_c87a7814fbd674bd, []int{17}
 }
 
 func (m *StockUpdate) XXX_Unmarshal(b []byte) error {
@@ -1387,7 +1787,7 @@ func (m *StockUpdate_Data) Reset()         { *m = StockUpdate_Data{} }
 func (m *StockUpdate_Data) String() string { return proto.CompactTextString(m) }
 func (*StockUpdate_Data) ProtoMessage()    {}
 func (*StockUpdate_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{13, 0}
+	return fileDescriptor_c87a7814fbd674bd, []int{17, 0}
 }
 
 func (m *StockUpdate_Data) XXX_Unmarshal(b []byte) error {
@@ -1429,6 +1829,200 @@ func (m *StockUpdate_Data) GetAttributes() *StockUpdateAttributes {
 	return nil
 }
 
+// Definition for creating a new strain
+type StrainUpdate struct {
+	Data                 *StrainUpdate_Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *StrainUpdate) Reset()         { *m = StrainUpdate{} }
+func (m *StrainUpdate) String() string { return proto.CompactTextString(m) }
+func (*StrainUpdate) ProtoMessage()    {}
+func (*StrainUpdate) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{18}
+}
+
+func (m *StrainUpdate) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StrainUpdate.Unmarshal(m, b)
+}
+func (m *StrainUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StrainUpdate.Marshal(b, m, deterministic)
+}
+func (m *StrainUpdate) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StrainUpdate.Merge(m, src)
+}
+func (m *StrainUpdate) XXX_Size() int {
+	return xxx_messageInfo_StrainUpdate.Size(m)
+}
+func (m *StrainUpdate) XXX_DiscardUnknown() {
+	xxx_messageInfo_StrainUpdate.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StrainUpdate proto.InternalMessageInfo
+
+func (m *StrainUpdate) GetData() *StrainUpdate_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type StrainUpdate_Data struct {
+	// Resource name
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	// Unique ID for strain
+	Id                   string                  `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Attributes           *StrainUpdateAttributes `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
+}
+
+func (m *StrainUpdate_Data) Reset()         { *m = StrainUpdate_Data{} }
+func (m *StrainUpdate_Data) String() string { return proto.CompactTextString(m) }
+func (*StrainUpdate_Data) ProtoMessage()    {}
+func (*StrainUpdate_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{18, 0}
+}
+
+func (m *StrainUpdate_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StrainUpdate_Data.Unmarshal(m, b)
+}
+func (m *StrainUpdate_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StrainUpdate_Data.Marshal(b, m, deterministic)
+}
+func (m *StrainUpdate_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StrainUpdate_Data.Merge(m, src)
+}
+func (m *StrainUpdate_Data) XXX_Size() int {
+	return xxx_messageInfo_StrainUpdate_Data.Size(m)
+}
+func (m *StrainUpdate_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_StrainUpdate_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StrainUpdate_Data proto.InternalMessageInfo
+
+func (m *StrainUpdate_Data) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *StrainUpdate_Data) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *StrainUpdate_Data) GetAttributes() *StrainUpdateAttributes {
+	if m != nil {
+		return m.Attributes
+	}
+	return nil
+}
+
+// Definition for creating a new plasmid
+type PlasmidUpdate struct {
+	Data                 *PlasmidUpdate_Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *PlasmidUpdate) Reset()         { *m = PlasmidUpdate{} }
+func (m *PlasmidUpdate) String() string { return proto.CompactTextString(m) }
+func (*PlasmidUpdate) ProtoMessage()    {}
+func (*PlasmidUpdate) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{19}
+}
+
+func (m *PlasmidUpdate) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PlasmidUpdate.Unmarshal(m, b)
+}
+func (m *PlasmidUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PlasmidUpdate.Marshal(b, m, deterministic)
+}
+func (m *PlasmidUpdate) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PlasmidUpdate.Merge(m, src)
+}
+func (m *PlasmidUpdate) XXX_Size() int {
+	return xxx_messageInfo_PlasmidUpdate.Size(m)
+}
+func (m *PlasmidUpdate) XXX_DiscardUnknown() {
+	xxx_messageInfo_PlasmidUpdate.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PlasmidUpdate proto.InternalMessageInfo
+
+func (m *PlasmidUpdate) GetData() *PlasmidUpdate_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+type PlasmidUpdate_Data struct {
+	// Resource name
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	// Unique ID for plasmid
+	Id                   string                   `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Attributes           *PlasmidUpdateAttributes `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *PlasmidUpdate_Data) Reset()         { *m = PlasmidUpdate_Data{} }
+func (m *PlasmidUpdate_Data) String() string { return proto.CompactTextString(m) }
+func (*PlasmidUpdate_Data) ProtoMessage()    {}
+func (*PlasmidUpdate_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{19, 0}
+}
+
+func (m *PlasmidUpdate_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PlasmidUpdate_Data.Unmarshal(m, b)
+}
+func (m *PlasmidUpdate_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PlasmidUpdate_Data.Marshal(b, m, deterministic)
+}
+func (m *PlasmidUpdate_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PlasmidUpdate_Data.Merge(m, src)
+}
+func (m *PlasmidUpdate_Data) XXX_Size() int {
+	return xxx_messageInfo_PlasmidUpdate_Data.Size(m)
+}
+func (m *PlasmidUpdate_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_PlasmidUpdate_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PlasmidUpdate_Data proto.InternalMessageInfo
+
+func (m *PlasmidUpdate_Data) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *PlasmidUpdate_Data) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *PlasmidUpdate_Data) GetAttributes() *PlasmidUpdateAttributes {
+	if m != nil {
+		return m.Attributes
+	}
+	return nil
+}
+
 // Defines attributes for updating a stock
 type StockUpdateAttributes struct {
 	// User who updated stock entry
@@ -1456,7 +2050,7 @@ func (m *StockUpdateAttributes) Reset()         { *m = StockUpdateAttributes{} }
 func (m *StockUpdateAttributes) String() string { return proto.CompactTextString(m) }
 func (*StockUpdateAttributes) ProtoMessage()    {}
 func (*StockUpdateAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{14}
+	return fileDescriptor_c87a7814fbd674bd, []int{20}
 }
 
 func (m *StockUpdateAttributes) XXX_Unmarshal(b []byte) error {
@@ -1540,6 +2134,212 @@ func (m *StockUpdateAttributes) GetPlasmidProperties() *PlasmidProperties {
 	return nil
 }
 
+// Defines attributes for updating a strain
+type StrainUpdateAttributes struct {
+	// User who updated stock entry
+	UpdatedBy string `protobuf:"bytes,1,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	// Summary of the stock
+	Summary string `protobuf:"bytes,2,opt,name=summary,proto3" json:"summary,omitempty"`
+	// Editable version of the stock summary (Slate JSON format)
+	EditableSummary string `protobuf:"bytes,3,opt,name=editable_summary,json=editableSummary,proto3" json:"editable_summary,omitempty"`
+	// Depositor of the stock
+	Depositor string `protobuf:"bytes,4,opt,name=depositor,proto3" json:"depositor,omitempty"`
+	// List of associated genes
+	Genes []string `protobuf:"bytes,5,rep,name=genes,proto3" json:"genes,omitempty"`
+	// List of database cross references
+	Dbxrefs []string `protobuf:"bytes,6,rep,name=dbxrefs,proto3" json:"dbxrefs,omitempty"`
+	// List of related publications
+	Publications         []string                `protobuf:"bytes,7,rep,name=publications,proto3" json:"publications,omitempty"`
+	StrainProperties     *StrainUpdateProperties `protobuf:"bytes,8,opt,name=strain_properties,json=strainProperties,proto3" json:"strain_properties,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
+}
+
+func (m *StrainUpdateAttributes) Reset()         { *m = StrainUpdateAttributes{} }
+func (m *StrainUpdateAttributes) String() string { return proto.CompactTextString(m) }
+func (*StrainUpdateAttributes) ProtoMessage()    {}
+func (*StrainUpdateAttributes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{21}
+}
+
+func (m *StrainUpdateAttributes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StrainUpdateAttributes.Unmarshal(m, b)
+}
+func (m *StrainUpdateAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StrainUpdateAttributes.Marshal(b, m, deterministic)
+}
+func (m *StrainUpdateAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StrainUpdateAttributes.Merge(m, src)
+}
+func (m *StrainUpdateAttributes) XXX_Size() int {
+	return xxx_messageInfo_StrainUpdateAttributes.Size(m)
+}
+func (m *StrainUpdateAttributes) XXX_DiscardUnknown() {
+	xxx_messageInfo_StrainUpdateAttributes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StrainUpdateAttributes proto.InternalMessageInfo
+
+func (m *StrainUpdateAttributes) GetUpdatedBy() string {
+	if m != nil {
+		return m.UpdatedBy
+	}
+	return ""
+}
+
+func (m *StrainUpdateAttributes) GetSummary() string {
+	if m != nil {
+		return m.Summary
+	}
+	return ""
+}
+
+func (m *StrainUpdateAttributes) GetEditableSummary() string {
+	if m != nil {
+		return m.EditableSummary
+	}
+	return ""
+}
+
+func (m *StrainUpdateAttributes) GetDepositor() string {
+	if m != nil {
+		return m.Depositor
+	}
+	return ""
+}
+
+func (m *StrainUpdateAttributes) GetGenes() []string {
+	if m != nil {
+		return m.Genes
+	}
+	return nil
+}
+
+func (m *StrainUpdateAttributes) GetDbxrefs() []string {
+	if m != nil {
+		return m.Dbxrefs
+	}
+	return nil
+}
+
+func (m *StrainUpdateAttributes) GetPublications() []string {
+	if m != nil {
+		return m.Publications
+	}
+	return nil
+}
+
+func (m *StrainUpdateAttributes) GetStrainProperties() *StrainUpdateProperties {
+	if m != nil {
+		return m.StrainProperties
+	}
+	return nil
+}
+
+// Defines attributes for updating a plasmid
+type PlasmidUpdateAttributes struct {
+	// User who updated stock entry
+	UpdatedBy string `protobuf:"bytes,1,opt,name=updated_by,json=updatedBy,proto3" json:"updated_by,omitempty"`
+	// Summary of the stock
+	Summary string `protobuf:"bytes,2,opt,name=summary,proto3" json:"summary,omitempty"`
+	// Editable version of the stock summary (Slate JSON format)
+	EditableSummary string `protobuf:"bytes,3,opt,name=editable_summary,json=editableSummary,proto3" json:"editable_summary,omitempty"`
+	// Depositor of the stock
+	Depositor string `protobuf:"bytes,4,opt,name=depositor,proto3" json:"depositor,omitempty"`
+	// List of associated genes
+	Genes []string `protobuf:"bytes,5,rep,name=genes,proto3" json:"genes,omitempty"`
+	// List of database cross references
+	Dbxrefs []string `protobuf:"bytes,6,rep,name=dbxrefs,proto3" json:"dbxrefs,omitempty"`
+	// List of related publications
+	Publications         []string           `protobuf:"bytes,7,rep,name=publications,proto3" json:"publications,omitempty"`
+	PlasmidProperties    *PlasmidProperties `protobuf:"bytes,8,opt,name=plasmid_properties,json=plasmidProperties,proto3" json:"plasmid_properties,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *PlasmidUpdateAttributes) Reset()         { *m = PlasmidUpdateAttributes{} }
+func (m *PlasmidUpdateAttributes) String() string { return proto.CompactTextString(m) }
+func (*PlasmidUpdateAttributes) ProtoMessage()    {}
+func (*PlasmidUpdateAttributes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{22}
+}
+
+func (m *PlasmidUpdateAttributes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PlasmidUpdateAttributes.Unmarshal(m, b)
+}
+func (m *PlasmidUpdateAttributes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PlasmidUpdateAttributes.Marshal(b, m, deterministic)
+}
+func (m *PlasmidUpdateAttributes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PlasmidUpdateAttributes.Merge(m, src)
+}
+func (m *PlasmidUpdateAttributes) XXX_Size() int {
+	return xxx_messageInfo_PlasmidUpdateAttributes.Size(m)
+}
+func (m *PlasmidUpdateAttributes) XXX_DiscardUnknown() {
+	xxx_messageInfo_PlasmidUpdateAttributes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PlasmidUpdateAttributes proto.InternalMessageInfo
+
+func (m *PlasmidUpdateAttributes) GetUpdatedBy() string {
+	if m != nil {
+		return m.UpdatedBy
+	}
+	return ""
+}
+
+func (m *PlasmidUpdateAttributes) GetSummary() string {
+	if m != nil {
+		return m.Summary
+	}
+	return ""
+}
+
+func (m *PlasmidUpdateAttributes) GetEditableSummary() string {
+	if m != nil {
+		return m.EditableSummary
+	}
+	return ""
+}
+
+func (m *PlasmidUpdateAttributes) GetDepositor() string {
+	if m != nil {
+		return m.Depositor
+	}
+	return ""
+}
+
+func (m *PlasmidUpdateAttributes) GetGenes() []string {
+	if m != nil {
+		return m.Genes
+	}
+	return nil
+}
+
+func (m *PlasmidUpdateAttributes) GetDbxrefs() []string {
+	if m != nil {
+		return m.Dbxrefs
+	}
+	return nil
+}
+
+func (m *PlasmidUpdateAttributes) GetPublications() []string {
+	if m != nil {
+		return m.Publications
+	}
+	return nil
+}
+
+func (m *PlasmidUpdateAttributes) GetPlasmidProperties() *PlasmidProperties {
+	if m != nil {
+		return m.PlasmidProperties
+	}
+	return nil
+}
+
 type StrainUpdateProperties struct {
 	// Unambiguous name for the strain
 	SystematicName string `protobuf:"bytes,1,opt,name=systematic_name,json=systematicName,proto3" json:"systematic_name,omitempty"`
@@ -1562,7 +2362,7 @@ func (m *StrainUpdateProperties) Reset()         { *m = StrainUpdateProperties{}
 func (m *StrainUpdateProperties) String() string { return proto.CompactTextString(m) }
 func (*StrainUpdateProperties) ProtoMessage()    {}
 func (*StrainUpdateProperties) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{15}
+	return fileDescriptor_c87a7814fbd674bd, []int{23}
 }
 
 func (m *StrainUpdateProperties) XXX_Unmarshal(b []byte) error {
@@ -1628,7 +2428,7 @@ func (m *StrainUpdateProperties) GetNames() []string {
 // List of stocks
 type StockCollection struct {
 	Data                 []*StockCollection_Data `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-	Meta                 *Meta                   `protobuf:"bytes,3,opt,name=meta,proto3" json:"meta,omitempty"`
+	Meta                 *Meta                   `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -1638,7 +2438,7 @@ func (m *StockCollection) Reset()         { *m = StockCollection{} }
 func (m *StockCollection) String() string { return proto.CompactTextString(m) }
 func (*StockCollection) ProtoMessage()    {}
 func (*StockCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{16}
+	return fileDescriptor_c87a7814fbd674bd, []int{24}
 }
 
 func (m *StockCollection) XXX_Unmarshal(b []byte) error {
@@ -1688,7 +2488,7 @@ func (m *StockCollection_Data) Reset()         { *m = StockCollection_Data{} }
 func (m *StockCollection_Data) String() string { return proto.CompactTextString(m) }
 func (*StockCollection_Data) ProtoMessage()    {}
 func (*StockCollection_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{16, 0}
+	return fileDescriptor_c87a7814fbd674bd, []int{24, 0}
 }
 
 func (m *StockCollection_Data) XXX_Unmarshal(b []byte) error {
@@ -1724,6 +2524,216 @@ func (m *StockCollection_Data) GetId() string {
 }
 
 func (m *StockCollection_Data) GetAttributes() *StockAttributes {
+	if m != nil {
+		return m.Attributes
+	}
+	return nil
+}
+
+// List of strains
+type StrainCollection struct {
+	Data                 []*StrainCollection_Data `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	Meta                 *Meta                    `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *StrainCollection) Reset()         { *m = StrainCollection{} }
+func (m *StrainCollection) String() string { return proto.CompactTextString(m) }
+func (*StrainCollection) ProtoMessage()    {}
+func (*StrainCollection) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{25}
+}
+
+func (m *StrainCollection) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StrainCollection.Unmarshal(m, b)
+}
+func (m *StrainCollection) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StrainCollection.Marshal(b, m, deterministic)
+}
+func (m *StrainCollection) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StrainCollection.Merge(m, src)
+}
+func (m *StrainCollection) XXX_Size() int {
+	return xxx_messageInfo_StrainCollection.Size(m)
+}
+func (m *StrainCollection) XXX_DiscardUnknown() {
+	xxx_messageInfo_StrainCollection.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StrainCollection proto.InternalMessageInfo
+
+func (m *StrainCollection) GetData() []*StrainCollection_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+func (m *StrainCollection) GetMeta() *Meta {
+	if m != nil {
+		return m.Meta
+	}
+	return nil
+}
+
+type StrainCollection_Data struct {
+	// Resource name
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	// Unique identifier for the stock
+	Id                   string            `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Attributes           *StrainAttributes `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *StrainCollection_Data) Reset()         { *m = StrainCollection_Data{} }
+func (m *StrainCollection_Data) String() string { return proto.CompactTextString(m) }
+func (*StrainCollection_Data) ProtoMessage()    {}
+func (*StrainCollection_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{25, 0}
+}
+
+func (m *StrainCollection_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StrainCollection_Data.Unmarshal(m, b)
+}
+func (m *StrainCollection_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StrainCollection_Data.Marshal(b, m, deterministic)
+}
+func (m *StrainCollection_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StrainCollection_Data.Merge(m, src)
+}
+func (m *StrainCollection_Data) XXX_Size() int {
+	return xxx_messageInfo_StrainCollection_Data.Size(m)
+}
+func (m *StrainCollection_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_StrainCollection_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StrainCollection_Data proto.InternalMessageInfo
+
+func (m *StrainCollection_Data) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *StrainCollection_Data) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *StrainCollection_Data) GetAttributes() *StrainAttributes {
+	if m != nil {
+		return m.Attributes
+	}
+	return nil
+}
+
+// List of plasmids
+type PlasmidCollection struct {
+	Data                 []*PlasmidCollection_Data `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	Meta                 *Meta                     `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *PlasmidCollection) Reset()         { *m = PlasmidCollection{} }
+func (m *PlasmidCollection) String() string { return proto.CompactTextString(m) }
+func (*PlasmidCollection) ProtoMessage()    {}
+func (*PlasmidCollection) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{26}
+}
+
+func (m *PlasmidCollection) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PlasmidCollection.Unmarshal(m, b)
+}
+func (m *PlasmidCollection) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PlasmidCollection.Marshal(b, m, deterministic)
+}
+func (m *PlasmidCollection) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PlasmidCollection.Merge(m, src)
+}
+func (m *PlasmidCollection) XXX_Size() int {
+	return xxx_messageInfo_PlasmidCollection.Size(m)
+}
+func (m *PlasmidCollection) XXX_DiscardUnknown() {
+	xxx_messageInfo_PlasmidCollection.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PlasmidCollection proto.InternalMessageInfo
+
+func (m *PlasmidCollection) GetData() []*PlasmidCollection_Data {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
+func (m *PlasmidCollection) GetMeta() *Meta {
+	if m != nil {
+		return m.Meta
+	}
+	return nil
+}
+
+type PlasmidCollection_Data struct {
+	// Resource name
+	Type string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	// Unique identifier for the stock
+	Id                   string             `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Attributes           *PlasmidAttributes `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *PlasmidCollection_Data) Reset()         { *m = PlasmidCollection_Data{} }
+func (m *PlasmidCollection_Data) String() string { return proto.CompactTextString(m) }
+func (*PlasmidCollection_Data) ProtoMessage()    {}
+func (*PlasmidCollection_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_c87a7814fbd674bd, []int{26, 0}
+}
+
+func (m *PlasmidCollection_Data) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PlasmidCollection_Data.Unmarshal(m, b)
+}
+func (m *PlasmidCollection_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PlasmidCollection_Data.Marshal(b, m, deterministic)
+}
+func (m *PlasmidCollection_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PlasmidCollection_Data.Merge(m, src)
+}
+func (m *PlasmidCollection_Data) XXX_Size() int {
+	return xxx_messageInfo_PlasmidCollection_Data.Size(m)
+}
+func (m *PlasmidCollection_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_PlasmidCollection_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PlasmidCollection_Data proto.InternalMessageInfo
+
+func (m *PlasmidCollection_Data) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *PlasmidCollection_Data) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *PlasmidCollection_Data) GetAttributes() *PlasmidAttributes {
 	if m != nil {
 		return m.Attributes
 	}
@@ -1810,7 +2820,7 @@ func (m *StockParameters) Reset()         { *m = StockParameters{} }
 func (m *StockParameters) String() string { return proto.CompactTextString(m) }
 func (*StockParameters) ProtoMessage()    {}
 func (*StockParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{17}
+	return fileDescriptor_c87a7814fbd674bd, []int{27}
 }
 
 func (m *StockParameters) XXX_Unmarshal(b []byte) error {
@@ -1871,7 +2881,7 @@ func (m *Meta) Reset()         { *m = Meta{} }
 func (m *Meta) String() string { return proto.CompactTextString(m) }
 func (*Meta) ProtoMessage()    {}
 func (*Meta) Descriptor() ([]byte, []int) {
-	return fileDescriptor_c87a7814fbd674bd, []int{18}
+	return fileDescriptor_c87a7814fbd674bd, []int{28}
 }
 
 func (m *Meta) XXX_Unmarshal(b []byte) error {
@@ -1928,16 +2938,32 @@ func init() {
 	proto.RegisterType((*PlasmidProperties)(nil), "dictybase.stock.PlasmidProperties")
 	proto.RegisterType((*NewStock)(nil), "dictybase.stock.NewStock")
 	proto.RegisterType((*NewStock_Data)(nil), "dictybase.stock.NewStock.Data")
+	proto.RegisterType((*NewStrain)(nil), "dictybase.stock.NewStrain")
+	proto.RegisterType((*NewStrain_Data)(nil), "dictybase.stock.NewStrain.Data")
+	proto.RegisterType((*NewPlasmid)(nil), "dictybase.stock.NewPlasmid")
+	proto.RegisterType((*NewPlasmid_Data)(nil), "dictybase.stock.NewPlasmid.Data")
 	proto.RegisterType((*NewStockAttributes)(nil), "dictybase.stock.NewStockAttributes")
+	proto.RegisterType((*NewStrainAttributes)(nil), "dictybase.stock.NewStrainAttributes")
+	proto.RegisterType((*NewPlasmidAttributes)(nil), "dictybase.stock.NewPlasmidAttributes")
 	proto.RegisterType((*ExistingStock)(nil), "dictybase.stock.ExistingStock")
 	proto.RegisterType((*ExistingStock_Data)(nil), "dictybase.stock.ExistingStock.Data")
 	proto.RegisterType((*ExistingStockAttributes)(nil), "dictybase.stock.ExistingStockAttributes")
 	proto.RegisterType((*StockUpdate)(nil), "dictybase.stock.StockUpdate")
 	proto.RegisterType((*StockUpdate_Data)(nil), "dictybase.stock.StockUpdate.Data")
+	proto.RegisterType((*StrainUpdate)(nil), "dictybase.stock.StrainUpdate")
+	proto.RegisterType((*StrainUpdate_Data)(nil), "dictybase.stock.StrainUpdate.Data")
+	proto.RegisterType((*PlasmidUpdate)(nil), "dictybase.stock.PlasmidUpdate")
+	proto.RegisterType((*PlasmidUpdate_Data)(nil), "dictybase.stock.PlasmidUpdate.Data")
 	proto.RegisterType((*StockUpdateAttributes)(nil), "dictybase.stock.StockUpdateAttributes")
+	proto.RegisterType((*StrainUpdateAttributes)(nil), "dictybase.stock.StrainUpdateAttributes")
+	proto.RegisterType((*PlasmidUpdateAttributes)(nil), "dictybase.stock.PlasmidUpdateAttributes")
 	proto.RegisterType((*StrainUpdateProperties)(nil), "dictybase.stock.StrainUpdateProperties")
 	proto.RegisterType((*StockCollection)(nil), "dictybase.stock.StockCollection")
 	proto.RegisterType((*StockCollection_Data)(nil), "dictybase.stock.StockCollection.Data")
+	proto.RegisterType((*StrainCollection)(nil), "dictybase.stock.StrainCollection")
+	proto.RegisterType((*StrainCollection_Data)(nil), "dictybase.stock.StrainCollection.Data")
+	proto.RegisterType((*PlasmidCollection)(nil), "dictybase.stock.PlasmidCollection")
+	proto.RegisterType((*PlasmidCollection_Data)(nil), "dictybase.stock.PlasmidCollection.Data")
 	proto.RegisterType((*StockParameters)(nil), "dictybase.stock.StockParameters")
 	proto.RegisterType((*Meta)(nil), "dictybase.stock.Meta")
 }
@@ -1945,90 +2971,107 @@ func init() {
 func init() { proto.RegisterFile("stock.proto", fileDescriptor_c87a7814fbd674bd) }
 
 var fileDescriptor_c87a7814fbd674bd = []byte{
-	// 1314 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x58, 0x4b, 0x6f, 0x1b, 0xd5,
-	0x17, 0xef, 0x78, 0xfc, 0x3c, 0xce, 0xbf, 0x69, 0xef, 0xbf, 0x0d, 0x83, 0x1b, 0x5a, 0x77, 0xa0,
-	0x34, 0x2c, 0x6a, 0x8b, 0x22, 0xf1, 0x28, 0xe2, 0x61, 0xa7, 0x01, 0x22, 0xb5, 0x51, 0xb0, 0xc3,
-	0x73, 0x63, 0x5d, 0x7b, 0x6e, 0xcc, 0x55, 0xe7, 0xc5, 0xdc, 0xeb, 0x24, 0xe6, 0x43, 0xf0, 0x11,
-	0x58, 0xb0, 0x61, 0x87, 0x84, 0xc4, 0x86, 0x15, 0x1b, 0x84, 0x90, 0x58, 0xf0, 0x11, 0x90, 0xf8,
-	0x06, 0x2c, 0x2a, 0xb1, 0x44, 0x73, 0xef, 0xcc, 0xd8, 0x33, 0x9e, 0x99, 0x38, 0x24, 0x42, 0x45,
-	0xca, 0x26, 0xca, 0x3d, 0xf7, 0x37, 0xe7, 0x9c, 0x7b, 0xee, 0xef, 0x37, 0xe7, 0x8c, 0xa1, 0xce,
-	0xb8, 0x33, 0x7a, 0xd4, 0x72, 0x3d, 0x87, 0x3b, 0x68, 0xd5, 0xa0, 0x23, 0x3e, 0x1d, 0x62, 0x46,
-	0x5a, 0xc2, 0xdc, 0x58, 0x1f, 0x3b, 0xce, 0xd8, 0x24, 0x6d, 0xec, 0xd2, 0x36, 0xb6, 0x6d, 0x87,
-	0x63, 0x4e, 0x1d, 0x9b, 0x49, 0x78, 0xe3, 0x46, 0xb0, 0x2b, 0x56, 0xc3, 0xc9, 0x7e, 0x9b, 0x53,
-	0x8b, 0x30, 0x8e, 0x2d, 0x37, 0x00, 0x5c, 0x4b, 0x02, 0x88, 0xe5, 0xf2, 0x69, 0xb0, 0xf9, 0xf2,
-	0x98, 0xf2, 0xcf, 0x26, 0xc3, 0xd6, 0xc8, 0xb1, 0xda, 0xd6, 0x21, 0xe5, 0x8f, 0x9c, 0xc3, 0xf6,
-	0xd8, 0xb9, 0x23, 0x36, 0xef, 0x1c, 0x60, 0x93, 0x1a, 0x98, 0x3b, 0x1e, 0x6b, 0x47, 0xff, 0xca,
-	0xe7, 0xf4, 0x9b, 0x50, 0xe9, 0xfb, 0xc9, 0x6d, 0x1b, 0x68, 0x0d, 0x0a, 0xd4, 0xd0, 0x94, 0xa6,
-	0xb2, 0x51, 0xeb, 0x96, 0xff, 0xf8, 0xfd, 0x46, 0xe1, 0x63, 0xa5, 0x57, 0xa0, 0x86, 0xfe, 0xad,
-	0x02, 0x25, 0x81, 0x41, 0xaf, 0x40, 0xd1, 0xc0, 0x1c, 0x0b, 0x4c, 0xfd, 0xee, 0xb5, 0x56, 0xe2,
-	0x80, 0x2d, 0x81, 0x6a, 0xdd, 0xc7, 0x1c, 0x4b, 0x07, 0x4d, 0xa5, 0x27, 0x1e, 0x68, 0x98, 0x50,
-	0xf4, 0xad, 0x08, 0x41, 0x91, 0x4f, 0x5d, 0x22, 0x83, 0xf4, 0xc4, 0xff, 0xe8, 0xa2, 0x08, 0x5b,
-	0x10, 0x96, 0x02, 0x35, 0xd0, 0xdb, 0x00, 0x98, 0x73, 0x8f, 0x0e, 0x27, 0x9c, 0x30, 0x4d, 0x15,
-	0xa1, 0x9a, 0xe9, 0xa1, 0x3a, 0x11, 0xae, 0x37, 0xf7, 0x8c, 0xfe, 0x9d, 0x02, 0xe5, 0x3e, 0xf7,
-	0x30, 0xb5, 0xd1, 0xab, 0xb1, 0x8c, 0xd7, 0x53, 0xdc, 0xf8, 0xb0, 0xb4, 0x94, 0xad, 0x13, 0xa4,
-	0xdc, 0x49, 0x49, 0xf9, 0x66, 0x46, 0xac, 0x8c, 0x9c, 0xbf, 0x57, 0xa0, 0xb2, 0x6b, 0x62, 0x66,
-	0x51, 0x03, 0xbd, 0x16, 0x4b, 0xfa, 0x99, 0x05, 0x47, 0x01, 0x2e, 0x2d, 0x6b, 0xfb, 0x04, 0x59,
-	0x77, 0x53, 0xb2, 0xd6, 0xb3, 0x82, 0x65, 0xa4, 0xfd, 0x63, 0x11, 0x56, 0x13, 0x57, 0xe1, 0x57,
-	0x63, 0xe4, 0x11, 0xcc, 0x89, 0x31, 0xc0, 0x3c, 0x38, 0x44, 0xa3, 0x25, 0xc9, 0xdb, 0x0a, 0xc9,
-	0xdb, 0xda, 0x0b, 0xd9, 0x1d, 0x9d, 0xa0, 0x16, 0x3c, 0xd5, 0xe1, 0xbe, 0x8b, 0x89, 0x6b, 0x84,
-	0x2e, 0x0a, 0xcb, 0xbb, 0x08, 0x9e, 0xea, 0x70, 0x74, 0x6b, 0x96, 0xc5, 0x70, 0x2a, 0x4e, 0x37,
-	0x63, 0x75, 0x18, 0xa9, 0x3b, 0xf5, 0x61, 0x61, 0xa4, 0xe1, 0x54, 0x2b, 0xc6, 0x61, 0xc1, 0x4e,
-	0x77, 0x8a, 0x34, 0xa8, 0xb0, 0x89, 0x65, 0x61, 0x6f, 0xaa, 0x95, 0x44, 0x01, 0xc3, 0x25, 0x7a,
-	0x01, 0x2e, 0x11, 0x83, 0x72, 0x3c, 0x34, 0xc9, 0x20, 0x84, 0x94, 0x05, 0x64, 0x35, 0xb4, 0xf7,
-	0x03, 0xe8, 0x3a, 0xd4, 0x0c, 0xe2, 0x3a, 0x8c, 0x72, 0xc7, 0xd3, 0x2a, 0x02, 0x33, 0x33, 0xa0,
-	0x2b, 0x50, 0x1a, 0x13, 0x9b, 0x30, 0xad, 0xda, 0x54, 0x37, 0x6a, 0x3d, 0xb9, 0xf0, 0x03, 0x1b,
-	0xc3, 0x23, 0x8f, 0xec, 0x33, 0xad, 0x26, 0xec, 0xe1, 0x12, 0xe9, 0xb0, 0xe2, 0x4e, 0x86, 0x26,
-	0x1d, 0xc9, 0xb7, 0x88, 0x06, 0x62, 0x3b, 0x66, 0x43, 0x3b, 0x70, 0x99, 0x09, 0xd6, 0x0d, 0x5c,
-	0xcf, 0x71, 0x89, 0xc7, 0x29, 0x61, 0x5a, 0x3d, 0x97, 0x9f, 0xbb, 0x11, 0xb0, 0x77, 0x89, 0x25,
-	0x2c, 0xe8, 0x7d, 0x40, 0xae, 0xe4, 0xc3, 0xbc, 0xc3, 0x95, 0x7c, 0xea, 0xcc, 0x79, 0xbc, 0xec,
-	0x26, 0x4d, 0xfa, 0x63, 0x15, 0x2e, 0x25, 0x95, 0x71, 0x4e, 0xa1, 0x27, 0x87, 0x42, 0x1f, 0x9e,
-	0x86, 0x42, 0x51, 0x55, 0x17, 0xa8, 0xa4, 0xff, 0xa9, 0xc2, 0xe5, 0x85, 0x77, 0xcb, 0xf9, 0xc5,
-	0x3f, 0x39, 0x17, 0x9f, 0xae, 0xf5, 0xfa, 0x69, 0xb4, 0xfe, 0xab, 0x12, 0x6a, 0x7d, 0xee, 0x9d,
-	0xd2, 0x86, 0x55, 0x36, 0x65, 0x9c, 0x58, 0x98, 0xd3, 0xd1, 0xc0, 0xc6, 0x16, 0x49, 0xcc, 0x20,
-	0x17, 0x67, 0xdb, 0x3b, 0xd8, 0x22, 0x68, 0x1d, 0x4a, 0x26, 0x1e, 0x12, 0x53, 0xb6, 0xb2, 0x08,
-	0x26, 0x8d, 0xa8, 0x09, 0x15, 0xe6, 0x92, 0x11, 0x0d, 0x5a, 0xda, 0x6c, 0x3f, 0x34, 0xfb, 0x65,
-	0x09, 0x52, 0x93, 0x77, 0xd6, 0x0b, 0x97, 0x68, 0x0d, 0xca, 0x2e, 0xf6, 0x88, 0xcd, 0x83, 0x8b,
-	0x0a, 0x56, 0x7e, 0x79, 0xfd, 0xbc, 0x98, 0x56, 0x96, 0xe5, 0x15, 0x0b, 0xfd, 0x41, 0x44, 0xe0,
-	0xb9, 0xd3, 0x5c, 0x83, 0x1a, 0xb5, 0xf0, 0x98, 0x0c, 0x2c, 0xec, 0x06, 0xdd, 0xb7, 0x2a, 0x0c,
-	0x0f, 0xb1, 0x8b, 0x1a, 0x50, 0x65, 0xe4, 0xf3, 0x09, 0xb1, 0x47, 0x24, 0xe8, 0xc3, 0xd1, 0x5a,
-	0xff, 0x46, 0x81, 0xea, 0x0e, 0x39, 0x94, 0x83, 0xd6, 0xbd, 0xd8, 0x04, 0x70, 0x7d, 0xa1, 0xda,
-	0x21, 0x30, 0x6d, 0x04, 0x18, 0xe4, 0x8c, 0x00, 0x9b, 0xb1, 0x96, 0x2f, 0xb5, 0xf1, 0x6c, 0xa6,
-	0xf7, 0x8c, 0x9e, 0xff, 0x93, 0x0a, 0x68, 0x11, 0x92, 0x10, 0x8d, 0xb2, 0x9c, 0x68, 0x0a, 0x4b,
-	0x88, 0x46, 0x3d, 0x5e, 0x34, 0xc5, 0x74, 0xd1, 0x44, 0xb2, 0x28, 0x65, 0xc8, 0xa2, 0x1c, 0x97,
-	0xc5, 0x73, 0x0b, 0x22, 0x9b, 0xa5, 0x36, 0x13, 0x5b, 0x52, 0x3c, 0xd5, 0x65, 0x1b, 0x6f, 0xed,
-	0xac, 0x1b, 0x2f, 0x9c, 0x46, 0x8c, 0x3f, 0x2b, 0xf0, 0xbf, 0xad, 0x23, 0xca, 0x38, 0xb5, 0xc7,
-	0x92, 0x75, 0x6f, 0xc5, 0x58, 0xb7, 0xc8, 0x8b, 0x18, 0x3a, 0x8d, 0x7a, 0xfc, 0x04, 0xd3, 0xe7,
-	0x7b, 0x29, 0xd3, 0xe7, 0x46, 0x7e, 0xc8, 0x0c, 0x3e, 0xfe, 0x56, 0x84, 0xa7, 0x32, 0x70, 0xe7,
-	0xfd, 0x24, 0xab, 0x9f, 0x44, 0xd2, 0xa8, 0x64, 0x48, 0xa3, 0x9a, 0x23, 0x8d, 0xda, 0xb2, 0xd2,
-	0xf8, 0x8f, 0xce, 0xa4, 0xbf, 0x28, 0x50, 0x17, 0x4c, 0xfa, 0x40, 0x14, 0x1d, 0xbd, 0x11, 0x13,
-	0xc6, 0xcd, 0xf4, 0x8f, 0x51, 0x89, 0x4d, 0x93, 0xc5, 0x17, 0x39, 0xb2, 0x58, 0x9b, 0xc9, 0x62,
-	0xfe, 0xa3, 0x1b, 0xbd, 0x93, 0x22, 0x8f, 0xe7, 0xf3, 0x02, 0x67, 0x88, 0xe3, 0x2b, 0x15, 0xae,
-	0xa6, 0xa2, 0x12, 0x6c, 0x53, 0x96, 0x60, 0x5b, 0xe1, 0x78, 0xb6, 0xa9, 0x4b, 0x4c, 0x2f, 0xc5,
-	0xcc, 0xe9, 0x65, 0xc9, 0xd7, 0x74, 0x92, 0x65, 0x95, 0x14, 0x96, 0xed, 0xa5, 0xb1, 0xac, 0x2a,
-	0xca, 0x78, 0x3b, 0x83, 0x65, 0xb2, 0x42, 0xff, 0x80, 0x6b, 0xb5, 0xd3, 0x70, 0xed, 0x07, 0x05,
-	0xd6, 0xd2, 0xe3, 0xa3, 0xdb, 0x19, 0x93, 0xd1, 0xc2, 0x44, 0x74, 0x25, 0x36, 0x11, 0x85, 0x93,
-	0x90, 0x96, 0x98, 0x84, 0xce, 0x7e, 0x02, 0x7a, 0xac, 0x04, 0x5f, 0xff, 0x9b, 0x8e, 0x69, 0x92,
-	0x91, 0x5f, 0x79, 0xd4, 0x89, 0xb4, 0xa2, 0x6e, 0xd4, 0xef, 0xde, 0x4a, 0xa7, 0xec, 0x0c, 0x9f,
-	0xa2, 0x17, 0xf4, 0x22, 0x14, 0x2d, 0xc2, 0x71, 0xc0, 0xfa, 0xab, 0x0b, 0x2e, 0x1e, 0x92, 0xf9,
-	0x47, 0x7c, 0xe8, 0xbf, 0xfc, 0x03, 0xd3, 0x47, 0xc1, 0xb1, 0x77, 0xb1, 0x87, 0x2d, 0xc2, 0x89,
-	0xc7, 0xfc, 0xc2, 0x8d, 0x26, 0x1e, 0x73, 0x3c, 0x11, 0x5a, 0xed, 0x05, 0x2b, 0x71, 0x35, 0xd4,
-	0xa2, 0xb2, 0x71, 0xa8, 0x3d, 0xb9, 0xf0, 0xd1, 0xfb, 0xd4, 0xe4, 0xc4, 0x0b, 0x6e, 0x26, 0x58,
-	0xe9, 0x7d, 0x28, 0xfa, 0x87, 0x43, 0x37, 0xa0, 0x6e, 0x93, 0x23, 0x3e, 0x88, 0xb9, 0x04, 0xdf,
-	0xb4, 0x99, 0xe7, 0xf6, 0x0a, 0x94, 0xb8, 0xc3, 0xb1, 0x29, 0xbc, 0xaa, 0x3d, 0xb9, 0xb8, 0xfb,
-	0x65, 0x11, 0x56, 0x44, 0xba, 0x7d, 0xe2, 0x1d, 0xd0, 0x11, 0x41, 0x6f, 0x42, 0xf5, 0x5d, 0xc2,
-	0x65, 0xcf, 0xd7, 0xd2, 0x0f, 0xbe, 0x6d, 0x34, 0xd6, 0xd2, 0x77, 0xf4, 0x0b, 0xa8, 0x0b, 0xf5,
-	0x4d, 0xd1, 0xb4, 0xa4, 0x8b, 0xa7, 0x33, 0x07, 0xc8, 0x1c, 0x1f, 0x5b, 0x50, 0x97, 0x7c, 0x97,
-	0x3e, 0xd6, 0xf3, 0x5e, 0x6d, 0x39, 0x6e, 0x3a, 0x50, 0xef, 0x11, 0xcb, 0x39, 0x20, 0xc7, 0x9f,
-	0x26, 0xd9, 0xb1, 0xb7, 0x2c, 0x97, 0x4f, 0xf5, 0x0b, 0xa8, 0x0f, 0xf5, 0x07, 0x94, 0x71, 0xa9,
-	0x41, 0x86, 0x32, 0x98, 0x30, 0xbb, 0xea, 0x46, 0xf3, 0x38, 0x4e, 0xeb, 0x17, 0xd0, 0x1e, 0xac,
-	0xf8, 0x4e, 0x83, 0x37, 0xc0, 0x59, 0x79, 0xdd, 0x82, 0xda, 0x03, 0x07, 0x1b, 0xf2, 0xac, 0xd7,
-	0xf3, 0x87, 0xa5, 0xec, 0xa2, 0x75, 0x2d, 0xf8, 0xbf, 0xe3, 0x8d, 0x93, 0xdb, 0x5d, 0x90, 0x29,
-	0xf9, 0xf5, 0xd9, 0x55, 0x3e, 0xbd, 0x37, 0xf7, 0x83, 0xb2, 0x40, 0x76, 0x31, 0x23, 0xed, 0xb1,
-	0x73, 0x67, 0x4c, 0x6c, 0x51, 0xc3, 0x76, 0xf4, 0x3c, 0x76, 0x29, 0x6b, 0x0b, 0x1f, 0xaf, 0x8b,
-	0xbf, 0x7f, 0x29, 0xca, 0xd7, 0x85, 0xea, 0xfd, 0xed, 0xcd, 0xbd, 0x4f, 0x3a, 0xbb, 0xdb, 0xc3,
-	0xb2, 0x80, 0xbf, 0xf4, 0x77, 0x00, 0x00, 0x00, 0xff, 0xff, 0xd7, 0xf3, 0x06, 0x5b, 0x1d, 0x17,
-	0x00, 0x00,
+	// 1588 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x5a, 0x5d, 0x6f, 0x1b, 0x45,
+	0x17, 0xce, 0xda, 0x4e, 0x62, 0x1f, 0x27, 0x4d, 0x3b, 0x4d, 0xd3, 0x95, 0x93, 0x36, 0xc9, 0xbe,
+	0xfd, 0x7a, 0x2f, 0x6a, 0xeb, 0xed, 0x2b, 0xf1, 0xd1, 0xf2, 0xd1, 0x38, 0x0d, 0x6d, 0x44, 0x1b,
+	0x05, 0x27, 0x94, 0x8f, 0x1b, 0x33, 0xf6, 0x4e, 0xcd, 0xa8, 0x5e, 0xef, 0xb2, 0x3b, 0x6e, 0x6a,
+	0xe0, 0xb7, 0x70, 0xc1, 0x0d, 0x12, 0x12, 0x48, 0x48, 0xdc, 0x70, 0xc5, 0x0d, 0x42, 0x88, 0x22,
+	0xf8, 0x09, 0x48, 0xfc, 0x03, 0x10, 0x45, 0x95, 0xb8, 0x41, 0x3b, 0x3b, 0xbb, 0xf6, 0xae, 0x67,
+	0x36, 0x4e, 0x13, 0xaa, 0x82, 0x72, 0x53, 0x65, 0x66, 0xce, 0x9e, 0x79, 0xce, 0x99, 0x73, 0x9e,
+	0x39, 0x73, 0x5c, 0x28, 0x7a, 0xcc, 0x6e, 0xde, 0x2d, 0x3b, 0xae, 0xcd, 0x6c, 0x34, 0x63, 0xd2,
+	0x26, 0xeb, 0x35, 0xb0, 0x47, 0xca, 0x7c, 0xba, 0xb4, 0xd0, 0xb2, 0xed, 0x56, 0x9b, 0x54, 0xb0,
+	0x43, 0x2b, 0xb8, 0xd3, 0xb1, 0x19, 0x66, 0xd4, 0xee, 0x78, 0x81, 0x78, 0x69, 0x51, 0xac, 0xf2,
+	0x51, 0xa3, 0x7b, 0xa7, 0xc2, 0xa8, 0x45, 0x3c, 0x86, 0x2d, 0x47, 0x08, 0xcc, 0x27, 0x05, 0x88,
+	0xe5, 0xb0, 0x9e, 0x58, 0x7c, 0xa6, 0x45, 0xd9, 0xbb, 0xdd, 0x46, 0xb9, 0x69, 0x5b, 0x15, 0x6b,
+	0x87, 0xb2, 0xbb, 0xf6, 0x4e, 0xa5, 0x65, 0x5f, 0xe4, 0x8b, 0x17, 0xef, 0xe1, 0x36, 0x35, 0x31,
+	0xb3, 0x5d, 0xaf, 0x12, 0xfd, 0x19, 0x7c, 0x67, 0x2c, 0xc3, 0xe4, 0x96, 0x0f, 0x6e, 0xdd, 0x44,
+	0x73, 0x90, 0xa1, 0xa6, 0xae, 0x2d, 0x69, 0x17, 0x0a, 0xd5, 0x89, 0x5f, 0x7e, 0x5e, 0xcc, 0xbc,
+	0xa9, 0xd5, 0x32, 0xd4, 0x34, 0x3e, 0xd7, 0x60, 0x9c, 0xcb, 0xa0, 0x67, 0x21, 0x67, 0x62, 0x86,
+	0xb9, 0x4c, 0xf1, 0xd2, 0x7c, 0x39, 0x61, 0x60, 0x99, 0x4b, 0x95, 0xaf, 0x61, 0x86, 0x03, 0x05,
+	0x4b, 0x5a, 0x8d, 0x7f, 0x50, 0x6a, 0x43, 0xce, 0x9f, 0x45, 0x08, 0x72, 0xac, 0xe7, 0x90, 0x60,
+	0x93, 0x1a, 0xff, 0x1b, 0x1d, 0xe1, 0xdb, 0x66, 0xf8, 0x4c, 0x86, 0x9a, 0xe8, 0x2a, 0x00, 0x66,
+	0xcc, 0xa5, 0x8d, 0x2e, 0x23, 0x9e, 0x9e, 0xe5, 0x5b, 0x2d, 0xc9, 0xb7, 0x5a, 0x89, 0xe4, 0x6a,
+	0x03, 0xdf, 0x18, 0x5f, 0x68, 0x30, 0xb1, 0xc5, 0x5c, 0x4c, 0x3b, 0xe8, 0xb9, 0x18, 0xe2, 0x05,
+	0x89, 0x1a, 0x5f, 0x4c, 0x06, 0xd9, 0xda, 0x03, 0xe4, 0x15, 0x09, 0xe4, 0x65, 0xc5, 0x5e, 0x0a,
+	0xcc, 0x5f, 0x6a, 0x30, 0xb9, 0xd9, 0xc6, 0x9e, 0x45, 0x4d, 0xf4, 0x7c, 0x0c, 0xf4, 0xa9, 0x21,
+	0x45, 0x42, 0x4e, 0x86, 0xba, 0xb3, 0x07, 0xd4, 0x55, 0x09, 0x6a, 0x43, 0xb5, 0x99, 0x02, 0xf6,
+	0xd7, 0x39, 0x98, 0x49, 0x1c, 0x85, 0xef, 0x8d, 0xa6, 0x4b, 0x30, 0x23, 0x66, 0x1d, 0x33, 0x61,
+	0x44, 0xa9, 0x1c, 0x04, 0x6f, 0x39, 0x0c, 0xde, 0xf2, 0x76, 0x18, 0xdd, 0x91, 0x05, 0x05, 0xf1,
+	0xd5, 0x0a, 0xf3, 0x55, 0x74, 0x1d, 0x33, 0x54, 0x91, 0x19, 0x5d, 0x85, 0xf8, 0x6a, 0x85, 0xa1,
+	0xb3, 0x7d, 0x14, 0x8d, 0x1e, 0xb7, 0xae, 0x1f, 0xd5, 0xe1, 0x4e, 0xd5, 0x9e, 0x2f, 0x16, 0xee,
+	0xd4, 0xe8, 0xe9, 0xb9, 0xb8, 0x98, 0x58, 0xa9, 0xf6, 0x90, 0x0e, 0x93, 0x5e, 0xd7, 0xb2, 0xb0,
+	0xdb, 0xd3, 0xc7, 0xb9, 0x03, 0xc3, 0x21, 0xfa, 0x2f, 0x1c, 0x25, 0x26, 0x65, 0xb8, 0xd1, 0x26,
+	0xf5, 0x50, 0x64, 0x82, 0x8b, 0xcc, 0x84, 0xf3, 0x5b, 0x42, 0x74, 0x01, 0x0a, 0x26, 0x71, 0x6c,
+	0x8f, 0x32, 0xdb, 0xd5, 0x27, 0xb9, 0x4c, 0x7f, 0x02, 0xcd, 0xc2, 0x78, 0x8b, 0x74, 0x88, 0xa7,
+	0xe7, 0x97, 0xb2, 0x17, 0x0a, 0xb5, 0x60, 0xe0, 0x6f, 0x6c, 0x36, 0xee, 0xbb, 0xe4, 0x8e, 0xa7,
+	0x17, 0xf8, 0x7c, 0x38, 0x44, 0x06, 0x4c, 0x39, 0xdd, 0x46, 0x9b, 0x36, 0x03, 0x16, 0xd1, 0x81,
+	0x2f, 0xc7, 0xe6, 0xd0, 0x06, 0x1c, 0xf3, 0x78, 0xd4, 0xd5, 0x1d, 0xd7, 0x76, 0x88, 0xcb, 0x28,
+	0xf1, 0xf4, 0x62, 0x6a, 0x7c, 0x6e, 0x46, 0x82, 0xb5, 0xa3, 0x5e, 0x62, 0x06, 0xbd, 0x06, 0xc8,
+	0x09, 0xe2, 0x61, 0x50, 0xe1, 0x54, 0x7a, 0xe8, 0x0c, 0x68, 0x3c, 0xe6, 0x24, 0xa7, 0x8c, 0x87,
+	0x59, 0x38, 0x9a, 0xcc, 0x8c, 0xc3, 0x10, 0x7a, 0x7a, 0x42, 0xe8, 0xf6, 0x7e, 0x42, 0x28, 0xf2,
+	0xea, 0x50, 0x28, 0x19, 0xbf, 0x66, 0xe1, 0xd8, 0x10, 0xb7, 0x1c, 0x1e, 0xfc, 0xd3, 0x73, 0xf0,
+	0xf2, 0x5c, 0x2f, 0xee, 0x27, 0xd7, 0x1f, 0x68, 0x61, 0xae, 0x0f, 0x70, 0x4a, 0x05, 0x66, 0xbc,
+	0x9e, 0xc7, 0x88, 0x85, 0x19, 0x6d, 0xd6, 0x3b, 0xd8, 0x22, 0x89, 0x1a, 0xe4, 0x48, 0x7f, 0x79,
+	0x03, 0x5b, 0x04, 0x2d, 0xc0, 0x78, 0x1b, 0x37, 0x48, 0x3b, 0xb8, 0xca, 0x22, 0xb1, 0x60, 0x12,
+	0x2d, 0xc1, 0xa4, 0xe7, 0x90, 0x26, 0x15, 0x57, 0x5a, 0x7f, 0x3d, 0x9c, 0xf6, 0xdd, 0x22, 0xa0,
+	0x05, 0x67, 0x56, 0x0b, 0x87, 0x68, 0x0e, 0x26, 0x1c, 0xec, 0x92, 0x0e, 0x13, 0x07, 0x25, 0x46,
+	0xbe, 0x7b, 0x7d, 0x5c, 0x9e, 0x3e, 0x11, 0xb8, 0x97, 0x0f, 0x8c, 0x9b, 0x51, 0x00, 0x0f, 0x58,
+	0x33, 0x0f, 0x05, 0x6a, 0xe1, 0x16, 0xa9, 0x5b, 0xd8, 0x11, 0xb7, 0x6f, 0x9e, 0x4f, 0xdc, 0xc2,
+	0x0e, 0x2a, 0x41, 0xde, 0x23, 0xef, 0x75, 0x49, 0xa7, 0x49, 0xc4, 0x3d, 0x1c, 0x8d, 0x8d, 0x4f,
+	0x34, 0xc8, 0x6f, 0x90, 0x9d, 0xa0, 0xd0, 0xba, 0x1c, 0xab, 0x00, 0x4e, 0x0f, 0x79, 0x3b, 0x14,
+	0x94, 0x95, 0x00, 0xf5, 0x94, 0x12, 0x60, 0x35, 0x76, 0xe5, 0x07, 0xb9, 0xf1, 0x1f, 0xa5, 0x76,
+	0xc5, 0x9d, 0xff, 0xa9, 0x06, 0x05, 0x2e, 0xc2, 0x2b, 0xac, 0x2b, 0x31, 0xa8, 0x8b, 0x72, 0x65,
+	0xaa, 0x22, 0xeb, 0x9d, 0x14, 0xac, 0xd7, 0x24, 0x58, 0xcf, 0xa8, 0xd5, 0x2b, 0xc0, 0x7e, 0xa6,
+	0x01, 0x6c, 0x90, 0x9d, 0xb0, 0xb4, 0x7a, 0x21, 0x86, 0x76, 0x49, 0xa6, 0x2e, 0xa5, 0xba, 0xc2,
+	0x29, 0x70, 0xd7, 0x24, 0x70, 0xcf, 0xa6, 0xe8, 0x57, 0xe0, 0xfd, 0x26, 0x0b, 0x68, 0xd8, 0xff,
+	0x09, 0x46, 0xd2, 0x46, 0x63, 0xa4, 0xcc, 0x08, 0x8c, 0x94, 0xdd, 0x9d, 0x91, 0x72, 0x72, 0x46,
+	0x8a, 0x38, 0x67, 0x5c, 0xc1, 0x39, 0x13, 0x71, 0xce, 0x39, 0x33, 0xc4, 0x60, 0x7d, 0x68, 0x7d,
+	0x26, 0x4b, 0x32, 0x53, 0x7e, 0xd4, 0xaa, 0xa6, 0x70, 0xd0, 0x55, 0x0d, 0xec, 0x87, 0xe9, 0x7e,
+	0xcb, 0xc0, 0x71, 0x49, 0x68, 0x1e, 0x9e, 0xe3, 0xdf, 0x78, 0x8e, 0xc6, 0x1f, 0x19, 0x98, 0x95,
+	0x25, 0xd8, 0xa1, 0xd7, 0x77, 0xbf, 0xd7, 0x0b, 0xfb, 0x89, 0xf6, 0x6f, 0x35, 0x98, 0x5e, 0xbb,
+	0x4f, 0x3d, 0x46, 0x3b, 0xad, 0xe0, 0x02, 0x7b, 0x39, 0xc6, 0xb3, 0xc3, 0x57, 0x4c, 0x4c, 0x5a,
+	0x46, 0xb5, 0x6c, 0x0f, 0x0f, 0xd9, 0x1b, 0x92, 0x87, 0xec, 0x85, 0xf4, 0x2d, 0x15, 0xec, 0xfb,
+	0x53, 0x0e, 0x4e, 0x2a, 0xe4, 0x0e, 0x4b, 0x53, 0x55, 0x69, 0x1a, 0x85, 0xf2, 0xa4, 0x22, 0x94,
+	0xf3, 0x29, 0xa1, 0x5c, 0x18, 0x35, 0x94, 0xff, 0xa1, 0xcf, 0xdb, 0xef, 0x34, 0x28, 0xf2, 0x48,
+	0x7a, 0x9d, 0x3b, 0x1d, 0xbd, 0x18, 0x4b, 0x8c, 0x65, 0x79, 0x5f, 0x2b, 0x90, 0x95, 0xa5, 0xc5,
+	0xfb, 0x29, 0x69, 0x31, 0xd7, 0x4f, 0x8b, 0xc1, 0xfe, 0x1d, 0x7a, 0x45, 0x92, 0x1e, 0xe7, 0xd2,
+	0x36, 0x56, 0x24, 0xc7, 0x03, 0x0d, 0xa6, 0x02, 0x27, 0x0a, 0x5b, 0x5e, 0x8a, 0xd9, 0x62, 0x28,
+	0x3c, 0xae, 0x36, 0xe6, 0x83, 0xc7, 0x30, 0xe6, 0xba, 0xc4, 0x98, 0xf3, 0xa9, 0x3b, 0x2b, 0xac,
+	0xf9, 0x51, 0x83, 0x69, 0x71, 0x82, 0xc2, 0x9c, 0xdd, 0x38, 0x2b, 0x26, 0x2d, 0xb3, 0xe7, 0xc3,
+	0xc7, 0xb0, 0x67, 0x34, 0xee, 0x8a, 0x6d, 0xad, 0x30, 0xe8, 0xa3, 0x2c, 0x9c, 0x90, 0x1e, 0x62,
+	0x82, 0x0c, 0xb4, 0x11, 0xc8, 0x20, 0xb3, 0x3b, 0x19, 0x64, 0x47, 0x78, 0xa7, 0xe6, 0x94, 0xef,
+	0xd4, 0x11, 0x6f, 0xbd, 0x24, 0x09, 0x4c, 0x4a, 0x48, 0x60, 0x5b, 0x46, 0x02, 0xf9, 0x11, 0x02,
+	0xe3, 0x31, 0xa8, 0x60, 0x5f, 0xb7, 0xe4, 0x0f, 0x19, 0x98, 0x93, 0x07, 0xe6, 0xe1, 0x09, 0xed,
+	0xfd, 0x84, 0x8c, 0xef, 0x33, 0x70, 0x52, 0x91, 0x17, 0xff, 0x72, 0x7f, 0xca, 0x63, 0x33, 0xbf,
+	0x9f, 0xd8, 0xfc, 0x4a, 0x8b, 0xc7, 0xe6, 0x40, 0x26, 0x9c, 0x57, 0xf4, 0x67, 0x86, 0xfa, 0x32,
+	0xb3, 0xb1, 0xbe, 0x4c, 0xd8, 0x8f, 0xd1, 0x13, 0xfd, 0x98, 0x83, 0xef, 0xc3, 0x3c, 0xd4, 0xc4,
+	0x6f, 0x10, 0xab, 0x76, 0xbb, 0x4d, 0x9a, 0xbe, 0x8f, 0xd0, 0x4a, 0xc4, 0xe5, 0x59, 0xe9, 0x3b,
+	0x3c, 0x21, 0x2f, 0x61, 0x73, 0xf4, 0x3f, 0xc8, 0x59, 0x84, 0x61, 0x51, 0xa6, 0x9d, 0x18, 0x52,
+	0x71, 0x8b, 0x0c, 0x7e, 0xe2, 0x8b, 0x3e, 0xe1, 0x9f, 0xb9, 0x1e, 0x45, 0xdd, 0xb4, 0x01, 0xc3,
+	0xab, 0x31, 0xc3, 0xcf, 0x29, 0xd2, 0xeb, 0xc0, 0x2d, 0x7f, 0xc2, 0xbf, 0x96, 0xfd, 0xa9, 0x45,
+	0xbd, 0xb7, 0x01, 0xdb, 0x57, 0x63, 0xb6, 0x9f, 0x57, 0x65, 0xc2, 0x81, 0x1b, 0xff, 0xa4, 0x7f,
+	0x74, 0x7b, 0x43, 0xc4, 0xfb, 0x26, 0x76, 0xb1, 0x45, 0x18, 0x71, 0x3d, 0x3f, 0x63, 0x9a, 0x5d,
+	0xd7, 0xb3, 0x5d, 0xbe, 0x79, 0xb6, 0x26, 0x46, 0x3c, 0x27, 0xa9, 0x45, 0x83, 0xc7, 0x46, 0xb6,
+	0x16, 0x0c, 0x7c, 0xe9, 0x3b, 0xb4, 0xcd, 0x88, 0x2b, 0x52, 0x52, 0x8c, 0x8c, 0x2d, 0xc8, 0xf9,
+	0xe6, 0xa1, 0x45, 0x28, 0x76, 0xc8, 0x7d, 0x56, 0x8f, 0xa9, 0x04, 0x7f, 0x6a, 0x35, 0x4d, 0xed,
+	0x2c, 0x8c, 0x33, 0x9b, 0xe1, 0x36, 0xd7, 0x9a, 0xad, 0x05, 0x83, 0x4b, 0xbf, 0x8f, 0xfb, 0x65,
+	0xa3, 0xdd, 0xbc, 0xbb, 0x45, 0xdc, 0x7b, 0xb4, 0x49, 0xd0, 0x55, 0x28, 0x5c, 0x27, 0x4c, 0xb4,
+	0x0f, 0x75, 0x79, 0xc8, 0xaf, 0x9b, 0xa5, 0x93, 0x8a, 0x90, 0x30, 0xc6, 0x7c, 0x27, 0x5e, 0x27,
+	0x2c, 0xec, 0xe9, 0xa9, 0x55, 0xe8, 0x2a, 0xc7, 0x1a, 0x63, 0x68, 0x0d, 0xa6, 0x56, 0xf9, 0x73,
+	0x49, 0x00, 0x29, 0xa9, 0x5b, 0x8b, 0x69, 0x50, 0x6e, 0xc0, 0x74, 0xa0, 0x26, 0x44, 0x33, 0x9f,
+	0xd2, 0xf3, 0x4b, 0x05, 0x74, 0x03, 0xa6, 0x02, 0xee, 0x15, 0x80, 0x4e, 0xa5, 0x5e, 0x8d, 0x69,
+	0x98, 0x5e, 0x85, 0x69, 0xc1, 0xe2, 0x02, 0xd3, 0xe9, 0xf4, 0x82, 0x32, 0x15, 0xd6, 0x0a, 0x14,
+	0x6b, 0xc4, 0xb2, 0xef, 0x91, 0xe0, 0x61, 0xaf, 0x76, 0xf6, 0xdc, 0xd0, 0x43, 0x76, 0xcd, 0x72,
+	0x58, 0xcf, 0x18, 0x43, 0xdb, 0x50, 0xbc, 0x49, 0x3d, 0x71, 0xe2, 0x1e, 0x52, 0xb0, 0x5c, 0x3f,
+	0x9a, 0x4b, 0xcb, 0xbb, 0xd2, 0x96, 0x31, 0x86, 0x6e, 0xc3, 0x94, 0xaf, 0x55, 0x20, 0x1d, 0x45,
+	0xad, 0xb1, 0x3b, 0x23, 0xf0, 0xc0, 0x28, 0xdc, 0xb4, 0xb1, 0x19, 0x98, 0x7b, 0x3a, 0xbd, 0x8d,
+	0x50, 0x9a, 0x93, 0x6f, 0x6a, 0x8c, 0x55, 0x2d, 0x38, 0x6e, 0xbb, 0xad, 0xe4, 0x72, 0x15, 0x02,
+	0x50, 0xbe, 0x8b, 0x36, 0xb5, 0xb7, 0x2f, 0x0f, 0xfc, 0xaf, 0x0d, 0x2e, 0x59, 0xc5, 0x1e, 0xa9,
+	0xb4, 0xec, 0x8b, 0x2d, 0xd2, 0xe1, 0x6e, 0xac, 0x44, 0xdf, 0x63, 0x87, 0x7a, 0x15, 0xae, 0xe3,
+	0x0a, 0xff, 0xf7, 0x91, 0xa6, 0x7d, 0x9c, 0xc9, 0x5f, 0x5b, 0x5f, 0xdd, 0x7e, 0x6b, 0x65, 0x73,
+	0xbd, 0x31, 0xc1, 0xc5, 0xff, 0xff, 0x57, 0x00, 0x00, 0x00, 0xff, 0xff, 0x1b, 0x1a, 0xca, 0x5a,
+	0x82, 0x22, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -2043,18 +3086,24 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type StockServiceClient interface {
+	// Retrieves strain by ID
+	GetStrain(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*Strain, error)
 	// Retrieves stock by ID
-	GetStock(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*Stock, error)
-	// Create a new stock
-	CreateStock(ctx context.Context, in *NewStock, opts ...grpc.CallOption) (*Stock, error)
-	// Update an existing stock
-	UpdateStock(ctx context.Context, in *StockUpdate, opts ...grpc.CallOption) (*Stock, error)
+	GetPlasmid(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*Plasmid, error)
+	// Create a new strain
+	CreateStrain(ctx context.Context, in *NewStrain, opts ...grpc.CallOption) (*Strain, error)
+	// Create a new plasmid
+	CreatePlasmid(ctx context.Context, in *NewPlasmid, opts ...grpc.CallOption) (*Plasmid, error)
+	// Update an existing strain
+	UpdateStrain(ctx context.Context, in *StrainUpdate, opts ...grpc.CallOption) (*Strain, error)
+	// Update an existing plasmid
+	UpdatePlasmid(ctx context.Context, in *PlasmidUpdate, opts ...grpc.CallOption) (*Plasmid, error)
 	// Remove an existing stock
 	RemoveStock(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*empty.Empty, error)
 	// List strains using pagination, ten entries are retrieved by default
-	ListStrains(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StockCollection, error)
+	ListStrains(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StrainCollection, error)
 	// List plasmids using pagination, ten entries are retrieved by default
-	ListPlasmids(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StockCollection, error)
+	ListPlasmids(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*PlasmidCollection, error)
 	// Load existing stock
 	LoadStock(ctx context.Context, in *ExistingStock, opts ...grpc.CallOption) (*Stock, error)
 }
@@ -2067,27 +3116,54 @@ func NewStockServiceClient(cc *grpc.ClientConn) StockServiceClient {
 	return &stockServiceClient{cc}
 }
 
-func (c *stockServiceClient) GetStock(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*Stock, error) {
-	out := new(Stock)
-	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/GetStock", in, out, opts...)
+func (c *stockServiceClient) GetStrain(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*Strain, error) {
+	out := new(Strain)
+	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/GetStrain", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *stockServiceClient) CreateStock(ctx context.Context, in *NewStock, opts ...grpc.CallOption) (*Stock, error) {
-	out := new(Stock)
-	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/CreateStock", in, out, opts...)
+func (c *stockServiceClient) GetPlasmid(ctx context.Context, in *StockId, opts ...grpc.CallOption) (*Plasmid, error) {
+	out := new(Plasmid)
+	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/GetPlasmid", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *stockServiceClient) UpdateStock(ctx context.Context, in *StockUpdate, opts ...grpc.CallOption) (*Stock, error) {
-	out := new(Stock)
-	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/UpdateStock", in, out, opts...)
+func (c *stockServiceClient) CreateStrain(ctx context.Context, in *NewStrain, opts ...grpc.CallOption) (*Strain, error) {
+	out := new(Strain)
+	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/CreateStrain", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) CreatePlasmid(ctx context.Context, in *NewPlasmid, opts ...grpc.CallOption) (*Plasmid, error) {
+	out := new(Plasmid)
+	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/CreatePlasmid", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) UpdateStrain(ctx context.Context, in *StrainUpdate, opts ...grpc.CallOption) (*Strain, error) {
+	out := new(Strain)
+	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/UpdateStrain", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) UpdatePlasmid(ctx context.Context, in *PlasmidUpdate, opts ...grpc.CallOption) (*Plasmid, error) {
+	out := new(Plasmid)
+	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/UpdatePlasmid", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -2103,8 +3179,8 @@ func (c *stockServiceClient) RemoveStock(ctx context.Context, in *StockId, opts 
 	return out, nil
 }
 
-func (c *stockServiceClient) ListStrains(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StockCollection, error) {
-	out := new(StockCollection)
+func (c *stockServiceClient) ListStrains(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StrainCollection, error) {
+	out := new(StrainCollection)
 	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/ListStrains", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2112,8 +3188,8 @@ func (c *stockServiceClient) ListStrains(ctx context.Context, in *StockParameter
 	return out, nil
 }
 
-func (c *stockServiceClient) ListPlasmids(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*StockCollection, error) {
-	out := new(StockCollection)
+func (c *stockServiceClient) ListPlasmids(ctx context.Context, in *StockParameters, opts ...grpc.CallOption) (*PlasmidCollection, error) {
+	out := new(PlasmidCollection)
 	err := c.cc.Invoke(ctx, "/dictybase.stock.StockService/ListPlasmids", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -2132,18 +3208,24 @@ func (c *stockServiceClient) LoadStock(ctx context.Context, in *ExistingStock, o
 
 // StockServiceServer is the server API for StockService service.
 type StockServiceServer interface {
+	// Retrieves strain by ID
+	GetStrain(context.Context, *StockId) (*Strain, error)
 	// Retrieves stock by ID
-	GetStock(context.Context, *StockId) (*Stock, error)
-	// Create a new stock
-	CreateStock(context.Context, *NewStock) (*Stock, error)
-	// Update an existing stock
-	UpdateStock(context.Context, *StockUpdate) (*Stock, error)
+	GetPlasmid(context.Context, *StockId) (*Plasmid, error)
+	// Create a new strain
+	CreateStrain(context.Context, *NewStrain) (*Strain, error)
+	// Create a new plasmid
+	CreatePlasmid(context.Context, *NewPlasmid) (*Plasmid, error)
+	// Update an existing strain
+	UpdateStrain(context.Context, *StrainUpdate) (*Strain, error)
+	// Update an existing plasmid
+	UpdatePlasmid(context.Context, *PlasmidUpdate) (*Plasmid, error)
 	// Remove an existing stock
 	RemoveStock(context.Context, *StockId) (*empty.Empty, error)
 	// List strains using pagination, ten entries are retrieved by default
-	ListStrains(context.Context, *StockParameters) (*StockCollection, error)
+	ListStrains(context.Context, *StockParameters) (*StrainCollection, error)
 	// List plasmids using pagination, ten entries are retrieved by default
-	ListPlasmids(context.Context, *StockParameters) (*StockCollection, error)
+	ListPlasmids(context.Context, *StockParameters) (*PlasmidCollection, error)
 	// Load existing stock
 	LoadStock(context.Context, *ExistingStock) (*Stock, error)
 }
@@ -2152,56 +3234,110 @@ func RegisterStockServiceServer(s *grpc.Server, srv StockServiceServer) {
 	s.RegisterService(&_StockService_serviceDesc, srv)
 }
 
-func _StockService_GetStock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _StockService_GetStrain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StockId)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StockServiceServer).GetStock(ctx, in)
+		return srv.(StockServiceServer).GetStrain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/dictybase.stock.StockService/GetStock",
+		FullMethod: "/dictybase.stock.StockService/GetStrain",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StockServiceServer).GetStock(ctx, req.(*StockId))
+		return srv.(StockServiceServer).GetStrain(ctx, req.(*StockId))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StockService_CreateStock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(NewStock)
+func _StockService_GetPlasmid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StockId)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StockServiceServer).CreateStock(ctx, in)
+		return srv.(StockServiceServer).GetPlasmid(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/dictybase.stock.StockService/CreateStock",
+		FullMethod: "/dictybase.stock.StockService/GetPlasmid",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StockServiceServer).CreateStock(ctx, req.(*NewStock))
+		return srv.(StockServiceServer).GetPlasmid(ctx, req.(*StockId))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StockService_UpdateStock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(StockUpdate)
+func _StockService_CreateStrain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NewStrain)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StockServiceServer).UpdateStock(ctx, in)
+		return srv.(StockServiceServer).CreateStrain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/dictybase.stock.StockService/UpdateStock",
+		FullMethod: "/dictybase.stock.StockService/CreateStrain",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StockServiceServer).UpdateStock(ctx, req.(*StockUpdate))
+		return srv.(StockServiceServer).CreateStrain(ctx, req.(*NewStrain))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_CreatePlasmid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NewPlasmid)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).CreatePlasmid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dictybase.stock.StockService/CreatePlasmid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).CreatePlasmid(ctx, req.(*NewPlasmid))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_UpdateStrain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StrainUpdate)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).UpdateStrain(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dictybase.stock.StockService/UpdateStrain",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).UpdateStrain(ctx, req.(*StrainUpdate))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_UpdatePlasmid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlasmidUpdate)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).UpdatePlasmid(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/dictybase.stock.StockService/UpdatePlasmid",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).UpdatePlasmid(ctx, req.(*PlasmidUpdate))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2283,16 +3419,28 @@ var _StockService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*StockServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetStock",
-			Handler:    _StockService_GetStock_Handler,
+			MethodName: "GetStrain",
+			Handler:    _StockService_GetStrain_Handler,
 		},
 		{
-			MethodName: "CreateStock",
-			Handler:    _StockService_CreateStock_Handler,
+			MethodName: "GetPlasmid",
+			Handler:    _StockService_GetPlasmid_Handler,
 		},
 		{
-			MethodName: "UpdateStock",
-			Handler:    _StockService_UpdateStock_Handler,
+			MethodName: "CreateStrain",
+			Handler:    _StockService_CreateStrain_Handler,
+		},
+		{
+			MethodName: "CreatePlasmid",
+			Handler:    _StockService_CreatePlasmid_Handler,
+		},
+		{
+			MethodName: "UpdateStrain",
+			Handler:    _StockService_UpdateStrain_Handler,
+		},
+		{
+			MethodName: "UpdatePlasmid",
+			Handler:    _StockService_UpdatePlasmid_Handler,
 		},
 		{
 			MethodName: "RemoveStock",

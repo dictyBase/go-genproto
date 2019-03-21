@@ -212,6 +212,44 @@ func (this *NewStock_Data) Validate() error {
 	}
 	return nil
 }
+func (this *NewStrain) Validate() error {
+	if nil == this.Data {
+		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
+	}
+	if this.Data != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+		}
+	}
+	return nil
+}
+func (this *NewStrain_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *NewPlasmid) Validate() error {
+	if nil == this.Data {
+		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
+	}
+	if this.Data != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+		}
+	}
+	return nil
+}
+func (this *NewPlasmid_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
 func (this *NewStockAttributes) Validate() error {
 	if this.CreatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
@@ -226,6 +264,40 @@ func (this *NewStockAttributes) Validate() error {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.StrainProperties); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("StrainProperties", err)
 		}
+	}
+	if this.PlasmidProperties != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.PlasmidProperties); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("PlasmidProperties", err)
+		}
+	}
+	return nil
+}
+func (this *NewStrainAttributes) Validate() error {
+	if this.CreatedBy == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
+	}
+	if this.UpdatedBy == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
+	}
+	if this.Depositor == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Depositor", fmt.Errorf(`value '%v' must not be an empty string`, this.Depositor))
+	}
+	if this.StrainProperties != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.StrainProperties); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("StrainProperties", err)
+		}
+	}
+	return nil
+}
+func (this *NewPlasmidAttributes) Validate() error {
+	if this.CreatedBy == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
+	}
+	if this.UpdatedBy == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
+	}
+	if this.Depositor == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Depositor", fmt.Errorf(`value '%v' must not be an empty string`, this.Depositor))
 	}
 	if this.PlasmidProperties != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.PlasmidProperties); err != nil {
@@ -313,6 +385,50 @@ func (this *StockUpdate_Data) Validate() error {
 	}
 	return nil
 }
+func (this *StrainUpdate) Validate() error {
+	if nil == this.Data {
+		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
+	}
+	if this.Data != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+		}
+	}
+	return nil
+}
+func (this *StrainUpdate_Data) Validate() error {
+	if this.Id == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
+	}
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *PlasmidUpdate) Validate() error {
+	if nil == this.Data {
+		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
+	}
+	if this.Data != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+		}
+	}
+	return nil
+}
+func (this *PlasmidUpdate_Data) Validate() error {
+	if this.Id == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
+	}
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
 func (this *StockUpdateAttributes) Validate() error {
 	if this.UpdatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
@@ -321,6 +437,28 @@ func (this *StockUpdateAttributes) Validate() error {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.StrainProperties); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("StrainProperties", err)
 		}
+	}
+	if this.PlasmidProperties != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.PlasmidProperties); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("PlasmidProperties", err)
+		}
+	}
+	return nil
+}
+func (this *StrainUpdateAttributes) Validate() error {
+	if this.UpdatedBy == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
+	}
+	if this.StrainProperties != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.StrainProperties); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("StrainProperties", err)
+		}
+	}
+	return nil
+}
+func (this *PlasmidUpdateAttributes) Validate() error {
+	if this.UpdatedBy == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
 	}
 	if this.PlasmidProperties != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.PlasmidProperties); err != nil {
@@ -351,6 +489,58 @@ func (this *StockCollection) Validate() error {
 	return nil
 }
 func (this *StockCollection_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *StrainCollection) Validate() error {
+	for _, item := range this.Data {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+			}
+		}
+	}
+	if nil == this.Meta {
+		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
+	}
+	if this.Meta != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
+		}
+	}
+	return nil
+}
+func (this *StrainCollection_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *PlasmidCollection) Validate() error {
+	for _, item := range this.Data {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+			}
+		}
+	}
+	if nil == this.Meta {
+		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
+	}
+	if this.Meta != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
+		}
+	}
+	return nil
+}
+func (this *PlasmidCollection_Data) Validate() error {
 	if this.Attributes != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)

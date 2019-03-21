@@ -195,6 +195,18 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.stock.NewPlasmid"><span class="badge">M</span>NewPlasmid</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.NewPlasmid.Data"><span class="badge">M</span>NewPlasmid.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.NewPlasmidAttributes"><span class="badge">M</span>NewPlasmidAttributes</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.stock.NewStock"><span class="badge">M</span>NewStock</a>
                 </li>
               
@@ -204,6 +216,18 @@
               
                 <li>
                   <a href="#dictybase.stock.NewStockAttributes"><span class="badge">M</span>NewStockAttributes</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.NewStrain"><span class="badge">M</span>NewStrain</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.NewStrain.Data"><span class="badge">M</span>NewStrain.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.NewStrainAttributes"><span class="badge">M</span>NewStrainAttributes</a>
                 </li>
               
                 <li>
@@ -219,7 +243,27 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.stock.PlasmidCollection"><span class="badge">M</span>PlasmidCollection</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.PlasmidCollection.Data"><span class="badge">M</span>PlasmidCollection.Data</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.stock.PlasmidProperties"><span class="badge">M</span>PlasmidProperties</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.PlasmidUpdate"><span class="badge">M</span>PlasmidUpdate</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.PlasmidUpdate.Data"><span class="badge">M</span>PlasmidUpdate.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.PlasmidUpdateAttributes"><span class="badge">M</span>PlasmidUpdateAttributes</a>
                 </li>
               
                 <li>
@@ -275,7 +319,27 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.stock.StrainCollection"><span class="badge">M</span>StrainCollection</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.StrainCollection.Data"><span class="badge">M</span>StrainCollection.Data</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.stock.StrainProperties"><span class="badge">M</span>StrainProperties</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.StrainUpdate"><span class="badge">M</span>StrainUpdate</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.StrainUpdate.Data"><span class="badge">M</span>StrainUpdate.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.stock.StrainUpdateAttributes"><span class="badge">M</span>StrainUpdateAttributes</a>
                 </li>
               
                 <li>
@@ -503,6 +567,138 @@ set of collection using the same method </p></td>
 
         
       
+        <h3 id="dictybase.stock.NewPlasmid">NewPlasmid</h3>
+        <p>Definition for creating a new plasmid</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.NewPlasmid.Data">NewPlasmid.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.NewPlasmid.Data">NewPlasmid.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.NewPlasmidAttributes">NewPlasmidAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.NewPlasmidAttributes">NewPlasmidAttributes</h3>
+        <p>Defines attributes for creating a new plasmid</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who created stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>plasmid_properties</td>
+                  <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.stock.NewStock">NewStock</h3>
         <p>Definition for creating a new stock</p>
 
@@ -642,6 +838,138 @@ set of collection using the same method </p></td>
 
         
       
+        <h3 id="dictybase.stock.NewStrain">NewStrain</h3>
+        <p>Definition for creating a new strain</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.NewStrain.Data">NewStrain.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.NewStrain.Data">NewStrain.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.NewStrainAttributes">NewStrainAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.NewStrainAttributes">NewStrainAttributes</h3>
+        <p>Defines attributes for creating a new strain</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>created_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who created stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>strain_properties</td>
+                  <td><a href="#dictybase.stock.StrainProperties">StrainProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.stock.Plasmid">Plasmid</h3>
         <p>Definition of an individual plasmid</p>
 
@@ -679,14 +1007,14 @@ set of collection using the same method </p></td>
                   <td>type</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Resource name (&#34;strain&#34;, &#34;plasmid&#34;, etc) </p></td>
+                  <td><p>Resource name </p></td>
                 </tr>
               
                 <tr>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Unique identifier for the stock </p></td>
+                  <td><p>Unique identifier for the plasmid </p></td>
                 </tr>
               
                 <tr>
@@ -795,6 +1123,73 @@ set of collection using the same method </p></td>
 
         
       
+        <h3 id="dictybase.stock.PlasmidCollection">PlasmidCollection</h3>
+        <p>List of plasmids</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.PlasmidCollection.Data">PlasmidCollection.Data</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#dictybase.stock.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.PlasmidCollection.Data">PlasmidCollection.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique identifier for the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.PlasmidAttributes">PlasmidAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.stock.PlasmidProperties">PlasmidProperties</h3>
         <p></p>
 
@@ -817,6 +1212,138 @@ set of collection using the same method </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Sequence for the plasmid </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.PlasmidUpdate">PlasmidUpdate</h3>
+        <p>Definition for creating a new plasmid</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.PlasmidUpdate.Data">PlasmidUpdate.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.PlasmidUpdate.Data">PlasmidUpdate.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique ID for plasmid </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.PlasmidUpdateAttributes">PlasmidUpdateAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.PlasmidUpdateAttributes">PlasmidUpdateAttributes</h3>
+        <p>Defines attributes for updating a plasmid</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>plasmid_properties</td>
+                  <td><a href="#dictybase.stock.PlasmidProperties">PlasmidProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -1354,14 +1881,14 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
                   <td>type</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Resource name (&#34;strain&#34;, &#34;plasmid&#34;, etc) </p></td>
+                  <td><p>Resource name </p></td>
                 </tr>
               
                 <tr>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Unique identifier for the stock </p></td>
+                  <td><p>Unique identifier for the strain </p></td>
                 </tr>
               
                 <tr>
@@ -1470,6 +1997,73 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
 
         
       
+        <h3 id="dictybase.stock.StrainCollection">StrainCollection</h3>
+        <p>List of strains</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.StrainCollection.Data">StrainCollection.Data</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#dictybase.stock.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.StrainCollection.Data">StrainCollection.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique identifier for the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.StrainAttributes">StrainAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.stock.StrainProperties">StrainProperties</h3>
         <p></p>
 
@@ -1520,6 +2114,138 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>List of names for the strain </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.StrainUpdate">StrainUpdate</h3>
+        <p>Definition for creating a new strain</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.stock.StrainUpdate.Data">StrainUpdate.Data</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.StrainUpdate.Data">StrainUpdate.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Resource name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique ID for strain </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.stock.StrainUpdateAttributes">StrainUpdateAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.stock.StrainUpdateAttributes">StrainUpdateAttributes</h3>
+        <p>Defines attributes for updating a strain</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User who updated stock entry </p></td>
+                </tr>
+              
+                <tr>
+                  <td>summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Summary of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>editable_summary</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Editable version of the stock summary (Slate JSON format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>depositor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Depositor of the stock </p></td>
+                </tr>
+              
+                <tr>
+                  <td>genes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of associated genes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dbxrefs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of database cross references </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publications</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>List of related publications </p></td>
+                </tr>
+              
+                <tr>
+                  <td>strain_properties</td>
+                  <td><a href="#dictybase.stock.StrainUpdateProperties">StrainUpdateProperties</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -1601,24 +2327,45 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
           <tbody>
             
               <tr>
-                <td>GetStock</td>
+                <td>GetStrain</td>
                 <td><a href="#dictybase.stock.StockId">StockId</a></td>
-                <td><a href="#dictybase.stock.Stock">Stock</a></td>
+                <td><a href="#dictybase.stock.Strain">Strain</a></td>
+                <td><p>Retrieves strain by ID</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetPlasmid</td>
+                <td><a href="#dictybase.stock.StockId">StockId</a></td>
+                <td><a href="#dictybase.stock.Plasmid">Plasmid</a></td>
                 <td><p>Retrieves stock by ID</p></td>
               </tr>
             
               <tr>
-                <td>CreateStock</td>
-                <td><a href="#dictybase.stock.NewStock">NewStock</a></td>
-                <td><a href="#dictybase.stock.Stock">Stock</a></td>
-                <td><p>Create a new stock</p></td>
+                <td>CreateStrain</td>
+                <td><a href="#dictybase.stock.NewStrain">NewStrain</a></td>
+                <td><a href="#dictybase.stock.Strain">Strain</a></td>
+                <td><p>Create a new strain</p></td>
               </tr>
             
               <tr>
-                <td>UpdateStock</td>
-                <td><a href="#dictybase.stock.StockUpdate">StockUpdate</a></td>
-                <td><a href="#dictybase.stock.Stock">Stock</a></td>
-                <td><p>Update an existing stock</p></td>
+                <td>CreatePlasmid</td>
+                <td><a href="#dictybase.stock.NewPlasmid">NewPlasmid</a></td>
+                <td><a href="#dictybase.stock.Plasmid">Plasmid</a></td>
+                <td><p>Create a new plasmid</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateStrain</td>
+                <td><a href="#dictybase.stock.StrainUpdate">StrainUpdate</a></td>
+                <td><a href="#dictybase.stock.Strain">Strain</a></td>
+                <td><p>Update an existing strain</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdatePlasmid</td>
+                <td><a href="#dictybase.stock.PlasmidUpdate">PlasmidUpdate</a></td>
+                <td><a href="#dictybase.stock.Plasmid">Plasmid</a></td>
+                <td><p>Update an existing plasmid</p></td>
               </tr>
             
               <tr>
@@ -1631,14 +2378,14 @@ or more allowed field from the definition of `StockAttributes`. </p></td>
               <tr>
                 <td>ListStrains</td>
                 <td><a href="#dictybase.stock.StockParameters">StockParameters</a></td>
-                <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
+                <td><a href="#dictybase.stock.StrainCollection">StrainCollection</a></td>
                 <td><p>List strains using pagination, ten entries are retrieved by default</p></td>
               </tr>
             
               <tr>
                 <td>ListPlasmids</td>
                 <td><a href="#dictybase.stock.StockParameters">StockParameters</a></td>
-                <td><a href="#dictybase.stock.StockCollection">StockCollection</a></td>
+                <td><a href="#dictybase.stock.PlasmidCollection">PlasmidCollection</a></td>
                 <td><p>List plasmids using pagination, ten entries are retrieved by default</p></td>
               </tr>
             
