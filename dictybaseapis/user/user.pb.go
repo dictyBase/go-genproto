@@ -4,16 +4,18 @@
 package user
 
 import (
+	context "context"
 	fmt "fmt"
 	jsonapi "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
 	proto "github.com/golang/protobuf/proto"
 	any "github.com/golang/protobuf/ptypes/any"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -26,7 +28,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type UpdateUserRequest struct {
 	Data *UpdateUserRequest_Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
@@ -2292,6 +2294,47 @@ type UserServiceServer interface {
 	Healthz(context.Context, *jsonapi.HealthzIdRequest) (*empty.Empty, error)
 }
 
+// UnimplementedUserServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedUserServiceServer struct {
+}
+
+func (*UnimplementedUserServiceServer) ExistUser(ctx context.Context, req *jsonapi.IdRequest) (*jsonapi.ExistResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExistUser not implemented")
+}
+func (*UnimplementedUserServiceServer) GetUser(ctx context.Context, req *jsonapi.GetRequest) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (*UnimplementedUserServiceServer) GetUserByEmail(ctx context.Context, req *jsonapi.GetEmailRequest) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserByEmail not implemented")
+}
+func (*UnimplementedUserServiceServer) GetRelatedRoles(ctx context.Context, req *jsonapi.RelationshipRequest) (*RoleCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedRoles not implemented")
+}
+func (*UnimplementedUserServiceServer) ListUsers(ctx context.Context, req *jsonapi.ListRequest) (*UserCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
+}
+func (*UnimplementedUserServiceServer) CreateUser(ctx context.Context, req *CreateUserRequest) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+}
+func (*UnimplementedUserServiceServer) CreateRoleRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRoleRelationship not implemented")
+}
+func (*UnimplementedUserServiceServer) UpdateUser(ctx context.Context, req *UpdateUserRequest) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+}
+func (*UnimplementedUserServiceServer) UpdateRoleRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoleRelationship not implemented")
+}
+func (*UnimplementedUserServiceServer) DeleteUser(ctx context.Context, req *jsonapi.DeleteRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+}
+func (*UnimplementedUserServiceServer) DeleteRoleRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoleRelationship not implemented")
+}
+func (*UnimplementedUserServiceServer) Healthz(ctx context.Context, req *jsonapi.HealthzIdRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Healthz not implemented")
+}
+
 func RegisterUserServiceServer(s *grpc.Server, srv UserServiceServer) {
 	s.RegisterService(&_UserService_serviceDesc, srv)
 }
@@ -2756,6 +2799,50 @@ type RoleServiceServer interface {
 	DeletePermissionRelationship(context.Context, *jsonapi.DataCollection) (*empty.Empty, error)
 }
 
+// UnimplementedRoleServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedRoleServiceServer struct {
+}
+
+func (*UnimplementedRoleServiceServer) GetRole(ctx context.Context, req *jsonapi.GetRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRole not implemented")
+}
+func (*UnimplementedRoleServiceServer) GetRelatedUsers(ctx context.Context, req *jsonapi.RelationshipRequestWithPagination) (*UserCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedUsers not implemented")
+}
+func (*UnimplementedRoleServiceServer) GetRelatedPermissions(ctx context.Context, req *jsonapi.RelationshipRequest) (*PermissionCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedPermissions not implemented")
+}
+func (*UnimplementedRoleServiceServer) ListRoles(ctx context.Context, req *jsonapi.SimpleListRequest) (*RoleCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoles not implemented")
+}
+func (*UnimplementedRoleServiceServer) CreateRole(ctx context.Context, req *CreateRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
+}
+func (*UnimplementedRoleServiceServer) CreateUserRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUserRelationship not implemented")
+}
+func (*UnimplementedRoleServiceServer) CreatePermissionRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePermissionRelationship not implemented")
+}
+func (*UnimplementedRoleServiceServer) UpdateRole(ctx context.Context, req *UpdateRoleRequest) (*Role, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
+}
+func (*UnimplementedRoleServiceServer) UpdateUserRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserRelationship not implemented")
+}
+func (*UnimplementedRoleServiceServer) UpdatePermissionRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePermissionRelationship not implemented")
+}
+func (*UnimplementedRoleServiceServer) DeleteRole(ctx context.Context, req *jsonapi.DeleteRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
+}
+func (*UnimplementedRoleServiceServer) DeleteUserRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserRelationship not implemented")
+}
+func (*UnimplementedRoleServiceServer) DeletePermissionRelationship(ctx context.Context, req *jsonapi.DataCollection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePermissionRelationship not implemented")
+}
+
 func RegisterRoleServiceServer(s *grpc.Server, srv RoleServiceServer) {
 	s.RegisterService(&_RoleService_serviceDesc, srv)
 }
@@ -3136,6 +3223,26 @@ type PermissionServiceServer interface {
 	UpdatePermission(context.Context, *UpdatePermissionRequest) (*Permission, error)
 	// Delete an permission
 	DeletePermission(context.Context, *jsonapi.DeleteRequest) (*empty.Empty, error)
+}
+
+// UnimplementedPermissionServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPermissionServiceServer struct {
+}
+
+func (*UnimplementedPermissionServiceServer) GetPermission(ctx context.Context, req *jsonapi.GetRequestWithFields) (*Permission, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPermission not implemented")
+}
+func (*UnimplementedPermissionServiceServer) ListPermissions(ctx context.Context, req *jsonapi.SimpleListRequest) (*PermissionCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPermissions not implemented")
+}
+func (*UnimplementedPermissionServiceServer) CreatePermission(ctx context.Context, req *CreatePermissionRequest) (*Permission, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePermission not implemented")
+}
+func (*UnimplementedPermissionServiceServer) UpdatePermission(ctx context.Context, req *UpdatePermissionRequest) (*Permission, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePermission not implemented")
+}
+func (*UnimplementedPermissionServiceServer) DeletePermission(ctx context.Context, req *jsonapi.DeleteRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePermission not implemented")
 }
 
 func RegisterPermissionServiceServer(s *grpc.Server, srv PermissionServiceServer) {

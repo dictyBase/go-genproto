@@ -4,16 +4,18 @@
 package content
 
 import (
+	context "context"
 	fmt "fmt"
 	jsonapi "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/mwitkow/go-proto-validators"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -26,7 +28,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Content struct {
 	Data                 *ContentData   `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
@@ -830,6 +832,29 @@ type ContentServiceServer interface {
 	DeleteContent(context.Context, *ContentIdRequest) (*empty.Empty, error)
 	// Basic health check that always return success
 	Healthz(context.Context, *jsonapi.HealthzIdRequest) (*empty.Empty, error)
+}
+
+// UnimplementedContentServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedContentServiceServer struct {
+}
+
+func (*UnimplementedContentServiceServer) GetContentBySlug(ctx context.Context, req *ContentRequest) (*Content, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContentBySlug not implemented")
+}
+func (*UnimplementedContentServiceServer) GetContent(ctx context.Context, req *ContentIdRequest) (*Content, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContent not implemented")
+}
+func (*UnimplementedContentServiceServer) StoreContent(ctx context.Context, req *StoreContentRequest) (*Content, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoreContent not implemented")
+}
+func (*UnimplementedContentServiceServer) UpdateContent(ctx context.Context, req *UpdateContentRequest) (*Content, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateContent not implemented")
+}
+func (*UnimplementedContentServiceServer) DeleteContent(ctx context.Context, req *ContentIdRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteContent not implemented")
+}
+func (*UnimplementedContentServiceServer) Healthz(ctx context.Context, req *jsonapi.HealthzIdRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Healthz not implemented")
 }
 
 func RegisterContentServiceServer(s *grpc.Server, srv ContentServiceServer) {

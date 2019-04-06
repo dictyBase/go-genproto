@@ -4,14 +4,16 @@
 package stock
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/mwitkow/go-proto-validators"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -24,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type StockId struct {
 	// Unique identifier for the stock
@@ -3228,6 +3230,41 @@ type StockServiceServer interface {
 	ListPlasmids(context.Context, *StockParameters) (*PlasmidCollection, error)
 	// Load existing stock
 	LoadStock(context.Context, *ExistingStock) (*Stock, error)
+}
+
+// UnimplementedStockServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedStockServiceServer struct {
+}
+
+func (*UnimplementedStockServiceServer) GetStrain(ctx context.Context, req *StockId) (*Strain, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStrain not implemented")
+}
+func (*UnimplementedStockServiceServer) GetPlasmid(ctx context.Context, req *StockId) (*Plasmid, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPlasmid not implemented")
+}
+func (*UnimplementedStockServiceServer) CreateStrain(ctx context.Context, req *NewStrain) (*Strain, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStrain not implemented")
+}
+func (*UnimplementedStockServiceServer) CreatePlasmid(ctx context.Context, req *NewPlasmid) (*Plasmid, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePlasmid not implemented")
+}
+func (*UnimplementedStockServiceServer) UpdateStrain(ctx context.Context, req *StrainUpdate) (*Strain, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStrain not implemented")
+}
+func (*UnimplementedStockServiceServer) UpdatePlasmid(ctx context.Context, req *PlasmidUpdate) (*Plasmid, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePlasmid not implemented")
+}
+func (*UnimplementedStockServiceServer) RemoveStock(ctx context.Context, req *StockId) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveStock not implemented")
+}
+func (*UnimplementedStockServiceServer) ListStrains(ctx context.Context, req *StockParameters) (*StrainCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListStrains not implemented")
+}
+func (*UnimplementedStockServiceServer) ListPlasmids(ctx context.Context, req *StockParameters) (*PlasmidCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPlasmids not implemented")
+}
+func (*UnimplementedStockServiceServer) LoadStock(ctx context.Context, req *ExistingStock) (*Stock, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoadStock not implemented")
 }
 
 func RegisterStockServiceServer(s *grpc.Server, srv StockServiceServer) {

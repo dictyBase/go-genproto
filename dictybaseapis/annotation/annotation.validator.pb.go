@@ -135,9 +135,6 @@ func (this *NewTaggedAnnotationAttributes) Validate() error {
 	if this.Value == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Value", fmt.Errorf(`value '%v' must not be an empty string`, this.Value))
 	}
-	if this.EditableValue == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EditableValue", fmt.Errorf(`value '%v' must not be an empty string`, this.EditableValue))
-	}
 	if this.CreatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
 	}

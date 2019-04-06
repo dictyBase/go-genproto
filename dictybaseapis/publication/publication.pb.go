@@ -4,14 +4,16 @@
 package publication
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/mwitkow/go-proto-validators"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -24,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type PublicationId struct {
 	// Unique identifier for the publication
@@ -1104,6 +1106,26 @@ type PublicationServiceServer interface {
 	DeletePublication(context.Context, *PublicationId) (*empty.Empty, error)
 	// List all publications
 	ListPublications(context.Context, *ListPublicationParameters) (*PublicationCollection, error)
+}
+
+// UnimplementedPublicationServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedPublicationServiceServer struct {
+}
+
+func (*UnimplementedPublicationServiceServer) GetPublication(ctx context.Context, req *PublicationId) (*Publication, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPublication not implemented")
+}
+func (*UnimplementedPublicationServiceServer) CreatePublication(ctx context.Context, req *NewPublication) (*Publication, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePublication not implemented")
+}
+func (*UnimplementedPublicationServiceServer) UpdatePublication(ctx context.Context, req *PublicationUpdate) (*Publication, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePublication not implemented")
+}
+func (*UnimplementedPublicationServiceServer) DeletePublication(ctx context.Context, req *PublicationId) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePublication not implemented")
+}
+func (*UnimplementedPublicationServiceServer) ListPublications(ctx context.Context, req *ListPublicationParameters) (*PublicationCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListPublications not implemented")
 }
 
 func RegisterPublicationServiceServer(s *grpc.Server, srv PublicationServiceServer) {

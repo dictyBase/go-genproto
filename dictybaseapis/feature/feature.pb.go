@@ -4,15 +4,17 @@
 package feature
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/mwitkow/go-proto-validators"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -25,7 +27,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type FeatureId struct {
 	// Unique feature identifier
@@ -2428,6 +2430,92 @@ type FeatureServiceServer interface {
 	RemoveNextFeatureHistory(context.Context, *FeatureHistory) (*empty.Empty, error)
 	// Delete dbxref from a feature.
 	DeleteDbxref(context.Context, *FeatureDbxref) (*empty.Empty, error)
+}
+
+// UnimplementedFeatureServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedFeatureServiceServer struct {
+}
+
+func (*UnimplementedFeatureServiceServer) GetFeature(ctx context.Context, req *FeatureId) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFeature not implemented")
+}
+func (*UnimplementedFeatureServiceServer) GetParents(ctx context.Context, req *FeatureRelationFilter) (*FeatureCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetParents not implemented")
+}
+func (*UnimplementedFeatureServiceServer) GetChildren(ctx context.Context, req *FeatureRelationFilter) (*FeatureCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetChildren not implemented")
+}
+func (*UnimplementedFeatureServiceServer) GetReferenceFeature(ctx context.Context, req *ReferenceFeatureFilter) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReferenceFeature not implemented")
+}
+func (*UnimplementedFeatureServiceServer) GetReferenceFeatures(ctx context.Context, req *FeatureId) (*FeatureCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReferenceFeatures not implemented")
+}
+func (*UnimplementedFeatureServiceServer) GetLocatedFeatures(ctx context.Context, req *LocatedFeatureFilter) (*PaginatedFeatureCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLocatedFeatures not implemented")
+}
+func (*UnimplementedFeatureServiceServer) ListFeatures(ctx context.Context, req *ListParameters) (*PaginatedFeatureCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFeatures not implemented")
+}
+func (*UnimplementedFeatureServiceServer) CreateFeature(ctx context.Context, req *NewFeature) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFeature not implemented")
+}
+func (*UnimplementedFeatureServiceServer) UpdateFeature(ctx context.Context, req *FeatureUpdate) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFeature not implemented")
+}
+func (*UnimplementedFeatureServiceServer) AddParentalRelationship(ctx context.Context, req *FeatureConnection) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddParentalRelationship not implemented")
+}
+func (*UnimplementedFeatureServiceServer) AddChildRelationship(ctx context.Context, req *FeatureConnection) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddChildRelationship not implemented")
+}
+func (*UnimplementedFeatureServiceServer) AttachLocation(ctx context.Context, req *NewFeatureLocation) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AttachLocation not implemented")
+}
+func (*UnimplementedFeatureServiceServer) AddSynonym(ctx context.Context, req *FeatureSynonym) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddSynonym not implemented")
+}
+func (*UnimplementedFeatureServiceServer) AddPublication(ctx context.Context, req *FeaturePublication) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddPublication not implemented")
+}
+func (*UnimplementedFeatureServiceServer) SetPrevFeatureHistory(ctx context.Context, req *FeatureHistory) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPrevFeatureHistory not implemented")
+}
+func (*UnimplementedFeatureServiceServer) SetNextFeatureHistory(ctx context.Context, req *FeatureHistory) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetNextFeatureHistory not implemented")
+}
+func (*UnimplementedFeatureServiceServer) AddDbxref(ctx context.Context, req *FeatureDbxref) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddDbxref not implemented")
+}
+func (*UnimplementedFeatureServiceServer) CreateOrganism(ctx context.Context, req *Organism) (*Organism, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOrganism not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DeleteFeature(ctx context.Context, req *FeatureId) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeature not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DeleteParentalRelationship(ctx context.Context, req *FeatureConnection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteParentalRelationship not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DeleteChildRelationship(ctx context.Context, req *FeatureConnection) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteChildRelationship not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DetachLocation(ctx context.Context, req *ReferenceFeatureFilter) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DetachLocation not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DeleteSynonym(ctx context.Context, req *FeatureSynonym) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteSynonym not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DeletePublication(ctx context.Context, req *FeaturePublication) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePublication not implemented")
+}
+func (*UnimplementedFeatureServiceServer) RemovePrevFeatureHistory(ctx context.Context, req *FeatureHistory) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemovePrevFeatureHistory not implemented")
+}
+func (*UnimplementedFeatureServiceServer) RemoveNextFeatureHistory(ctx context.Context, req *FeatureHistory) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveNextFeatureHistory not implemented")
+}
+func (*UnimplementedFeatureServiceServer) DeleteDbxref(ctx context.Context, req *FeatureDbxref) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDbxref not implemented")
 }
 
 func RegisterFeatureServiceServer(s *grpc.Server, srv FeatureServiceServer) {

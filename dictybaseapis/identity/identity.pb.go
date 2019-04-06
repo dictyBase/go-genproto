@@ -4,14 +4,16 @@
 package identity
 
 import (
+	context "context"
 	fmt "fmt"
 	jsonapi "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -24,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // Definition for various fields
 type IdentityAttributes struct {
@@ -574,6 +576,29 @@ type IdentityServiceServer interface {
 	DeleteIdentity(context.Context, *jsonapi.IdRequest) (*empty.Empty, error)
 	// Basic health check that always return success
 	Healthz(context.Context, *jsonapi.HealthzIdRequest) (*empty.Empty, error)
+}
+
+// UnimplementedIdentityServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedIdentityServiceServer struct {
+}
+
+func (*UnimplementedIdentityServiceServer) GetIdentityFromProvider(ctx context.Context, req *IdentityProviderReq) (*Identity, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIdentityFromProvider not implemented")
+}
+func (*UnimplementedIdentityServiceServer) GetIdentity(ctx context.Context, req *jsonapi.IdRequest) (*Identity, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIdentity not implemented")
+}
+func (*UnimplementedIdentityServiceServer) ExistProviderIdentity(ctx context.Context, req *IdentityProviderReq) (*jsonapi.ExistResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExistProviderIdentity not implemented")
+}
+func (*UnimplementedIdentityServiceServer) CreateIdentity(ctx context.Context, req *CreateIdentityReq) (*Identity, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIdentity not implemented")
+}
+func (*UnimplementedIdentityServiceServer) DeleteIdentity(ctx context.Context, req *jsonapi.IdRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIdentity not implemented")
+}
+func (*UnimplementedIdentityServiceServer) Healthz(ctx context.Context, req *jsonapi.HealthzIdRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Healthz not implemented")
 }
 
 func RegisterIdentityServiceServer(s *grpc.Server, srv IdentityServiceServer) {

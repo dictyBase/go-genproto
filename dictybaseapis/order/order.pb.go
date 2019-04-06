@@ -4,14 +4,16 @@
 package order
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/mwitkow/go-proto-validators"
-	context "golang.org/x/net/context"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -24,7 +26,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The pre-defined labels for order status
 type OrderStatus int32
@@ -1372,6 +1374,29 @@ type OrderServiceServer interface {
 	LoadOrder(context.Context, *ExistingOrder) (*Order, error)
 	// Clear database before loading existing orders
 	PrepareForOrder(context.Context, *empty.Empty) (*empty.Empty, error)
+}
+
+// UnimplementedOrderServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedOrderServiceServer struct {
+}
+
+func (*UnimplementedOrderServiceServer) GetOrder(ctx context.Context, req *OrderId) (*Order, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOrder not implemented")
+}
+func (*UnimplementedOrderServiceServer) CreateOrder(ctx context.Context, req *NewOrder) (*Order, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateOrder not implemented")
+}
+func (*UnimplementedOrderServiceServer) UpdateOrder(ctx context.Context, req *OrderUpdate) (*Order, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateOrder not implemented")
+}
+func (*UnimplementedOrderServiceServer) ListOrders(ctx context.Context, req *ListParameters) (*OrderCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListOrders not implemented")
+}
+func (*UnimplementedOrderServiceServer) LoadOrder(ctx context.Context, req *ExistingOrder) (*Order, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoadOrder not implemented")
+}
+func (*UnimplementedOrderServiceServer) PrepareForOrder(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PrepareForOrder not implemented")
 }
 
 func RegisterOrderServiceServer(s *grpc.Server, srv OrderServiceServer) {
