@@ -28,6 +28,21 @@ func (this *AnnotationIdList) Validate() error {
 	}
 	return nil
 }
+func (this *AnnotationEntryId) Validate() error {
+	if this.EntryId == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
+	}
+	return nil
+}
+func (this *AnnotationGroupRequest) Validate() error {
+	if this.Id == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
+	}
+	if this.EntryId == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
+	}
+	return nil
+}
 func (this *TaggedAnnotationGroup) Validate() error {
 	for _, item := range this.Group {
 		if item != nil {

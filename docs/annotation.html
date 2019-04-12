@@ -179,6 +179,14 @@
             <ul>
               
                 <li>
+                  <a href="#dictybase.annotation.AnnotationEntryId"><span class="badge">M</span>AnnotationEntryId</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.AnnotationGroupRequest"><span class="badge">M</span>AnnotationGroupRequest</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.annotation.AnnotationId"><span class="badge">M</span>AnnotationId</a>
                 </li>
               
@@ -267,6 +275,59 @@
       </div>
       <p></p>
 
+      
+        <h3 id="dictybase.annotation.AnnotationEntryId">AnnotationEntryId</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>entry_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier of a biological entity that is being annotated </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.AnnotationGroupRequest">AnnotationGroupRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier for the annotation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>entry_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier of a biological entity that is being annotated </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
       
         <h3 id="dictybase.annotation.AnnotationId">AnnotationId</h3>
         <p></p>
@@ -1015,21 +1076,21 @@ created with a link to the previous annotation(copy on write).</p></td>
             
               <tr>
                 <td>GetAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.AnnotationEntryId">AnnotationEntryId</a></td>
                 <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
                 <td><p>Retrieves an annotation group</p></td>
               </tr>
             
               <tr>
                 <td>AddToAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.AnnotationGroupRequest">AnnotationGroupRequest</a></td>
                 <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
                 <td><p>Adds an existing tagged annotation to an existing annotation group</p></td>
               </tr>
             
               <tr>
                 <td>DeleteAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.AnnotationEntryId">AnnotationEntryId</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
                 <td><p>Remove an annotation group</p></td>
               </tr>
