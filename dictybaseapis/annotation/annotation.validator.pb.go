@@ -23,6 +23,21 @@ func (this *AnnotationId) Validate() error {
 	}
 	return nil
 }
+func (this *AnnotationIdList) Validate() error {
+	for _, item := range this.Ids {
+	}
+	return nil
+}
+func (this *TaggedAnnotationGroup) Validate() error {
+	for _, item := range this.Group {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Group", err)
+			}
+		}
+	}
+	return nil
+}
 func (this *EntryAnnotationRequest) Validate() error {
 	if this.Tag == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Tag", fmt.Errorf(`value '%v' must not be an empty string`, this.Tag))
@@ -83,9 +98,6 @@ func (this *TaggedAnnotation_Data) Validate() error {
 func (this *TaggedAnnotationAttributes) Validate() error {
 	if this.Value == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Value", fmt.Errorf(`value '%v' must not be an empty string`, this.Value))
-	}
-	if this.EditableValue == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EditableValue", fmt.Errorf(`value '%v' must not be an empty string`, this.EditableValue))
 	}
 	if this.CreatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))

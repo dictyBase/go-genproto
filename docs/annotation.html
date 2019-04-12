@@ -183,6 +183,10 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.annotation.AnnotationIdList"><span class="badge">M</span>AnnotationIdList</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.annotation.EntryAnnotationRequest"><span class="badge">M</span>EntryAnnotationRequest</a>
                 </li>
               
@@ -224,6 +228,10 @@
               
                 <li>
                   <a href="#dictybase.annotation.TaggedAnnotationCollection.Data"><span class="badge">M</span>TaggedAnnotationCollection.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.TaggedAnnotationGroup"><span class="badge">M</span>TaggedAnnotationGroup</a>
                 </li>
               
                 <li>
@@ -275,6 +283,29 @@
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>unique identifier for the annotation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.AnnotationIdList">AnnotationIdList</h3>
+        <p>Identifiers for grouping list of tagged annotations</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ids</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>list of unique identifiers </p></td>
                 </tr>
               
             </tbody>
@@ -797,6 +828,29 @@ identical tag from the same ontology. </p></td>
 
         
       
+        <h3 id="dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</h3>
+        <p>Group of tagged annotations</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>group</td>
+                  <td><a href="#dictybase.annotation.TaggedAnnotation">TaggedAnnotation</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.annotation.TaggedAnnotationUpdate">TaggedAnnotationUpdate</h3>
         <p>Definition for updating an existing annotation</p>
 
@@ -950,6 +1004,27 @@ created with a link to the previous annotation(copy on write).</p></td>
                 <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
                 <td><p>Delete an existing annotation</p></td>
+              </tr>
+            
+              <tr>
+                <td>CreateAnnotationGroup</td>
+                <td><a href="#dictybase.annotation.AnnotationIdList">AnnotationIdList</a></td>
+                <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
+                <td><p>Creates an annotation group from bunch of existing tagged annotations.</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetAnnotationGroup</td>
+                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
+                <td><p>Retrieves an annotation group</p></td>
+              </tr>
+            
+              <tr>
+                <td>AddToAnnotationGroup</td>
+                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
+                <td><p>Adds an existing tagged annotation to an existing annotation group</p></td>
               </tr>
             
           </tbody>
