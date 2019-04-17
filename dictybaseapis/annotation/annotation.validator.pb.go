@@ -29,26 +29,51 @@ func (this *AnnotationIdList) Validate() error {
 	return nil
 }
 func (this *AnnotationEntryId) Validate() error {
-	if this.EntryId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
-	}
-	return nil
-}
-func (this *AnnotationGroupRequest) Validate() error {
-	if this.Id == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
-	}
-	if this.EntryId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
+	if this.GroupId == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("GroupId", fmt.Errorf(`value '%v' must not be an empty string`, this.GroupId))
 	}
 	return nil
 }
 func (this *TaggedAnnotationGroup) Validate() error {
-	for _, item := range this.Group {
+	for _, item := range this.Data {
 		if item != nil {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("Group", err)
+				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
 			}
+		}
+	}
+	return nil
+}
+func (this *TaggedAnnotationGroup_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *TaggedAnnotationGroupCollection) Validate() error {
+	for _, item := range this.Data {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+			}
+		}
+	}
+	if nil == this.Meta {
+		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
+	}
+	if this.Meta != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
+		}
+	}
+	return nil
+}
+func (this *TaggedAnnotationGroupCollection_Data) Validate() error {
+	if this.Group != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Group); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Group", err)
 		}
 	}
 	return nil
@@ -211,6 +236,9 @@ func (this *TaggedAnnotationUpdateAttributes) Validate() error {
 	return nil
 }
 func (this *ListParameters) Validate() error {
+	return nil
+}
+func (this *ListGroupParameters) Validate() error {
 	return nil
 }
 func (this *Meta) Validate() error {

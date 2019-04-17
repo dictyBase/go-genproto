@@ -183,10 +183,6 @@
                 </li>
               
                 <li>
-                  <a href="#dictybase.annotation.AnnotationGroupRequest"><span class="badge">M</span>AnnotationGroupRequest</a>
-                </li>
-              
-                <li>
                   <a href="#dictybase.annotation.AnnotationId"><span class="badge">M</span>AnnotationId</a>
                 </li>
               
@@ -196,6 +192,10 @@
               
                 <li>
                   <a href="#dictybase.annotation.EntryAnnotationRequest"><span class="badge">M</span>EntryAnnotationRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.ListGroupParameters"><span class="badge">M</span>ListGroupParameters</a>
                 </li>
               
                 <li>
@@ -243,6 +243,18 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.annotation.TaggedAnnotationGroup.Data"><span class="badge">M</span>TaggedAnnotationGroup.Data</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.TaggedAnnotationGroupCollection"><span class="badge">M</span>TaggedAnnotationGroupCollection</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.TaggedAnnotationGroupCollection.Data"><span class="badge">M</span>TaggedAnnotationGroupCollection.Data</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.annotation.TaggedAnnotationUpdate"><span class="badge">M</span>TaggedAnnotationUpdate</a>
                 </li>
               
@@ -287,40 +299,10 @@
             <tbody>
               
                 <tr>
-                  <td>entry_id</td>
+                  <td>group_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>unique identifier of a biological entity that is being annotated </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-        
-
-        
-      
-        <h3 id="dictybase.annotation.AnnotationGroupRequest">AnnotationGroupRequest</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>unique identifier for the annotation </p></td>
-                </tr>
-              
-                <tr>
-                  <td>entry_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>unique identifier of a biological entity that is being annotated </p></td>
+                  <td><p>unique identifier of a group </p></td>
                 </tr>
               
             </tbody>
@@ -428,6 +410,85 @@ identical tag from the same ontology. By default, rank 0 is assumed. </p></td>
 
         
       
+        <h3 id="dictybase.annotation.ListGroupParameters">ListGroupParameters</h3>
+        <p>ListGroupParameters defines fields for manipulating output of TaggedAnnotationGroupCollection collection</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>cursor</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>A unique pointer to the next set of result in the list </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Maximum number of records that can be fetch per request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>filter</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The `filter` field restricts the data return by the collection. To use
+it, supply one or multiple allowed fields to filter followed
+by a filter expression. It uses the following syntax...
+       field_name operator expression
+
+The following fields of `AnnotationAttributes` definition are allowed to
+be used for filtering
+  * entry_id    - The entry that is being annotated (string)
+  * created_by  - Email id of the user (string)
+  * tag         - Tag name, a term from an ontology (string).
+  * ontology    - Ontology that provides the tag names (string).
+  * version     - Version no (number), current version is used by default.
+
+operator - Defines the type of filter match to use. It could be any of
+the following four and all of them should be URL-encoded for http request.
+
+       Operators for strings
+             =~    Contains substring
+             !~   Not contains substring
+             ===  Equals
+             !==  Not equals
+
+       Operators for numbers
+             ==  Equals
+             !=  Not equals
+             &gt;   Greater than
+             &lt;   Less than
+             =&lt;  Less than equal to
+             &gt;=  Greater than equal to
+
+expression - The value that will be included or excluded from the
+result. URL-reserved characters must be URL-encoded for http request.
+
+          filter: &#34;created_by==caboose@abc.com&#34;
+          filter: &#34;entry_id==DDB_G4839483&#34;
+          filter: &#34;tag==growth&#34;
+
+Filter can be combined using OR or AND boolean logic.
+  * The OR is represented using a comma(,).
+  * The AND is represented using a semi-colon(;).
+  * AND and OR operators can be combined and AND takes precedence over OR.
+
+          filter: &#34;tag~cytoskeletion;entry_id==DDB_G4839783;ontology==cellular&#34; </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
         <h3 id="dictybase.annotation.ListParameters">ListParameters</h3>
         <p>ListParameters defines fields for manipulating output of TaggedAnnotation collection</p>
 
@@ -470,7 +531,6 @@ be used for filtering
   * ontology    - Ontology that provides the tag names (string).
   * version     - Version no (number).
 
-field_name - Any one of the allowed field_name of the `AnnotationAttributes` definition.
 operator - Defines the type of filter match to use. It could be any of
 the following four and all of them should be URL-encoded for http request.
 
@@ -500,11 +560,7 @@ Filter can be combined using OR or AND boolean logic.
   * The AND is represented using a semi-colon(;).
   * AND and OR operators can be combined and AND takes precedence over OR.
 
-          filter: &#34;value~cytoskeletion;tag==cell membrane;ontology==cellular&#34;
-
-The sort field allow to sort the data return by the collection based on
-fields of `AnnotationAttributes. To use it, supply a comma separated one
-or more allowed field from the definition of `AnnotationAttributes`. </p></td>
+          filter: &#34;value~cytoskeletion;tag==cell membrane;ontology==cellular&#34; </p></td>
                 </tr>
               
             </tbody>
@@ -900,9 +956,113 @@ identical tag from the same ontology. </p></td>
             <tbody>
               
                 <tr>
-                  <td>group</td>
-                  <td><a href="#dictybase.annotation.TaggedAnnotation">TaggedAnnotation</a></td>
+                  <td>data</td>
+                  <td><a href="#dictybase.annotation.TaggedAnnotationGroup.Data">TaggedAnnotationGroup.Data</a></td>
                   <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>group_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier for the annotation group </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.TaggedAnnotationGroup.Data">TaggedAnnotationGroup.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>resource name, by default should be annotation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier for the annotation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>attributes</td>
+                  <td><a href="#dictybase.annotation.TaggedAnnotationAttributes">TaggedAnnotationAttributes</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.TaggedAnnotationGroupCollection">TaggedAnnotationGroupCollection</h3>
+        <p>List of tagged annotation groups</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>data</td>
+                  <td><a href="#dictybase.annotation.TaggedAnnotationGroupCollection.Data">TaggedAnnotationGroupCollection.Data</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#dictybase.annotation.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.TaggedAnnotationGroupCollection.Data">TaggedAnnotationGroupCollection.Data</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>resource name, by default it should be annotation group </p></td>
+                </tr>
+              
+                <tr>
+                  <td>group</td>
+                  <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
+                  <td></td>
                   <td><p> </p></td>
                 </tr>
               
@@ -1083,7 +1243,7 @@ created with a link to the previous annotation(copy on write).</p></td>
             
               <tr>
                 <td>AddToAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationGroupRequest">AnnotationGroupRequest</a></td>
+                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
                 <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
                 <td><p>Adds an existing tagged annotation to an existing annotation group</p></td>
               </tr>
@@ -1093,6 +1253,13 @@ created with a link to the previous annotation(copy on write).</p></td>
                 <td><a href="#dictybase.annotation.AnnotationEntryId">AnnotationEntryId</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
                 <td><p>Remove an annotation group</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListAnnotationGroups</td>
+                <td><a href="#dictybase.annotation.ListGroupParameters">ListGroupParameters</a></td>
+                <td><a href="#dictybase.annotation.TaggedAnnotationGroupCollection">TaggedAnnotationGroupCollection</a></td>
+                <td><p>List tagged annotation groups using pagination, ten entries are retrieved by default</p></td>
               </tr>
             
           </tbody>
