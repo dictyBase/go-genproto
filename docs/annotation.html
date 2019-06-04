@@ -179,7 +179,7 @@
             <ul>
               
                 <li>
-                  <a href="#dictybase.annotation.AnnotationEntryId"><span class="badge">M</span>AnnotationEntryId</a>
+                  <a href="#dictybase.annotation.AnnotationGroupId"><span class="badge">M</span>AnnotationGroupId</a>
                 </li>
               
                 <li>
@@ -192,6 +192,10 @@
               
                 <li>
                   <a href="#dictybase.annotation.EntryAnnotationRequest"><span class="badge">M</span>EntryAnnotationRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.GroupEntryId"><span class="badge">M</span>GroupEntryId</a>
                 </li>
               
                 <li>
@@ -288,7 +292,7 @@
       <p></p>
 
       
-        <h3 id="dictybase.annotation.AnnotationEntryId">AnnotationEntryId</h3>
+        <h3 id="dictybase.annotation.AnnotationGroupId">AnnotationGroupId</h3>
         <p></p>
 
         
@@ -297,6 +301,13 @@
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier for the annotation </p></td>
+                </tr>
               
                 <tr>
                   <td>group_id</td>
@@ -402,6 +413,29 @@ identical tag from the same ontology. By default, rank 0 is assumed. </p></td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
                   <td><p>Status for active or retired annotation. Active annotation is chosen by default. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.GroupEntryId">GroupEntryId</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>group_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier of a group </p></td>
                 </tr>
               
             </tbody>
@@ -1250,21 +1284,21 @@ created with a link to the previous annotation(copy on write).</p></td>
             
               <tr>
                 <td>GetAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationEntryId">AnnotationEntryId</a></td>
+                <td><a href="#dictybase.annotation.GroupEntryId">GroupEntryId</a></td>
                 <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
                 <td><p>Retrieves an annotation group</p></td>
               </tr>
             
               <tr>
                 <td>AddToAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.AnnotationGroupId">AnnotationGroupId</a></td>
                 <td><a href="#dictybase.annotation.TaggedAnnotationGroup">TaggedAnnotationGroup</a></td>
                 <td><p>Adds an existing annotation into an existing annotation group</p></td>
               </tr>
             
               <tr>
                 <td>DeleteAnnotationGroup</td>
-                <td><a href="#dictybase.annotation.AnnotationEntryId">AnnotationEntryId</a></td>
+                <td><a href="#dictybase.annotation.GroupEntryId">GroupEntryId</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
                 <td><p>Remove an annotation group</p></td>
               </tr>

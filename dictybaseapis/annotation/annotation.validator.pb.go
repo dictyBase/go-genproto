@@ -7,10 +7,10 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
-	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "github.com/golang/protobuf/ptypes/empty"
 	_ "github.com/mwitkow/go-proto-validators"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -19,6 +19,15 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+func (this *AnnotationGroupId) Validate() error {
+	if this.Id == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
+	}
+	if this.GroupId == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("GroupId", fmt.Errorf(`value '%v' must not be an empty string`, this.GroupId))
+	}
+	return nil
+}
 func (this *AnnotationId) Validate() error {
 	if this.Id == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
@@ -31,7 +40,7 @@ func (this *AnnotationIdList) Validate() error {
 	}
 	return nil
 }
-func (this *AnnotationEntryId) Validate() error {
+func (this *GroupEntryId) Validate() error {
 	if this.GroupId == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("GroupId", fmt.Errorf(`value '%v' must not be an empty string`, this.GroupId))
 	}
