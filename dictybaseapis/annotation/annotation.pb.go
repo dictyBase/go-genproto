@@ -41,7 +41,7 @@ func (m *AnnotationGroupId) Reset()         { *m = AnnotationGroupId{} }
 func (m *AnnotationGroupId) String() string { return proto.CompactTextString(m) }
 func (*AnnotationGroupId) ProtoMessage()    {}
 func (*AnnotationGroupId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{0}
 }
 func (m *AnnotationGroupId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationGroupId.Unmarshal(m, b)
@@ -87,7 +87,7 @@ func (m *AnnotationId) Reset()         { *m = AnnotationId{} }
 func (m *AnnotationId) String() string { return proto.CompactTextString(m) }
 func (*AnnotationId) ProtoMessage()    {}
 func (*AnnotationId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{1}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{1}
 }
 func (m *AnnotationId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationId.Unmarshal(m, b)
@@ -127,7 +127,7 @@ func (m *AnnotationIdList) Reset()         { *m = AnnotationIdList{} }
 func (m *AnnotationIdList) String() string { return proto.CompactTextString(m) }
 func (*AnnotationIdList) ProtoMessage()    {}
 func (*AnnotationIdList) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{2}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{2}
 }
 func (m *AnnotationIdList) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnnotationIdList.Unmarshal(m, b)
@@ -166,7 +166,7 @@ func (m *GroupEntryId) Reset()         { *m = GroupEntryId{} }
 func (m *GroupEntryId) String() string { return proto.CompactTextString(m) }
 func (*GroupEntryId) ProtoMessage()    {}
 func (*GroupEntryId) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{3}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{3}
 }
 func (m *GroupEntryId) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GroupEntryId.Unmarshal(m, b)
@@ -210,7 +210,7 @@ func (m *TaggedAnnotationGroup) Reset()         { *m = TaggedAnnotationGroup{} }
 func (m *TaggedAnnotationGroup) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationGroup) ProtoMessage()    {}
 func (*TaggedAnnotationGroup) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{4}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{4}
 }
 func (m *TaggedAnnotationGroup) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationGroup.Unmarshal(m, b)
@@ -273,7 +273,7 @@ func (m *TaggedAnnotationGroup_Data) Reset()         { *m = TaggedAnnotationGrou
 func (m *TaggedAnnotationGroup_Data) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationGroup_Data) ProtoMessage()    {}
 func (*TaggedAnnotationGroup_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{4, 0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{4, 0}
 }
 func (m *TaggedAnnotationGroup_Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationGroup_Data.Unmarshal(m, b)
@@ -327,7 +327,7 @@ func (m *TaggedAnnotationGroupCollection) Reset()         { *m = TaggedAnnotatio
 func (m *TaggedAnnotationGroupCollection) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationGroupCollection) ProtoMessage()    {}
 func (*TaggedAnnotationGroupCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{5}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{5}
 }
 func (m *TaggedAnnotationGroupCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationGroupCollection.Unmarshal(m, b)
@@ -374,7 +374,7 @@ func (m *TaggedAnnotationGroupCollection_Data) Reset()         { *m = TaggedAnno
 func (m *TaggedAnnotationGroupCollection_Data) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationGroupCollection_Data) ProtoMessage()    {}
 func (*TaggedAnnotationGroupCollection_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{5, 0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{5, 0}
 }
 func (m *TaggedAnnotationGroupCollection_Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationGroupCollection_Data.Unmarshal(m, b)
@@ -433,7 +433,7 @@ func (m *EntryAnnotationRequest) Reset()         { *m = EntryAnnotationRequest{}
 func (m *EntryAnnotationRequest) String() string { return proto.CompactTextString(m) }
 func (*EntryAnnotationRequest) ProtoMessage()    {}
 func (*EntryAnnotationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{6}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{6}
 }
 func (m *EntryAnnotationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EntryAnnotationRequest.Unmarshal(m, b)
@@ -501,7 +501,7 @@ func (m *TaggedAnnotationCollection) Reset()         { *m = TaggedAnnotationColl
 func (m *TaggedAnnotationCollection) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationCollection) ProtoMessage()    {}
 func (*TaggedAnnotationCollection) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{7}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{7}
 }
 func (m *TaggedAnnotationCollection) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationCollection.Unmarshal(m, b)
@@ -550,7 +550,7 @@ func (m *TaggedAnnotationCollection_Data) Reset()         { *m = TaggedAnnotatio
 func (m *TaggedAnnotationCollection_Data) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationCollection_Data) ProtoMessage()    {}
 func (*TaggedAnnotationCollection_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{7, 0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{7, 0}
 }
 func (m *TaggedAnnotationCollection_Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationCollection_Data.Unmarshal(m, b)
@@ -604,7 +604,7 @@ func (m *TaggedAnnotation) Reset()         { *m = TaggedAnnotation{} }
 func (m *TaggedAnnotation) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotation) ProtoMessage()    {}
 func (*TaggedAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{8}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{8}
 }
 func (m *TaggedAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotation.Unmarshal(m, b)
@@ -646,7 +646,7 @@ func (m *TaggedAnnotation_Data) Reset()         { *m = TaggedAnnotation_Data{} }
 func (m *TaggedAnnotation_Data) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotation_Data) ProtoMessage()    {}
 func (*TaggedAnnotation_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{8, 0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{8, 0}
 }
 func (m *TaggedAnnotation_Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotation_Data.Unmarshal(m, b)
@@ -721,7 +721,7 @@ func (m *TaggedAnnotationAttributes) Reset()         { *m = TaggedAnnotationAttr
 func (m *TaggedAnnotationAttributes) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationAttributes) ProtoMessage()    {}
 func (*TaggedAnnotationAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{9}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{9}
 }
 func (m *TaggedAnnotationAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationAttributes.Unmarshal(m, b)
@@ -823,7 +823,7 @@ func (m *NewTaggedAnnotation) Reset()         { *m = NewTaggedAnnotation{} }
 func (m *NewTaggedAnnotation) String() string { return proto.CompactTextString(m) }
 func (*NewTaggedAnnotation) ProtoMessage()    {}
 func (*NewTaggedAnnotation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{10}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{10}
 }
 func (m *NewTaggedAnnotation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NewTaggedAnnotation.Unmarshal(m, b)
@@ -863,7 +863,7 @@ func (m *NewTaggedAnnotation_Data) Reset()         { *m = NewTaggedAnnotation_Da
 func (m *NewTaggedAnnotation_Data) String() string { return proto.CompactTextString(m) }
 func (*NewTaggedAnnotation_Data) ProtoMessage()    {}
 func (*NewTaggedAnnotation_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{10, 0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{10, 0}
 }
 func (m *NewTaggedAnnotation_Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NewTaggedAnnotation_Data.Unmarshal(m, b)
@@ -925,7 +925,7 @@ func (m *NewTaggedAnnotationAttributes) Reset()         { *m = NewTaggedAnnotati
 func (m *NewTaggedAnnotationAttributes) String() string { return proto.CompactTextString(m) }
 func (*NewTaggedAnnotationAttributes) ProtoMessage()    {}
 func (*NewTaggedAnnotationAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{11}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{11}
 }
 func (m *NewTaggedAnnotationAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_NewTaggedAnnotationAttributes.Unmarshal(m, b)
@@ -1006,7 +1006,7 @@ func (m *TaggedAnnotationUpdate) Reset()         { *m = TaggedAnnotationUpdate{}
 func (m *TaggedAnnotationUpdate) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationUpdate) ProtoMessage()    {}
 func (*TaggedAnnotationUpdate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{12}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{12}
 }
 func (m *TaggedAnnotationUpdate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationUpdate.Unmarshal(m, b)
@@ -1048,7 +1048,7 @@ func (m *TaggedAnnotationUpdate_Data) Reset()         { *m = TaggedAnnotationUpd
 func (m *TaggedAnnotationUpdate_Data) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationUpdate_Data) ProtoMessage()    {}
 func (*TaggedAnnotationUpdate_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{12, 0}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{12, 0}
 }
 func (m *TaggedAnnotationUpdate_Data) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationUpdate_Data.Unmarshal(m, b)
@@ -1107,7 +1107,7 @@ func (m *TaggedAnnotationUpdateAttributes) Reset()         { *m = TaggedAnnotati
 func (m *TaggedAnnotationUpdateAttributes) String() string { return proto.CompactTextString(m) }
 func (*TaggedAnnotationUpdateAttributes) ProtoMessage()    {}
 func (*TaggedAnnotationUpdateAttributes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{13}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{13}
 }
 func (m *TaggedAnnotationUpdateAttributes) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_TaggedAnnotationUpdateAttributes.Unmarshal(m, b)
@@ -1209,7 +1209,7 @@ func (m *ListParameters) Reset()         { *m = ListParameters{} }
 func (m *ListParameters) String() string { return proto.CompactTextString(m) }
 func (*ListParameters) ProtoMessage()    {}
 func (*ListParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{14}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{14}
 }
 func (m *ListParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListParameters.Unmarshal(m, b)
@@ -1267,7 +1267,7 @@ type ListGroupParameters struct {
 	//   * created_by  - Email id of the user (string)
 	//   * tag         - Tag name, a term from an ontology (string).
 	//   * ontology    - Ontology that provides the tag names (string).
-	//   * version     - Version no (number), current version is used by default.
+	//   * rank        - Ordering of annotation (number).
 	//
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
@@ -1299,6 +1299,7 @@ type ListGroupParameters struct {
 	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
 	//           filter: "tag~cytoskeletion;entry_id==DDB_G4839783;ontology==cellular"
+	//           filter: "tag~membrane;entry_id==DDB_G4839783;ontology==cellular;rank=0"
 	//
 	Filter               string   `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1310,7 +1311,7 @@ func (m *ListGroupParameters) Reset()         { *m = ListGroupParameters{} }
 func (m *ListGroupParameters) String() string { return proto.CompactTextString(m) }
 func (*ListGroupParameters) ProtoMessage()    {}
 func (*ListGroupParameters) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{15}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{15}
 }
 func (m *ListGroupParameters) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ListGroupParameters.Unmarshal(m, b)
@@ -1368,7 +1369,7 @@ func (m *Meta) Reset()         { *m = Meta{} }
 func (m *Meta) String() string { return proto.CompactTextString(m) }
 func (*Meta) ProtoMessage()    {}
 func (*Meta) Descriptor() ([]byte, []int) {
-	return fileDescriptor_annotation_4c71fcf2b6208b12, []int{16}
+	return fileDescriptor_annotation_f454346b30ef8800, []int{16}
 }
 func (m *Meta) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Meta.Unmarshal(m, b)
@@ -1854,9 +1855,9 @@ var _TaggedAnnotationService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "annotation.proto",
 }
 
-func init() { proto.RegisterFile("annotation.proto", fileDescriptor_annotation_4c71fcf2b6208b12) }
+func init() { proto.RegisterFile("annotation.proto", fileDescriptor_annotation_f454346b30ef8800) }
 
-var fileDescriptor_annotation_4c71fcf2b6208b12 = []byte{
+var fileDescriptor_annotation_f454346b30ef8800 = []byte{
 	// 1146 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x58, 0xcb, 0x6f, 0x1b, 0x45,
 	0x18, 0xcf, 0xfa, 0x91, 0xc7, 0xd7, 0x36, 0x35, 0xd3, 0xc4, 0x18, 0x53, 0x14, 0xb3, 0x82, 0x10,

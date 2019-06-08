@@ -483,7 +483,7 @@ be used for filtering
   * created_by  - Email id of the user (string)
   * tag         - Tag name, a term from an ontology (string).
   * ontology    - Ontology that provides the tag names (string).
-  * version     - Version no (number), current version is used by default.
+  * rank        - Ordering of annotation (number).
 
 operator - Defines the type of filter match to use. It could be any of
 the following four and all of them should be URL-encoded for http request.
@@ -514,7 +514,8 @@ Filter can be combined using OR or AND boolean logic.
   * The AND is represented using a semi-colon(;).
   * AND and OR operators can be combined and AND takes precedence over OR.
 
-          filter: &#34;tag~cytoskeletion;entry_id==DDB_G4839783;ontology==cellular&#34; </p></td>
+          filter: &#34;tag~cytoskeletion;entry_id==DDB_G4839783;ontology==cellular&#34;
+          filter: &#34;tag~membrane;entry_id==DDB_G4839783;ontology==cellular;rank=0&#34; </p></td>
                 </tr>
               
             </tbody>
