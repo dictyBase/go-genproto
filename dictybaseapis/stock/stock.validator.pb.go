@@ -254,9 +254,6 @@ func (this *ExistingStrainAttributes) Validate() error {
 	if this.UpdatedBy == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.UpdatedBy))
 	}
-	if this.Depositor == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Depositor", fmt.Errorf(`value '%v' must not be an empty string`, this.Depositor))
-	}
 	if this.Label == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Label", fmt.Errorf(`value '%v' must not be an empty string`, this.Label))
 	}
