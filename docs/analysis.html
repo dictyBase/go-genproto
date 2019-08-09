@@ -182,6 +182,10 @@
                   <a href="#dictybase.analysis.BlastDbParams"><span class="badge">M</span>BlastDbParams</a>
                 </li>
               
+                <li>
+                  <a href="#dictybase.analysis.BlastDbRequest"><span class="badge">M</span>BlastDbRequest</a>
+                </li>
+              
               
               
               
@@ -205,6 +209,57 @@
 
       
         <h3 id="dictybase.analysis.BlastDbParams">BlastDbParams</h3>
+        <p>Similar to the BlastDbParams except the sequence chunks</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>file_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name of the sequence file </p></td>
+                </tr>
+              
+                <tr>
+                  <td>taxon_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ncbi taxonid of the organism </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>name of the database </p></td>
+                </tr>
+              
+                <tr>
+                  <td>title</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>human readable description of the database </p></td>
+                </tr>
+              
+                <tr>
+                  <td>seqtype</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Type of sequence, nucleotide or protein </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.analysis.BlastDbRequest">BlastDbRequest</h3>
         <p>Various parameters required for creating a blast database</p>
 
         
@@ -271,7 +326,7 @@
             
               <tr>
                 <td>CreateBlastDb</td>
-                <td><a href="#dictybase.analysis.BlastDbParams">BlastDbParams</a> stream</td>
+                <td><a href="#dictybase.analysis.BlastDbRequest">BlastDbRequest</a> stream</td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
                 <td><p>Create a blast database from the provided sequence</p></td>
               </tr>
