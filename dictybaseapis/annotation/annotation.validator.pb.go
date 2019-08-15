@@ -118,6 +118,12 @@ func (this *EntryAnnotationRequest) Validate() error {
 	}
 	return nil
 }
+func (this *DeleteAnnotationRequest) Validate() error {
+	if this.EntryId == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
+	}
+	return nil
+}
 func (this *TaggedAnnotationCollection) Validate() error {
 	for _, item := range this.Data {
 		if item != nil {

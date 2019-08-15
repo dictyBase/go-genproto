@@ -191,6 +191,10 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.annotation.DeleteAnnotationRequest"><span class="badge">M</span>DeleteAnnotationRequest</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.annotation.EntryAnnotationRequest"><span class="badge">M</span>EntryAnnotationRequest</a>
                 </li>
               
@@ -360,6 +364,36 @@
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>list of unique identifiers </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        
+
+        
+      
+        <h3 id="dictybase.annotation.DeleteAnnotationRequest">DeleteAnnotationRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>entry_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>unique identifier of a biological entity that is being annotated </p></td>
+                </tr>
+              
+                <tr>
+                  <td>purge</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>flag to indicate whether the entry will be wiped or turned obsolete(soft delete) </p></td>
                 </tr>
               
             </tbody>
@@ -1265,7 +1299,7 @@ created with a link to the previous annotation(copy on write).</p></td>
             
               <tr>
                 <td>DeleteAnnotation</td>
-                <td><a href="#dictybase.annotation.AnnotationId">AnnotationId</a></td>
+                <td><a href="#dictybase.annotation.DeleteAnnotationRequest">DeleteAnnotationRequest</a></td>
                 <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
                 <td><p>Delete an existing annotation</p></td>
               </tr>
