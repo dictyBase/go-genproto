@@ -270,7 +270,8 @@
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -342,7 +343,8 @@
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -386,7 +388,8 @@
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -409,7 +412,8 @@
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -434,7 +438,8 @@ The slug name should be unique </p></td>
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -466,7 +471,46 @@ using the `user` microservice backend. </p></td>
               
             </tbody>
           </table>
-        
+
+          
+            
+            
+            <h4>Validated Fields</h4>
+            <table>
+              <thead>
+                <tr>
+                  <td>Field</td>
+                  <td>Validations</td>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <tr>
+                  <td>updated_by</td>
+                  <td>
+                    <ul>
+                    
+                      <li>int_gt: 0</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td>content</td>
+                  <td>
+                    <ul>
+                    
+                      <li>string_not_empty: true</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+          
 
         
       
@@ -513,7 +557,68 @@ name to generate an unique slug. </p></td>
               
             </tbody>
           </table>
-        
+
+          
+            
+            
+            <h4>Validated Fields</h4>
+            <table>
+              <thead>
+                <tr>
+                  <td>Field</td>
+                  <td>Validations</td>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td>
+                    <ul>
+                    
+                      <li>regex: [a-z,A-z,0-9]&#43;</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td>created_by</td>
+                  <td>
+                    <ul>
+                    
+                      <li>int_gt: 0</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td>content</td>
+                  <td>
+                    <ul>
+                    
+                      <li>string_not_empty: true</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td>namespace</td>
+                  <td>
+                    <ul>
+                    
+                      <li>string_not_empty: true</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+          
 
         
       
@@ -536,7 +641,8 @@ name to generate an unique slug. </p></td>
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -566,7 +672,8 @@ name to generate an unique slug. </p></td>
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -604,7 +711,8 @@ Presence of this field allow partial updates. </p></td>
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -641,7 +749,8 @@ Presence of this field allow partial updates. </p></td>
               
             </tbody>
           </table>
-        
+
+          
 
         
       
@@ -703,7 +812,86 @@ Presence of this field allow partial updates. </p></td>
             
           </tbody>
         </table>
-      
+
+        
+          
+          
+          <h4>Methods with HTTP bindings</h4>
+          <table>
+            <thead>
+              <tr>
+                <td>Method Name</td>
+                <td>Method</td>
+                <td>Pattern</td>
+                <td>Body</td>
+              </tr>
+            </thead>
+            <tbody>
+            
+              
+              
+              <tr>
+                <td>GetContentBySlug</td>
+                <td>GET</td>
+                <td>/contents/slug/{slug}</td>
+                <td></td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>GetContent</td>
+                <td>GET</td>
+                <td>/contents/{id}</td>
+                <td></td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>StoreContent</td>
+                <td>POST</td>
+                <td>/contents</td>
+                <td>*</td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>UpdateContent</td>
+                <td>PATCH</td>
+                <td>/contents/{id}</td>
+                <td>*</td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>DeleteContent</td>
+                <td>DELETE</td>
+                <td>/contents/{id}</td>
+                <td></td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>Healthz</td>
+                <td>GET</td>
+                <td>/healthz</td>
+                <td></td>
+              </tr>
+              
+            
+            </tbody>
+          </table>
+          
+        
     
 
     <h2 id="scalar-value-types">Scalar Value Types</h2>
