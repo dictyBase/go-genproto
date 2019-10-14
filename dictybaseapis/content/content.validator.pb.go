@@ -8,7 +8,7 @@ import (
 	math "math"
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
-	_ "."
+	_ "github.com/mwitkow/go-proto-validators"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	_ "google.golang.org/genproto/protobuf/field_mask"
 	_ "github.com/golang/protobuf/ptypes/timestamp"

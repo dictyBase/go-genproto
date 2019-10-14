@@ -7,9 +7,9 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/dictyBase/go-genproto/dictybaseapis/user"
 	_ "github.com/dictyBase/go-genproto/dictybaseapis/identity"
 	_ "google.golang.org/genproto/googleapis/rpc/status"
+	_ "github.com/dictyBase/go-genproto/dictybaseapis/user"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
