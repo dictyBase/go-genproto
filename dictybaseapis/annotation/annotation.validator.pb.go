@@ -123,6 +123,15 @@ func (this *DeleteAnnotationRequest) Validate() error {
 	}
 	return nil
 }
+func (this *TagRequest) Validate() error {
+	if this.Name == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`value '%v' must not be an empty string`, this.Name))
+	}
+	if this.Ontology == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Ontology", fmt.Errorf(`value '%v' must not be an empty string`, this.Ontology))
+	}
+	return nil
+}
 func (this *TaggedAnnotationCollection) Validate() error {
 	for _, item := range this.Data {
 		if item != nil {
@@ -166,6 +175,9 @@ func (this *TaggedAnnotation_Data) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
 		}
 	}
+	return nil
+}
+func (this *AnnotationTag) Validate() error {
 	return nil
 }
 func (this *TaggedAnnotationAttributes) Validate() error {

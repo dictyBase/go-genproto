@@ -191,6 +191,10 @@
                 </li>
               
                 <li>
+                  <a href="#dictybase.annotation.AnnotationTag"><span class="badge">M</span>AnnotationTag</a>
+                </li>
+              
+                <li>
                   <a href="#dictybase.annotation.DeleteAnnotationRequest"><span class="badge">M</span>DeleteAnnotationRequest</a>
                 </li>
               
@@ -224,6 +228,10 @@
               
                 <li>
                   <a href="#dictybase.annotation.NewTaggedAnnotationAttributes"><span class="badge">M</span>NewTaggedAnnotationAttributes</a>
+                </li>
+              
+                <li>
+                  <a href="#dictybase.annotation.TagRequest"><span class="badge">M</span>TagRequest</a>
                 </li>
               
                 <li>
@@ -463,6 +471,51 @@
               </tbody>
             </table>
             
+          
+
+        
+      
+        <h3 id="dictybase.annotation.AnnotationTag">AnnotationTag</h3>
+        <p>Definition of annotation tag</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>tag identifier </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>human readable name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ontology</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ontology to which this tag belong </p></td>
+                </tr>
+              
+                <tr>
+                  <td>is_obsolete</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>status for active or retired tag </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
           
 
         
@@ -1070,6 +1123,82 @@ identical tag from the same ontology. By default, rank 0 is used. </p></td>
               
                 <tr>
                   <td>entry_id</td>
+                  <td>
+                    <ul>
+                    
+                      <li>string_not_empty: true</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+                <tr>
+                  <td>ontology</td>
+                  <td>
+                    <ul>
+                    
+                      <li>string_not_empty: true</li>
+                    
+                    </ul>
+                  </td>
+                </tr>
+              
+              </tbody>
+            </table>
+            
+          
+
+        
+      
+        <h3 id="dictybase.annotation.TagRequest">TagRequest</h3>
+        <p>Definition of various fields needed to fetch a tag information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>human readable name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ontology</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ontology to which this tag belong </p></td>
+                </tr>
+              
+                <tr>
+                  <td>is_obsolete</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>status for active or retired tag </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+            
+            
+            <h4>Validated Fields</h4>
+            <table>
+              <thead>
+                <tr>
+                  <td>Field</td>
+                  <td>Validations</td>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <tr>
+                  <td>name</td>
                   <td>
                     <ul>
                     
@@ -1969,6 +2098,13 @@ created with a link to the previous annotation(copy on write).</p></td>
                 <td><a href="#dictybase.annotation.ListGroupParameters">ListGroupParameters</a></td>
                 <td><a href="#dictybase.annotation.TaggedAnnotationGroupCollection">TaggedAnnotationGroupCollection</a></td>
                 <td><p>List tagged annotation groups using pagination, ten entries are retrieved by default</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetAnnotationTag</td>
+                <td><a href="#dictybase.annotation.TagRequest">TagRequest</a></td>
+                <td><a href="#dictybase.annotation.AnnotationTag">AnnotationTag</a></td>
+                <td><p>Retrieves tag information</p></td>
               </tr>
             
           </tbody>
