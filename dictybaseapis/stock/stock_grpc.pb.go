@@ -4,6 +4,7 @@ package stock
 
 import (
 	context "context"
+	upload "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -43,6 +44,8 @@ type StockServiceClient interface {
 	LoadStrain(ctx context.Context, in *ExistingStrain, opts ...grpc.CallOption) (*Strain, error)
 	// Load existing plasmid
 	LoadPlasmid(ctx context.Context, in *ExistingPlasmid, opts ...grpc.CallOption) (*Plasmid, error)
+	// Upload obojson formatted file through client side streaming
+	OboJsonFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJsonFileUploadClient, error)
 }
 
 type stockServiceClient struct {
@@ -161,6 +164,40 @@ func (c *stockServiceClient) LoadPlasmid(ctx context.Context, in *ExistingPlasmi
 	return out, nil
 }
 
+func (c *stockServiceClient) OboJsonFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJsonFileUploadClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StockService_ServiceDesc.Streams[0], "/dictybase.stock.StockService/OboJsonFileUpload", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &stockServiceOboJsonFileUploadClient{stream}
+	return x, nil
+}
+
+type StockService_OboJsonFileUploadClient interface {
+	Send(*upload.FileUploadRequest) error
+	CloseAndRecv() (*upload.FileUploadResponse, error)
+	grpc.ClientStream
+}
+
+type stockServiceOboJsonFileUploadClient struct {
+	grpc.ClientStream
+}
+
+func (x *stockServiceOboJsonFileUploadClient) Send(m *upload.FileUploadRequest) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *stockServiceOboJsonFileUploadClient) CloseAndRecv() (*upload.FileUploadResponse, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(upload.FileUploadResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // StockServiceServer is the server API for StockService service.
 // All implementations must embed UnimplementedStockServiceServer
 // for forward compatibility
@@ -189,6 +226,8 @@ type StockServiceServer interface {
 	LoadStrain(context.Context, *ExistingStrain) (*Strain, error)
 	// Load existing plasmid
 	LoadPlasmid(context.Context, *ExistingPlasmid) (*Plasmid, error)
+	// Upload obojson formatted file through client side streaming
+	OboJsonFileUpload(StockService_OboJsonFileUploadServer) error
 	mustEmbedUnimplementedStockServiceServer()
 }
 
@@ -231,6 +270,9 @@ func (UnimplementedStockServiceServer) LoadStrain(context.Context, *ExistingStra
 }
 func (UnimplementedStockServiceServer) LoadPlasmid(context.Context, *ExistingPlasmid) (*Plasmid, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoadPlasmid not implemented")
+}
+func (UnimplementedStockServiceServer) OboJsonFileUpload(StockService_OboJsonFileUploadServer) error {
+	return status.Errorf(codes.Unimplemented, "method OboJsonFileUpload not implemented")
 }
 func (UnimplementedStockServiceServer) mustEmbedUnimplementedStockServiceServer() {}
 
@@ -461,6 +503,32 @@ func _StockService_LoadPlasmid_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StockService_OboJsonFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(StockServiceServer).OboJsonFileUpload(&stockServiceOboJsonFileUploadServer{stream})
+}
+
+type StockService_OboJsonFileUploadServer interface {
+	SendAndClose(*upload.FileUploadResponse) error
+	Recv() (*upload.FileUploadRequest, error)
+	grpc.ServerStream
+}
+
+type stockServiceOboJsonFileUploadServer struct {
+	grpc.ServerStream
+}
+
+func (x *stockServiceOboJsonFileUploadServer) SendAndClose(m *upload.FileUploadResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *stockServiceOboJsonFileUploadServer) Recv() (*upload.FileUploadRequest, error) {
+	m := new(upload.FileUploadRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // StockService_ServiceDesc is the grpc.ServiceDesc for StockService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -517,6 +585,12 @@ var StockService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _StockService_LoadPlasmid_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "OboJsonFileUpload",
+			Handler:       _StockService_OboJsonFileUpload_Handler,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "dictybase/stock/stock.proto",
 }
