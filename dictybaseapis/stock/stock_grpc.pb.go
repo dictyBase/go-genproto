@@ -45,7 +45,7 @@ type StockServiceClient interface {
 	// Load existing plasmid
 	LoadPlasmid(ctx context.Context, in *ExistingPlasmid, opts ...grpc.CallOption) (*Plasmid, error)
 	// Upload obojson formatted file through client side streaming
-	OboJsonFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJsonFileUploadClient, error)
+	OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJSONFileUploadClient, error)
 }
 
 type stockServiceClient struct {
@@ -164,30 +164,30 @@ func (c *stockServiceClient) LoadPlasmid(ctx context.Context, in *ExistingPlasmi
 	return out, nil
 }
 
-func (c *stockServiceClient) OboJsonFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJsonFileUploadClient, error) {
-	stream, err := c.cc.NewStream(ctx, &StockService_ServiceDesc.Streams[0], "/dictybase.stock.StockService/OboJsonFileUpload", opts...)
+func (c *stockServiceClient) OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJSONFileUploadClient, error) {
+	stream, err := c.cc.NewStream(ctx, &StockService_ServiceDesc.Streams[0], "/dictybase.stock.StockService/OboJSONFileUpload", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &stockServiceOboJsonFileUploadClient{stream}
+	x := &stockServiceOboJSONFileUploadClient{stream}
 	return x, nil
 }
 
-type StockService_OboJsonFileUploadClient interface {
+type StockService_OboJSONFileUploadClient interface {
 	Send(*upload.FileUploadRequest) error
 	CloseAndRecv() (*upload.FileUploadResponse, error)
 	grpc.ClientStream
 }
 
-type stockServiceOboJsonFileUploadClient struct {
+type stockServiceOboJSONFileUploadClient struct {
 	grpc.ClientStream
 }
 
-func (x *stockServiceOboJsonFileUploadClient) Send(m *upload.FileUploadRequest) error {
+func (x *stockServiceOboJSONFileUploadClient) Send(m *upload.FileUploadRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *stockServiceOboJsonFileUploadClient) CloseAndRecv() (*upload.FileUploadResponse, error) {
+func (x *stockServiceOboJSONFileUploadClient) CloseAndRecv() (*upload.FileUploadResponse, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
@@ -227,7 +227,7 @@ type StockServiceServer interface {
 	// Load existing plasmid
 	LoadPlasmid(context.Context, *ExistingPlasmid) (*Plasmid, error)
 	// Upload obojson formatted file through client side streaming
-	OboJsonFileUpload(StockService_OboJsonFileUploadServer) error
+	OboJSONFileUpload(StockService_OboJSONFileUploadServer) error
 	mustEmbedUnimplementedStockServiceServer()
 }
 
@@ -271,8 +271,8 @@ func (UnimplementedStockServiceServer) LoadStrain(context.Context, *ExistingStra
 func (UnimplementedStockServiceServer) LoadPlasmid(context.Context, *ExistingPlasmid) (*Plasmid, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoadPlasmid not implemented")
 }
-func (UnimplementedStockServiceServer) OboJsonFileUpload(StockService_OboJsonFileUploadServer) error {
-	return status.Errorf(codes.Unimplemented, "method OboJsonFileUpload not implemented")
+func (UnimplementedStockServiceServer) OboJSONFileUpload(StockService_OboJSONFileUploadServer) error {
+	return status.Errorf(codes.Unimplemented, "method OboJSONFileUpload not implemented")
 }
 func (UnimplementedStockServiceServer) mustEmbedUnimplementedStockServiceServer() {}
 
@@ -503,25 +503,25 @@ func _StockService_LoadPlasmid_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StockService_OboJsonFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(StockServiceServer).OboJsonFileUpload(&stockServiceOboJsonFileUploadServer{stream})
+func _StockService_OboJSONFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(StockServiceServer).OboJSONFileUpload(&stockServiceOboJSONFileUploadServer{stream})
 }
 
-type StockService_OboJsonFileUploadServer interface {
+type StockService_OboJSONFileUploadServer interface {
 	SendAndClose(*upload.FileUploadResponse) error
 	Recv() (*upload.FileUploadRequest, error)
 	grpc.ServerStream
 }
 
-type stockServiceOboJsonFileUploadServer struct {
+type stockServiceOboJSONFileUploadServer struct {
 	grpc.ServerStream
 }
 
-func (x *stockServiceOboJsonFileUploadServer) SendAndClose(m *upload.FileUploadResponse) error {
+func (x *stockServiceOboJSONFileUploadServer) SendAndClose(m *upload.FileUploadResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *stockServiceOboJsonFileUploadServer) Recv() (*upload.FileUploadRequest, error) {
+func (x *stockServiceOboJSONFileUploadServer) Recv() (*upload.FileUploadRequest, error) {
 	m := new(upload.FileUploadRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -587,8 +587,8 @@ var StockService_ServiceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "OboJsonFileUpload",
-			Handler:       _StockService_OboJsonFileUpload_Handler,
+			StreamName:    "OboJSONFileUpload",
+			Handler:       _StockService_OboJSONFileUpload_Handler,
 			ClientStreams: true,
 		},
 	},

@@ -46,7 +46,7 @@ type TaggedAnnotationServiceClient interface {
 	// Retrieves tag information
 	GetAnnotationTag(ctx context.Context, in *TagRequest, opts ...grpc.CallOption) (*AnnotationTag, error)
 	// Upload obojson formatted file through client side streaming
-	OboJsonFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJsonFileUploadClient, error)
+	OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJSONFileUploadClient, error)
 }
 
 type taggedAnnotationServiceClient struct {
@@ -165,30 +165,30 @@ func (c *taggedAnnotationServiceClient) GetAnnotationTag(ctx context.Context, in
 	return out, nil
 }
 
-func (c *taggedAnnotationServiceClient) OboJsonFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJsonFileUploadClient, error) {
-	stream, err := c.cc.NewStream(ctx, &TaggedAnnotationService_ServiceDesc.Streams[0], "/dictybase.annotation.TaggedAnnotationService/OboJsonFileUpload", opts...)
+func (c *taggedAnnotationServiceClient) OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJSONFileUploadClient, error) {
+	stream, err := c.cc.NewStream(ctx, &TaggedAnnotationService_ServiceDesc.Streams[0], "/dictybase.annotation.TaggedAnnotationService/OboJSONFileUpload", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &taggedAnnotationServiceOboJsonFileUploadClient{stream}
+	x := &taggedAnnotationServiceOboJSONFileUploadClient{stream}
 	return x, nil
 }
 
-type TaggedAnnotationService_OboJsonFileUploadClient interface {
+type TaggedAnnotationService_OboJSONFileUploadClient interface {
 	Send(*upload.FileUploadRequest) error
 	CloseAndRecv() (*upload.FileUploadResponse, error)
 	grpc.ClientStream
 }
 
-type taggedAnnotationServiceOboJsonFileUploadClient struct {
+type taggedAnnotationServiceOboJSONFileUploadClient struct {
 	grpc.ClientStream
 }
 
-func (x *taggedAnnotationServiceOboJsonFileUploadClient) Send(m *upload.FileUploadRequest) error {
+func (x *taggedAnnotationServiceOboJSONFileUploadClient) Send(m *upload.FileUploadRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *taggedAnnotationServiceOboJsonFileUploadClient) CloseAndRecv() (*upload.FileUploadResponse, error) {
+func (x *taggedAnnotationServiceOboJSONFileUploadClient) CloseAndRecv() (*upload.FileUploadResponse, error) {
 	if err := x.ClientStream.CloseSend(); err != nil {
 		return nil, err
 	}
@@ -229,7 +229,7 @@ type TaggedAnnotationServiceServer interface {
 	// Retrieves tag information
 	GetAnnotationTag(context.Context, *TagRequest) (*AnnotationTag, error)
 	// Upload obojson formatted file through client side streaming
-	OboJsonFileUpload(TaggedAnnotationService_OboJsonFileUploadServer) error
+	OboJSONFileUpload(TaggedAnnotationService_OboJSONFileUploadServer) error
 	mustEmbedUnimplementedTaggedAnnotationServiceServer()
 }
 
@@ -273,8 +273,8 @@ func (UnimplementedTaggedAnnotationServiceServer) ListAnnotationGroups(context.C
 func (UnimplementedTaggedAnnotationServiceServer) GetAnnotationTag(context.Context, *TagRequest) (*AnnotationTag, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAnnotationTag not implemented")
 }
-func (UnimplementedTaggedAnnotationServiceServer) OboJsonFileUpload(TaggedAnnotationService_OboJsonFileUploadServer) error {
-	return status.Errorf(codes.Unimplemented, "method OboJsonFileUpload not implemented")
+func (UnimplementedTaggedAnnotationServiceServer) OboJSONFileUpload(TaggedAnnotationService_OboJSONFileUploadServer) error {
+	return status.Errorf(codes.Unimplemented, "method OboJSONFileUpload not implemented")
 }
 func (UnimplementedTaggedAnnotationServiceServer) mustEmbedUnimplementedTaggedAnnotationServiceServer() {
 }
@@ -506,25 +506,25 @@ func _TaggedAnnotationService_GetAnnotationTag_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TaggedAnnotationService_OboJsonFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(TaggedAnnotationServiceServer).OboJsonFileUpload(&taggedAnnotationServiceOboJsonFileUploadServer{stream})
+func _TaggedAnnotationService_OboJSONFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TaggedAnnotationServiceServer).OboJSONFileUpload(&taggedAnnotationServiceOboJSONFileUploadServer{stream})
 }
 
-type TaggedAnnotationService_OboJsonFileUploadServer interface {
+type TaggedAnnotationService_OboJSONFileUploadServer interface {
 	SendAndClose(*upload.FileUploadResponse) error
 	Recv() (*upload.FileUploadRequest, error)
 	grpc.ServerStream
 }
 
-type taggedAnnotationServiceOboJsonFileUploadServer struct {
+type taggedAnnotationServiceOboJSONFileUploadServer struct {
 	grpc.ServerStream
 }
 
-func (x *taggedAnnotationServiceOboJsonFileUploadServer) SendAndClose(m *upload.FileUploadResponse) error {
+func (x *taggedAnnotationServiceOboJSONFileUploadServer) SendAndClose(m *upload.FileUploadResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *taggedAnnotationServiceOboJsonFileUploadServer) Recv() (*upload.FileUploadRequest, error) {
+func (x *taggedAnnotationServiceOboJSONFileUploadServer) Recv() (*upload.FileUploadRequest, error) {
 	m := new(upload.FileUploadRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -590,8 +590,8 @@ var TaggedAnnotationService_ServiceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "OboJsonFileUpload",
-			Handler:       _TaggedAnnotationService_OboJsonFileUpload_Handler,
+			StreamName:    "OboJSONFileUpload",
+			Handler:       _TaggedAnnotationService_OboJSONFileUpload_Handler,
 			ClientStreams: true,
 		},
 	},
