@@ -2114,7 +2114,7 @@ var file_dictybase_annotation_annotation_proto_rawDesc = []byte{
 	0x54, 0x61, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x64, 0x69, 0x63,
 	0x74, 0x79, 0x62, 0x61, 0x73, 0x65, 0x2e, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f,
 	0x6e, 0x2e, 0x41, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x61, 0x67, 0x22,
-	0x00, 0x12, 0x6a, 0x0a, 0x11, 0x4f, 0x62, 0x6f, 0x4a, 0x73, 0x6f, 0x6e, 0x46, 0x69, 0x6c, 0x65,
+	0x00, 0x12, 0x6a, 0x0a, 0x11, 0x4f, 0x62, 0x6f, 0x4a, 0x53, 0x4f, 0x4e, 0x46, 0x69, 0x6c, 0x65,
 	0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x27, 0x2e, 0x64, 0x69, 0x63, 0x74, 0x79, 0x62, 0x61,
 	0x73, 0x65, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x75, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x2e, 0x46, 0x69,
 	0x6c, 0x65, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
@@ -2207,7 +2207,7 @@ var file_dictybase_annotation_annotation_proto_depIdxs = []int32{
 	3,  // 26: dictybase.annotation.TaggedAnnotationService.DeleteAnnotationGroup:input_type -> dictybase.annotation.GroupEntryId
 	18, // 27: dictybase.annotation.TaggedAnnotationService.ListAnnotationGroups:input_type -> dictybase.annotation.ListGroupParameters
 	8,  // 28: dictybase.annotation.TaggedAnnotationService.GetAnnotationTag:input_type -> dictybase.annotation.TagRequest
-	27, // 29: dictybase.annotation.TaggedAnnotationService.OboJsonFileUpload:input_type -> dictybase.api.upload.FileUploadRequest
+	27, // 29: dictybase.annotation.TaggedAnnotationService.OboJSONFileUpload:input_type -> dictybase.api.upload.FileUploadRequest
 	10, // 30: dictybase.annotation.TaggedAnnotationService.GetAnnotation:output_type -> dictybase.annotation.TaggedAnnotation
 	10, // 31: dictybase.annotation.TaggedAnnotationService.GetEntryAnnotation:output_type -> dictybase.annotation.TaggedAnnotation
 	9,  // 32: dictybase.annotation.TaggedAnnotationService.ListAnnotations:output_type -> dictybase.annotation.TaggedAnnotationCollection
@@ -2220,7 +2220,7 @@ var file_dictybase_annotation_annotation_proto_depIdxs = []int32{
 	28, // 39: dictybase.annotation.TaggedAnnotationService.DeleteAnnotationGroup:output_type -> google.protobuf.Empty
 	5,  // 40: dictybase.annotation.TaggedAnnotationService.ListAnnotationGroups:output_type -> dictybase.annotation.TaggedAnnotationGroupCollection
 	11, // 41: dictybase.annotation.TaggedAnnotationService.GetAnnotationTag:output_type -> dictybase.annotation.AnnotationTag
-	29, // 42: dictybase.annotation.TaggedAnnotationService.OboJsonFileUpload:output_type -> dictybase.api.upload.FileUploadResponse
+	29, // 42: dictybase.annotation.TaggedAnnotationService.OboJSONFileUpload:output_type -> dictybase.api.upload.FileUploadResponse
 	30, // [30:43] is the sub-list for method output_type
 	17, // [17:30] is the sub-list for method input_type
 	17, // [17:17] is the sub-list for extension type_name
