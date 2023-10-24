@@ -846,56 +846,59 @@ type ListParameters struct {
 	// The `filter` field restricts the data return by the collection. To use
 	// it, supply one or multiple allowed fields to filter followed
 	// by a filter expression. It uses the following syntax...
-	//        field_name operator expression
+	//
+	//	field_name operator expression
 	//
 	// The following fields of `OrderAttributes` definition are allowed to
 	// be used for filtering
-	//   * item               - Items that are part of order (string).
-	//   * courier            - The courier used for delivery (string)
-	//   * payment            - Type of payment being used (string)
-	//   * status             - The status of the order (string)
-	//   * created_at         - Date the items are ordered (number), can be in the
-	//                          following formats:
-	//                          YYYY-MM-DD, YYYY-MM, YYYY
+	//   - item               - Items that are part of order (string).
+	//   - courier            - The courier used for delivery (string)
+	//   - payment            - Type of payment being used (string)
+	//   - status             - The status of the order (string)
+	//   - created_at         - Date the items are ordered (number), can be in the
+	//     following formats:
+	//     YYYY-MM-DD, YYYY-MM, YYYY
 	//
 	// field_name - Any one of the allowed field_name of the `OrderAttributes` definition.
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
 	//
-	//        Operators for strings
-	//              =~   Contains substring
-	//              !~   Not contains substring
-	//              ===  Equals
-	//              !==  Not equals
+	//	Operators for strings
+	//	      =~   Contains substring
+	//	      !~   Not contains substring
+	//	      ===  Equals
+	//	      !==  Not equals
 	//
-	//        Operators for number
-	//              ==  Equals
-	//              >   Greater than
-	//              <   Less than
-	//              <=  Less than equal to
-	//              >=  Greater than equal to
+	//	Operators for number
+	//	      ==  Equals
+	//	      >   Greater than
+	//	      <   Less than
+	//	      <=  Less than equal to
+	//	      >=  Greater than equal to
 	//
-	//        Operators for dates
-	//              $==  Equals
-	//              $>   Greater than
-	//              $<   Less than
-	//              $<=  Less than equal to
-	//              $>=  Greater than equal to
+	//	Operators for dates
+	//	      $==  Equals
+	//	      $>   Greater than
+	//	      $<   Less than
+	//	      $<=  Less than equal to
+	//	      $>=  Greater than equal to
 	//
 	// expression - The value that will be included or excluded from the
 	// result. URL-reserved characters must be URL-encoded for http request.
 	//
-	//           filter: "status===Shipped"
-	//           filter: "courier===FedEx"
+	//	filter: "status===Shipped"
+	//	filter: "courier===FedEx"
 	//
 	// Filter can be combined using OR or AND boolean logic.
-	//   * The OR is represented using a comma(,).
-	//   * The AND is represented using a semi-colon(;).
-	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "courier===FedEx;payment===Credit"
-	//           filter: "created_at$>=20181201"
+	//   - The OR is represented using a comma(,).
 	//
+	//   - The AND is represented using a semi-colon(;).
+	//
+	//   - AND and OR operators can be combined and AND takes precedence over OR.
+	//
+	//     filter: "courier===FedEx;payment===Credit"
+	//     filter: "created_at$>=20181201"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 

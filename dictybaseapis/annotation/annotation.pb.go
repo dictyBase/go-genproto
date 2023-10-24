@@ -1166,49 +1166,52 @@ type ListParameters struct {
 	// The `filter` field restricts the data return by the collection. To use
 	// it, supply one or multiple allowed fields to filter followed
 	// by a filter expression. It uses the following syntax...
-	//        field_name operator expression
+	//
+	//	field_name operator expression
 	//
 	// The following fields of `AnnotationAttributes` definition are allowed to
 	// be used for filtering
-	//   * entry_id    - The entry that is being annotated (string)
-	//   * value       - The annotation in plain text format (string)
-	//   * created_by  - Email id of the user (string)
-	//   * tag         - Tag name, a term from an ontology (string).
-	//   * ontology    - Ontology that provides the tag names (string).
-	//   * version     - Version no (number).
-	//   * value       - annotation in plain text format (number).
+	//   - entry_id    - The entry that is being annotated (string)
+	//   - value       - The annotation in plain text format (string)
+	//   - created_by  - Email id of the user (string)
+	//   - tag         - Tag name, a term from an ontology (string).
+	//   - ontology    - Ontology that provides the tag names (string).
+	//   - version     - Version no (number).
+	//   - value       - annotation in plain text format (number).
 	//
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
 	//
-	//        Operators for strings
-	//              =~    Contains substring
-	//              !~   Not contains substring
-	//              ===  Equals
-	//              !==  Not equals
+	//	Operators for strings
+	//	      =~    Contains substring
+	//	      !~   Not contains substring
+	//	      ===  Equals
+	//	      !==  Not equals
 	//
-	//        Operators for numbers
-	//              ==  Equals
-	//              !=  Not equals
-	//              >   Greater than
-	//              <   Less than
-	//              =<  Less than equal to
-	//              >=  Greater than equal to
+	//	Operators for numbers
+	//	      ==  Equals
+	//	      !=  Not equals
+	//	      >   Greater than
+	//	      <   Less than
+	//	      =<  Less than equal to
+	//	      >=  Greater than equal to
 	//
 	// expression - The value that will be included or excluded from the
 	// result. URL-reserved characters must be URL-encoded for http request.
 	//
-	//           filter: "created_by==caboose@abc.com"
-	//           filter: "entry_id==DDB_G4839483"
-	//           filter: "value~actin"
+	//	filter: "created_by==caboose@abc.com"
+	//	filter: "entry_id==DDB_G4839483"
+	//	filter: "value~actin"
 	//
 	// Filter can be combined using OR or AND boolean logic.
-	//   * The OR is represented using a comma(,).
-	//   * The AND is represented using a semi-colon(;).
-	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "value~cytoskeletion;tag==cell membrane;ontology==cellular"
+	//   - The OR is represented using a comma(,).
 	//
+	//   - The AND is represented using a semi-colon(;).
+	//
+	//   - AND and OR operators can be combined and AND takes precedence over OR.
+	//
+	//     filter: "value~cytoskeletion;tag==cell membrane;ontology==cellular"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -1278,48 +1281,51 @@ type ListGroupParameters struct {
 	// The `filter` field restricts the data return by the collection. To use
 	// it, supply one or multiple allowed fields to filter followed
 	// by a filter expression. It uses the following syntax...
-	//        field_name operator expression
+	//
+	//	field_name operator expression
 	//
 	// The following fields of `AnnotationAttributes` definition are allowed to
 	// be used for filtering
-	//   * entry_id    - The entry that is being annotated (string)
-	//   * created_by  - Email id of the user (string)
-	//   * tag         - Tag name, a term from an ontology (string).
-	//   * ontology    - Ontology that provides the tag names (string).
-	//   * rank        - Ordering of annotation (number).
+	//   - entry_id    - The entry that is being annotated (string)
+	//   - created_by  - Email id of the user (string)
+	//   - tag         - Tag name, a term from an ontology (string).
+	//   - ontology    - Ontology that provides the tag names (string).
+	//   - rank        - Ordering of annotation (number).
 	//
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
 	//
-	//        Operators for strings
-	//              =~    Contains substring
-	//              !~   Not contains substring
-	//              ===  Equals
-	//              !==  Not equals
+	//	Operators for strings
+	//	      =~    Contains substring
+	//	      !~   Not contains substring
+	//	      ===  Equals
+	//	      !==  Not equals
 	//
-	//        Operators for numbers
-	//              ==  Equals
-	//              !=  Not equals
-	//              >   Greater than
-	//              <   Less than
-	//              =<  Less than equal to
-	//              >=  Greater than equal to
+	//	Operators for numbers
+	//	      ==  Equals
+	//	      !=  Not equals
+	//	      >   Greater than
+	//	      <   Less than
+	//	      =<  Less than equal to
+	//	      >=  Greater than equal to
 	//
 	// expression - The value that will be included or excluded from the
 	// result. URL-reserved characters must be URL-encoded for http request.
 	//
-	//           filter: "created_by==caboose@abc.com"
-	//           filter: "entry_id==DDB_G4839483"
-	//           filter: "tag==growth"
+	//	filter: "created_by==caboose@abc.com"
+	//	filter: "entry_id==DDB_G4839483"
+	//	filter: "tag==growth"
 	//
 	// Filter can be combined using OR or AND boolean logic.
-	//   * The OR is represented using a comma(,).
-	//   * The AND is represented using a semi-colon(;).
-	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "tag~cytoskeletion;entry_id==DDB_G4839783;ontology==cellular"
-	//           filter: "tag~membrane;entry_id==DDB_G4839783;ontology==cellular;rank=0"
+	//   - The OR is represented using a comma(,).
 	//
+	//   - The AND is represented using a semi-colon(;).
+	//
+	//   - AND and OR operators can be combined and AND takes precedence over OR.
+	//
+	//     filter: "tag~cytoskeletion;entry_id==DDB_G4839783;ontology==cellular"
+	//     filter: "tag~membrane;entry_id==DDB_G4839783;ontology==cellular;rank=0"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 

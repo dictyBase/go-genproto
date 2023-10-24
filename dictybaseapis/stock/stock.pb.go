@@ -1995,68 +1995,71 @@ type StockParameters struct {
 	// The `filter` field restricts the data return by the collection. To use
 	// it, supply one or multiple allowed fields to filter followed
 	// by a filter expression. It uses the following syntax...
-	//        field_name operator expression
+	//
+	//	field_name operator expression
 	//
 	// The following fields of `StockAttributes` definition are allowed to
 	// be used for filtering
-	//   * depositor          - Depositor of the stock (string)
-	//   * parent             - Parental strain (string) (currently not implemented)
-	//   * plasmid            - Related plasmid for the strain (string)
-	//   * species            - The species of the strain (string)
-	//   * summary            - Summary of the stock (string)
-	//   * name               - Name used for strain (string), searches in the "names" attribute
-	//   * descriptor         - Descriptor for the strain (string), searches in the "label" attribute
-	//   * plasmid_name       - Name used for plasmid (string)
-	//   * created_at         - Date the stock was created (number), can be in the
-	//                          following formats:
-	//                          YYYY-MM-DD, YYYY-MM, YYYY
-	//   * updated_at         - Date the stock was updated (number), can be in the
-	//                          following formats:
-	//                          YYYY-MM-DD, YYYY-MM, YYYY
+	//   - depositor          - Depositor of the stock (string)
+	//   - parent             - Parental strain (string) (currently not implemented)
+	//   - plasmid            - Related plasmid for the strain (string)
+	//   - species            - The species of the strain (string)
+	//   - summary            - Summary of the stock (string)
+	//   - name               - Name used for strain (string), searches in the "names" attribute
+	//   - descriptor         - Descriptor for the strain (string), searches in the "label" attribute
+	//   - plasmid_name       - Name used for plasmid (string)
+	//   - created_at         - Date the stock was created (number), can be in the
+	//     following formats:
+	//     YYYY-MM-DD, YYYY-MM, YYYY
+	//   - updated_at         - Date the stock was updated (number), can be in the
+	//     following formats:
+	//     YYYY-MM-DD, YYYY-MM, YYYY
 	//
 	// field_name - Any one of the allowed field_name of the `StockAttributes` definition.
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
 	//
-	//        Operators for strings
-	//              =~   Contains substring
-	//              !~   Not contains substring
-	//              ===  Equals
-	//              !=   Not equals
+	//	Operators for strings
+	//	      =~   Contains substring
+	//	      !~   Not contains substring
+	//	      ===  Equals
+	//	      !=   Not equals
 	//
-	//        Operators for number
-	//              ==  Equals
-	//              >   Greater than
-	//              <   Less than
-	//              <=  Less than equal to
-	//              >=  Greater than equal to
+	//	Operators for number
+	//	      ==  Equals
+	//	      >   Greater than
+	//	      <   Less than
+	//	      <=  Less than equal to
+	//	      >=  Greater than equal to
 	//
-	//        Operators for dates
-	//              $==  Equals
-	//              $>   Greater than
-	//              $<   Less than
-	//              $<=  Less than equal to
-	//              $>=  Greater than equal to
+	//	Operators for dates
+	//	      $==  Equals
+	//	      $>   Greater than
+	//	      $<   Less than
+	//	      $<=  Less than equal to
+	//	      $>=  Greater than equal to
 	//
-	//        Operators for items in arrays
-	//              @=~   Contains substring
-	//              @!~   Not contains substring (not implemented yet)
-	//              @==   Equals
-	//              @!=   Not equals
+	//	Operators for items in arrays
+	//	      @=~   Contains substring
+	//	      @!~   Not contains substring (not implemented yet)
+	//	      @==   Equals
+	//	      @!=   Not equals
 	//
 	// expression - The value that will be included or excluded from the
 	// result. URL-reserved characters must be URL-encoded for http request.
 	//
-	//           filter: "created_at$>=2018-12-01"
-	//           filter: "depositor===Costanza"
+	//	filter: "created_at$>=2018-12-01"
+	//	filter: "depositor===Costanza"
 	//
 	// Filter can be combined using OR or AND boolean logic.
-	//   * The OR is represented using a comma(,).
-	//   * The AND is represented using a semi-colon(;).
-	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "depositor===Benes;created_at$>=2018-12-01"
+	//   - The OR is represented using a comma(,).
 	//
+	//   - The AND is represented using a semi-colon(;).
+	//
+	//   - AND and OR operators can be combined and AND takes precedence over OR.
+	//
+	//     filter: "depositor===Benes;created_at$>=2018-12-01"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 

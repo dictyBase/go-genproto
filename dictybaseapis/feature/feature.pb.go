@@ -197,34 +197,34 @@ type LocatedFeatureFilter struct {
 	// combination of custom start and end coordinates of reference feature. To
 	// use it, supply the field name followed by the filter expression. It uses
 	// the following syntax...
-	//        field_name operator value
+	//
+	//	field_name operator value
 	//
 	// field_name - Any one of the allowed field name that are given below.
 	//
-	//   * start - leftmost boundary of location (number).
-	//   * end   - rightmost boundary of location (number).
+	//   - start - leftmost boundary of location (number).
+	//   - end   - rightmost boundary of location (number).
 	//
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following and all of them should be URL-encoded for http request.
 	//
-	//              >   Greater than
-	//              <   Less than
-	//              =<  Less than equal to
-	//              >=  Greater than equal to
+	//	>   Greater than
+	//	<   Less than
+	//	=<  Less than equal to
+	//	>=  Greater than equal to
 	//
 	// value - The value must be a number here. If only one of the value is
 	// given, the coordinate of reference feature is for the other by default.
 	// URL-reserved
 	// characters must be URL-encoded for http request.
 	//
-	//           filter: "start>=100"
-	//           filter: "end<789"
+	//	filter: "start>=100"
+	//	filter: "end<789"
 	//
 	// Filter can be combined using AND boolean logic. The AND is represented
 	// using a semi-colon(;).
 	//
-	//           filter: "start>=89;end<=7430"
-	//
+	//	filter: "start>=89;end<=7430"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
@@ -1814,46 +1814,49 @@ type ListParameters struct {
 	// The `filter` field restricts the data return by the collection. To use
 	// it, supply one or multiple allowed fields to filter followed
 	// by a filter expression. It uses the following syntax...
-	//        field_name operator value
+	//
+	//	field_name operator value
 	//
 	// field_name - Any one of the allowed field name that are given below.
 	//
-	//   * name      - feature name (string).
-	//   * type      - The biological type of feature, generally a sequence ontology term (string)
-	//   * species   - Organism species (string)
-	//   * genus     - Organism genus (string)
-	//   * strain    - Strain name of the organism (string)
-	//   * taxon_id  - Taxon identifier (string)
-	//   * obsolete  - Live or retired feature (bool)
-	//   * analysis  - Feature as a result of analysis (bool)
+	//   - name      - feature name (string).
+	//   - type      - The biological type of feature, generally a sequence ontology term (string)
+	//   - species   - Organism species (string)
+	//   - genus     - Organism genus (string)
+	//   - strain    - Strain name of the organism (string)
+	//   - taxon_id  - Taxon identifier (string)
+	//   - obsolete  - Live or retired feature (bool)
+	//   - analysis  - Feature as a result of analysis (bool)
 	//
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
 	//
-	//              ==  Equals (URL encoding is %3D%3D)
-	//              !=  Not equals
-	//              ~  Contains/matches substring (case insensitive)
-	//              !~  Not contains substring (case insensitive)
-	//              >   Greater than
-	//              <   Less than
-	//              =<  Less than equal to
-	//              >=  Greater than equal to
+	//	==  Equals (URL encoding is %3D%3D)
+	//	!=  Not equals
+	//	~  Contains/matches substring (case insensitive)
+	//	!~  Not contains substring (case insensitive)
+	//	>   Greater than
+	//	<   Less than
+	//	=<  Less than equal to
+	//	>=  Greater than equal to
 	//
 	// value - The value must be a string, a number or a boolean. URL-reserved
 	// characters must be URL-encoded for http request.
 	//
-	//           filter: "name==pcA"
-	//           filter: "name~scr"
-	//           filter: "obsolete==true"
+	//	filter: "name==pcA"
+	//	filter: "name~scr"
+	//	filter: "obsolete==true"
 	//
 	// Filter can be combined using OR or AND boolean logic.
-	//   * The OR is represented using a comma(,).
-	//   * The AND is represented using a semi-colon(;).
-	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "name==pcA;obsolete==true;type=exon"
-	//           filter: "name==transcription,name==gtx"
+	//   - The OR is represented using a comma(,).
 	//
+	//   - The AND is represented using a semi-colon(;).
+	//
+	//   - AND and OR operators can be combined and AND takes precedence over OR.
+	//
+	//     filter: "name==pcA;obsolete==true;type=exon"
+	//     filter: "name==transcription,name==gtx"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 

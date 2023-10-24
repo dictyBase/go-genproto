@@ -544,52 +544,56 @@ type ListPublicationParameters struct {
 	// The `filter` field restricts the data return by the collection. To use
 	// it, supply one or multiple allowed fields to filter followed
 	// by a filter expression. It uses the following syntax...
-	//        field_name operator expression
+	//
+	//	field_name operator expression
 	//
 	// The following fields of `PublicationAttributes` definition are allowed to
 	// be used for filtering
-	//   * journal            - Journal where the publication was published (string)
-	//   * year               - Year publication was published (string)
-	//   * pub_date           - Date of publication (string)
-	//   * pub_type           - Type of publication (string)
-	//   * source             - Source of the publication (string)
-	//   * issue              - Issue of the publication (string)
-	//   * status             - Status of the publication (string)
-	//   * author             - Authors of the publication (string)
+	//   - journal            - Journal where the publication was published (string)
+	//   - year               - Year publication was published (string)
+	//   - pub_date           - Date of publication (string)
+	//   - pub_type           - Type of publication (string)
+	//   - source             - Source of the publication (string)
+	//   - issue              - Issue of the publication (string)
+	//   - status             - Status of the publication (string)
+	//   - author             - Authors of the publication (string)
 	//
 	// field_name - Any one of the allowed field_name of the `PublicationAttributes` definition.
 	// operator - Defines the type of filter match to use. It could be any of
 	// the following four and all of them should be URL-encoded for http request.
 	//
-	//        Operators for strings
-	//              =~   Contains substring
-	//              !~   Not contains substring
-	//              ===  Equals
-	//              !==  Not equals
+	//	Operators for strings
+	//	      =~   Contains substring
+	//	      !~   Not contains substring
+	//	      ===  Equals
+	//	      !==  Not equals
 	//
-	//        Operators for number
-	//              ==  Equals
-	//              >   Greater than
-	//              <   Less than
-	//              =<  Less than equal to
-	//              >=  Greater than equal to
+	//	Operators for number
+	//	      ==  Equals
+	//	      >   Greater than
+	//	      <   Less than
+	//	      =<  Less than equal to
+	//	      >=  Greater than equal to
 	//
 	// expression - The value that will be included or excluded from the
 	// result. URL-reserved characters must be URL-encoded for http request.
 	//
-	//           filter: "pub_type===journal_article"
-	//           filter: "source===pubmed"
+	//	filter: "pub_type===journal_article"
+	//	filter: "source===pubmed"
 	//
 	// Filter can be combined using OR or AND boolean logic.
-	//   * The OR is represented using a comma(,).
-	//   * The AND is represented using a semi-colon(;).
-	//   * AND and OR operators can be combined and AND takes precedence over OR.
 	//
-	//           filter: "year==2008;journal===Genesis"
+	//   - The OR is represented using a comma(,).
+	//
+	//   - The AND is represented using a semi-colon(;).
+	//
+	//   - AND and OR operators can be combined and AND takes precedence over OR.
+	//
+	//     filter: "year==2008;journal===Genesis"
 	//
 	// Can also accept multiple authors.
-	//           filter: "author===Vandelay;author===VanNostrand"
 	//
+	//	filter: "author===Vandelay;author===VanNostrand"
 	Filter string `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
