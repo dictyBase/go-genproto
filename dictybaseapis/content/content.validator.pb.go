@@ -82,6 +82,9 @@ func (this *NewContentAttributes) Validate() error {
 	if this.Namespace == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Namespace", fmt.Errorf(`value '%v' must not be an empty string`, this.Namespace))
 	}
+	if this.Slug == "" {
+		return github_com_mwitkow_go_proto_validators.FieldError("Slug", fmt.Errorf(`value '%v' must not be an empty string`, this.Slug))
+	}
 	return nil
 }
 func (this *StoreContentRequest) Validate() error {
