@@ -7,11 +7,10 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/jsonapi"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 	_ "github.com/mwitkow/go-proto-validators"
 	_ "google.golang.org/protobuf/types/known/emptypb"
 	_ "google.golang.org/protobuf/types/known/fieldmaskpb"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
 	regexp "regexp"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
@@ -27,22 +26,12 @@ func (this *Content) Validate() error {
 			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
 		}
 	}
-	if this.Links != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Links); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Links", err)
-		}
-	}
 	return nil
 }
 func (this *ContentData) Validate() error {
 	if this.Attributes != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
-		}
-	}
-	if this.Links != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Links); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Links", err)
 		}
 	}
 	return nil
@@ -126,6 +115,38 @@ func (this *UpdateContentRequest) Validate() error {
 	return nil
 }
 func (this *UpdateContentRequest_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *ListParameters) Validate() error {
+	return nil
+}
+func (this *Meta) Validate() error {
+	return nil
+}
+func (this *ContentCollection) Validate() error {
+	for _, item := range this.Data {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+			}
+		}
+	}
+	if nil == this.Meta {
+		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
+	}
+	if this.Meta != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
+		}
+	}
+	return nil
+}
+func (this *ContentCollection_Data) Validate() error {
 	if this.Attributes != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
