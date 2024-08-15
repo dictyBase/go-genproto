@@ -25,7 +25,7 @@ const (
 	ContentService_StoreContent_FullMethodName     = "/dictybase.content.ContentService/StoreContent"
 	ContentService_UpdateContent_FullMethodName    = "/dictybase.content.ContentService/UpdateContent"
 	ContentService_DeleteContent_FullMethodName    = "/dictybase.content.ContentService/DeleteContent"
-	ContentService_ListAnnotations_FullMethodName  = "/dictybase.content.ContentService/ListAnnotations"
+	ContentService_ListContents_FullMethodName     = "/dictybase.content.ContentService/ListContents"
 )
 
 // ContentServiceClient is the client API for ContentService service.
@@ -42,7 +42,7 @@ type ContentServiceClient interface {
 	// Delete an existing page along with its content
 	DeleteContent(ctx context.Context, in *ContentIdRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// List contents using pagination, ten entries are retrieved by default
-	ListAnnotations(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*ContentCollection, error)
+	ListContents(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*ContentCollection, error)
 }
 
 type contentServiceClient struct {
@@ -98,9 +98,9 @@ func (c *contentServiceClient) DeleteContent(ctx context.Context, in *ContentIdR
 	return out, nil
 }
 
-func (c *contentServiceClient) ListAnnotations(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*ContentCollection, error) {
+func (c *contentServiceClient) ListContents(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*ContentCollection, error) {
 	out := new(ContentCollection)
-	err := c.cc.Invoke(ctx, ContentService_ListAnnotations_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ContentService_ListContents_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +121,7 @@ type ContentServiceServer interface {
 	// Delete an existing page along with its content
 	DeleteContent(context.Context, *ContentIdRequest) (*emptypb.Empty, error)
 	// List contents using pagination, ten entries are retrieved by default
-	ListAnnotations(context.Context, *ListParameters) (*ContentCollection, error)
+	ListContents(context.Context, *ListParameters) (*ContentCollection, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -144,8 +144,8 @@ func (UnimplementedContentServiceServer) UpdateContent(context.Context, *UpdateC
 func (UnimplementedContentServiceServer) DeleteContent(context.Context, *ContentIdRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteContent not implemented")
 }
-func (UnimplementedContentServiceServer) ListAnnotations(context.Context, *ListParameters) (*ContentCollection, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAnnotations not implemented")
+func (UnimplementedContentServiceServer) ListContents(context.Context, *ListParameters) (*ContentCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListContents not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
 
@@ -250,20 +250,20 @@ func _ContentService_DeleteContent_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ContentService_ListAnnotations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _ContentService_ListContents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListParameters)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContentServiceServer).ListAnnotations(ctx, in)
+		return srv.(ContentServiceServer).ListContents(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContentService_ListAnnotations_FullMethodName,
+		FullMethod: ContentService_ListContents_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContentServiceServer).ListAnnotations(ctx, req.(*ListParameters))
+		return srv.(ContentServiceServer).ListContents(ctx, req.(*ListParameters))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -296,8 +296,8 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ContentService_DeleteContent_Handler,
 		},
 		{
-			MethodName: "ListAnnotations",
-			Handler:    _ContentService_ListAnnotations_Handler,
+			MethodName: "ListContents",
+			Handler:    _ContentService_ListContents_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
