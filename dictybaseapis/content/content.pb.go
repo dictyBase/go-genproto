@@ -620,7 +620,7 @@ type ListParameters struct {
 	//
 	//	field_name operator expression
 	//
-	// The following fields of `AnnotationAttributes` definition are allowed to
+	// The following fields of `ContentAttributes` definition are allowed to
 	// be used for filtering
 	//   - name        - page name (string).
 	//   - slug        - page slug (string).
