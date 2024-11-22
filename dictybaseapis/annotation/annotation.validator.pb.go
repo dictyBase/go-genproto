@@ -7,10 +7,10 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
-	_ "google.golang.org/protobuf/types/known/emptypb"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
 	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
 	_ "github.com/mwitkow/go-proto-validators"
+	_ "google.golang.org/protobuf/types/known/emptypb"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -288,25 +288,6 @@ func (this *ListGroupParameters) Validate() error {
 	return nil
 }
 func (this *FeatureAnnotation) Validate() error {
-	if nil == this.Data {
-		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
-	}
-	if this.Data != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
-		}
-	}
-	return nil
-}
-func (this *FeatureAnnotation_Data) Validate() error {
-	if this.Attributes != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
-		}
-	}
-	return nil
-}
-func (this *FeatureAnnotationAttributes) Validate() error {
 	if nil == this.CreatedAt {
 		return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", fmt.Errorf("message must exist"))
 	}
@@ -336,25 +317,6 @@ func (this *Dbxref) Validate() error {
 	return nil
 }
 func (this *FeatureAnnotationUpdate) Validate() error {
-	if nil == this.Data {
-		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
-	}
-	if this.Data != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
-		}
-	}
-	return nil
-}
-func (this *FeatureAnnotationUpdate_Data) Validate() error {
-	if this.Attributes != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
-		}
-	}
-	return nil
-}
-func (this *FeatureAnnotationUpdateAttributes) Validate() error {
 	for _, item := range this.Dbxrefs {
 		if item != nil {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
@@ -365,20 +327,27 @@ func (this *FeatureAnnotationUpdateAttributes) Validate() error {
 	return nil
 }
 func (this *NewFeatureAnnotation) Validate() error {
-	if nil == this.Data {
-		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
+	if nil == this.CreatedAt {
+		return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", fmt.Errorf("message must exist"))
 	}
-	if this.Data != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+	if this.CreatedAt != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.CreatedAt); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", err)
 		}
 	}
-	return nil
-}
-func (this *NewFeatureAnnotation_Data) Validate() error {
-	if this.Attributes != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+	if nil == this.UpdatedAt {
+		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", fmt.Errorf("message must exist"))
+	}
+	if this.UpdatedAt != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.UpdatedAt); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", err)
+		}
+	}
+	for _, item := range this.Dbxrefs {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Dbxrefs", err)
+			}
 		}
 	}
 	return nil
