@@ -44,6 +44,20 @@ func (this *FeatureAnnotationAttributes) Validate() error {
 			}
 		}
 	}
+	for _, item := range this.Dblinks {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Dblinks", err)
+			}
+		}
+	}
+	for _, item := range this.Properties {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Properties", err)
+			}
+		}
+	}
 	return nil
 }
 func (this *FeatureAnnotationUpdate) Validate() error {
@@ -76,6 +90,12 @@ func (this *FeatureAnnotationId) Validate() error {
 	return nil
 }
 func (this *DeleteFeatureAnnotationRequest) Validate() error {
+	return nil
+}
+func (this *DbLink) Validate() error {
+	return nil
+}
+func (this *TagProperty) Validate() error {
 	return nil
 }
 func (this *Dbxref) Validate() error {
