@@ -1,6 +1,7 @@
 module github.com/dictyBase/go-genproto
 
 go 1.22.5
+toolchain go1.23.7
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.4-20241127180247-a33202765966.1
@@ -12,8 +13,8 @@ require (
 
 require (
 	github.com/gogo/protobuf v1.3.0 // indirect
-	golang.org/x/net v0.28.0 // indirect
-	golang.org/x/sys v0.24.0 // indirect
-	golang.org/x/text v0.17.0 // indirect
+	golang.org/x/net v0.36.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
+	golang.org/x/text v0.22.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142 // indirect
 )
