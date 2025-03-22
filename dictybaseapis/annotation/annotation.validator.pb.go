@@ -7,10 +7,10 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
+	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
 	_ "google.golang.org/protobuf/types/known/emptypb"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
-	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
-	_ "github.com/mwitkow/go-proto-validators"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -20,30 +20,15 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 func (this *AnnotationGroupId) Validate() error {
-	if this.Id == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
-	}
-	if this.GroupId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("GroupId", fmt.Errorf(`value '%v' must not be an empty string`, this.GroupId))
-	}
 	return nil
 }
 func (this *AnnotationId) Validate() error {
-	if this.Id == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
-	}
 	return nil
 }
 func (this *AnnotationIdList) Validate() error {
-	if len(this.Ids) < 1 {
-		return github_com_mwitkow_go_proto_validators.FieldError("Ids", fmt.Errorf(`value '%v' must contain at least 1 elements`, this.Ids))
-	}
 	return nil
 }
 func (this *GroupEntryId) Validate() error {
-	if this.GroupId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("GroupId", fmt.Errorf(`value '%v' must not be an empty string`, this.GroupId))
-	}
 	return nil
 }
 func (this *TaggedAnnotationGroup) Validate() error {
@@ -54,16 +39,10 @@ func (this *TaggedAnnotationGroup) Validate() error {
 			}
 		}
 	}
-	if nil == this.CreatedAt {
-		return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", fmt.Errorf("message must exist"))
-	}
 	if this.CreatedAt != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.CreatedAt); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", err)
 		}
-	}
-	if nil == this.UpdatedAt {
-		return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", fmt.Errorf("message must exist"))
 	}
 	if this.UpdatedAt != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.UpdatedAt); err != nil {
@@ -88,9 +67,6 @@ func (this *TaggedAnnotationGroupCollection) Validate() error {
 			}
 		}
 	}
-	if nil == this.Meta {
-		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
-	}
 	if this.Meta != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
@@ -107,30 +83,12 @@ func (this *TaggedAnnotationGroupCollection_Data) Validate() error {
 	return nil
 }
 func (this *EntryAnnotationRequest) Validate() error {
-	if this.Tag == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Tag", fmt.Errorf(`value '%v' must not be an empty string`, this.Tag))
-	}
-	if this.EntryId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
-	}
-	if this.Ontology == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Ontology", fmt.Errorf(`value '%v' must not be an empty string`, this.Ontology))
-	}
 	return nil
 }
 func (this *DeleteAnnotationRequest) Validate() error {
-	if this.Id == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
-	}
 	return nil
 }
 func (this *TagRequest) Validate() error {
-	if this.Name == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`value '%v' must not be an empty string`, this.Name))
-	}
-	if this.Ontology == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Ontology", fmt.Errorf(`value '%v' must not be an empty string`, this.Ontology))
-	}
 	return nil
 }
 func (this *TaggedAnnotationCollection) Validate() error {
@@ -140,9 +98,6 @@ func (this *TaggedAnnotationCollection) Validate() error {
 				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
 			}
 		}
-	}
-	if nil == this.Meta {
-		return github_com_mwitkow_go_proto_validators.FieldError("Meta", fmt.Errorf("message must exist"))
 	}
 	if this.Meta != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
@@ -160,9 +115,6 @@ func (this *TaggedAnnotationCollection_Data) Validate() error {
 	return nil
 }
 func (this *TaggedAnnotation) Validate() error {
-	if nil == this.Data {
-		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
-	}
 	if this.Data != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
@@ -182,38 +134,14 @@ func (this *AnnotationTag) Validate() error {
 	return nil
 }
 func (this *TaggedAnnotationAttributes) Validate() error {
-	if this.Value == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Value", fmt.Errorf(`value '%v' must not be an empty string`, this.Value))
-	}
-	if this.CreatedBy == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
-	}
-	if nil == this.CreatedAt {
-		return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", fmt.Errorf("message must exist"))
-	}
 	if this.CreatedAt != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.CreatedAt); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", err)
 		}
 	}
-	if this.Tag == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Tag", fmt.Errorf(`value '%v' must not be an empty string`, this.Tag))
-	}
-	if !(this.Version > 0) {
-		return github_com_mwitkow_go_proto_validators.FieldError("Version", fmt.Errorf(`value '%v' must be greater than '0'`, this.Version))
-	}
-	if this.EntryId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
-	}
-	if this.Ontology == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Ontology", fmt.Errorf(`value '%v' must not be an empty string`, this.Ontology))
-	}
 	return nil
 }
 func (this *NewTaggedAnnotation) Validate() error {
-	if nil == this.Data {
-		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
-	}
 	if this.Data != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
@@ -230,27 +158,9 @@ func (this *NewTaggedAnnotation_Data) Validate() error {
 	return nil
 }
 func (this *NewTaggedAnnotationAttributes) Validate() error {
-	if this.Value == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Value", fmt.Errorf(`value '%v' must not be an empty string`, this.Value))
-	}
-	if this.CreatedBy == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
-	}
-	if this.Tag == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Tag", fmt.Errorf(`value '%v' must not be an empty string`, this.Tag))
-	}
-	if this.EntryId == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EntryId", fmt.Errorf(`value '%v' must not be an empty string`, this.EntryId))
-	}
-	if this.Ontology == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Ontology", fmt.Errorf(`value '%v' must not be an empty string`, this.Ontology))
-	}
 	return nil
 }
 func (this *TaggedAnnotationUpdate) Validate() error {
-	if nil == this.Data {
-		return github_com_mwitkow_go_proto_validators.FieldError("Data", fmt.Errorf("message must exist"))
-	}
 	if this.Data != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
@@ -259,9 +169,6 @@ func (this *TaggedAnnotationUpdate) Validate() error {
 	return nil
 }
 func (this *TaggedAnnotationUpdate_Data) Validate() error {
-	if this.Id == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
-	}
 	if this.Attributes != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
@@ -270,15 +177,6 @@ func (this *TaggedAnnotationUpdate_Data) Validate() error {
 	return nil
 }
 func (this *TaggedAnnotationUpdateAttributes) Validate() error {
-	if this.Value == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Value", fmt.Errorf(`value '%v' must not be an empty string`, this.Value))
-	}
-	if this.EditableValue == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("EditableValue", fmt.Errorf(`value '%v' must not be an empty string`, this.EditableValue))
-	}
-	if this.CreatedBy == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("CreatedBy", fmt.Errorf(`value '%v' must not be an empty string`, this.CreatedBy))
-	}
 	return nil
 }
 func (this *ListParameters) Validate() error {
