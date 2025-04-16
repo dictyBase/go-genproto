@@ -20,13 +20,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	FeatureAnnotationService_CreateFeatureAnnotation_FullMethodName = "/dictybase.feature_annotation.FeatureAnnotationService/CreateFeatureAnnotation"
-	FeatureAnnotationService_GetFeatureAnnotation_FullMethodName    = "/dictybase.feature_annotation.FeatureAnnotationService/GetFeatureAnnotation"
-	FeatureAnnotationService_UpdateFeatureAnnotation_FullMethodName = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateFeatureAnnotation"
-	FeatureAnnotationService_DeleteFeatureAnnotation_FullMethodName = "/dictybase.feature_annotation.FeatureAnnotationService/DeleteFeatureAnnotation"
-	FeatureAnnotationService_AddTag_FullMethodName                  = "/dictybase.feature_annotation.FeatureAnnotationService/AddTag"
-	FeatureAnnotationService_UpdateTag_FullMethodName               = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateTag"
-	FeatureAnnotationService_RemoveTag_FullMethodName               = "/dictybase.feature_annotation.FeatureAnnotationService/RemoveTag"
+	FeatureAnnotationService_CreateFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/CreateFeatureAnnotation"
+	FeatureAnnotationService_GetFeatureAnnotation_FullMethodName             = "/dictybase.feature_annotation.FeatureAnnotationService/GetFeatureAnnotation"
+	FeatureAnnotationService_UpdateFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateFeatureAnnotation"
+	FeatureAnnotationService_DeleteFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/DeleteFeatureAnnotation"
+	FeatureAnnotationService_AddTag_FullMethodName                           = "/dictybase.feature_annotation.FeatureAnnotationService/AddTag"
+	FeatureAnnotationService_UpdateTag_FullMethodName                        = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateTag"
+	FeatureAnnotationService_RemoveTag_FullMethodName                        = "/dictybase.feature_annotation.FeatureAnnotationService/RemoveTag"
+	FeatureAnnotationService_ListFeatureAnnotationsByPubmedId_FullMethodName = "/dictybase.feature_annotation.FeatureAnnotationService/ListFeatureAnnotationsByPubmedId"
+	FeatureAnnotationService_ListFeatureAnnotationsByDOI_FullMethodName      = "/dictybase.feature_annotation.FeatureAnnotationService/ListFeatureAnnotationsByDOI"
 )
 
 // FeatureAnnotationServiceClient is the client API for FeatureAnnotationService service.
@@ -47,6 +49,10 @@ type FeatureAnnotationServiceClient interface {
 	UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Remove a tag from a feature annotation
 	RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Retrieves a list of feature annotations by PubMed ID
+	ListFeatureAnnotationsByPubmedId(ctx context.Context, in *PubmedId, opts ...grpc.CallOption) (*FeatureAnnotationCollection, error)
+	// Retrieves a list of feature annotations by DOI (Digital Object Identifier)
+	ListFeatureAnnotationsByDOI(ctx context.Context, in *DOI, opts ...grpc.CallOption) (*FeatureAnnotationCollection, error)
 }
 
 type featureAnnotationServiceClient struct {
@@ -120,6 +126,24 @@ func (c *featureAnnotationServiceClient) RemoveTag(ctx context.Context, in *Remo
 	return out, nil
 }
 
+func (c *featureAnnotationServiceClient) ListFeatureAnnotationsByPubmedId(ctx context.Context, in *PubmedId, opts ...grpc.CallOption) (*FeatureAnnotationCollection, error) {
+	out := new(FeatureAnnotationCollection)
+	err := c.cc.Invoke(ctx, FeatureAnnotationService_ListFeatureAnnotationsByPubmedId_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *featureAnnotationServiceClient) ListFeatureAnnotationsByDOI(ctx context.Context, in *DOI, opts ...grpc.CallOption) (*FeatureAnnotationCollection, error) {
+	out := new(FeatureAnnotationCollection)
+	err := c.cc.Invoke(ctx, FeatureAnnotationService_ListFeatureAnnotationsByDOI_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FeatureAnnotationServiceServer is the server API for FeatureAnnotationService service.
 // All implementations must embed UnimplementedFeatureAnnotationServiceServer
 // for forward compatibility
@@ -138,6 +162,10 @@ type FeatureAnnotationServiceServer interface {
 	UpdateTag(context.Context, *UpdateTagRequest) (*FeatureAnnotation, error)
 	// Remove a tag from a feature annotation
 	RemoveTag(context.Context, *RemoveTagRequest) (*FeatureAnnotation, error)
+	// Retrieves a list of feature annotations by PubMed ID
+	ListFeatureAnnotationsByPubmedId(context.Context, *PubmedId) (*FeatureAnnotationCollection, error)
+	// Retrieves a list of feature annotations by DOI (Digital Object Identifier)
+	ListFeatureAnnotationsByDOI(context.Context, *DOI) (*FeatureAnnotationCollection, error)
 	mustEmbedUnimplementedFeatureAnnotationServiceServer()
 }
 
@@ -165,6 +193,12 @@ func (UnimplementedFeatureAnnotationServiceServer) UpdateTag(context.Context, *U
 }
 func (UnimplementedFeatureAnnotationServiceServer) RemoveTag(context.Context, *RemoveTagRequest) (*FeatureAnnotation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveTag not implemented")
+}
+func (UnimplementedFeatureAnnotationServiceServer) ListFeatureAnnotationsByPubmedId(context.Context, *PubmedId) (*FeatureAnnotationCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFeatureAnnotationsByPubmedId not implemented")
+}
+func (UnimplementedFeatureAnnotationServiceServer) ListFeatureAnnotationsByDOI(context.Context, *DOI) (*FeatureAnnotationCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFeatureAnnotationsByDOI not implemented")
 }
 func (UnimplementedFeatureAnnotationServiceServer) mustEmbedUnimplementedFeatureAnnotationServiceServer() {
 }
@@ -306,6 +340,42 @@ func _FeatureAnnotationService_RemoveTag_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FeatureAnnotationService_ListFeatureAnnotationsByPubmedId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PubmedId)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeatureAnnotationServiceServer).ListFeatureAnnotationsByPubmedId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeatureAnnotationService_ListFeatureAnnotationsByPubmedId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeatureAnnotationServiceServer).ListFeatureAnnotationsByPubmedId(ctx, req.(*PubmedId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeatureAnnotationService_ListFeatureAnnotationsByDOI_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DOI)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeatureAnnotationServiceServer).ListFeatureAnnotationsByDOI(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeatureAnnotationService_ListFeatureAnnotationsByDOI_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeatureAnnotationServiceServer).ListFeatureAnnotationsByDOI(ctx, req.(*DOI))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FeatureAnnotationService_ServiceDesc is the grpc.ServiceDesc for FeatureAnnotationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -340,6 +410,14 @@ var FeatureAnnotationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveTag",
 			Handler:    _FeatureAnnotationService_RemoveTag_Handler,
+		},
+		{
+			MethodName: "ListFeatureAnnotationsByPubmedId",
+			Handler:    _FeatureAnnotationService_ListFeatureAnnotationsByPubmedId_Handler,
+		},
+		{
+			MethodName: "ListFeatureAnnotationsByDOI",
+			Handler:    _FeatureAnnotationService_ListFeatureAnnotationsByDOI_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
