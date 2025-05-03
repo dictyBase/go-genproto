@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<codebase>
+  <summary>
+    <description>
+      This code represents Go gRPC protobuf generated code for feature annotation and annotation services
+      used in dictyBase, a model organism database. It includes data models and service definitions for
+      annotating biological features and managing annotations with tags derived from ontologies.
+    </description>
+    <modules>
+      <module name="feature_annotation">
+        <purpose>
+          Provides data structures and services for feature annotations in a biological context.
+          Includes support for creating, retrieving, updating, and deleting feature annotations,
+          managing tags, and filtering annotations by various criteria.
+        </purpose>
+        <key_components>
+          <component name="FeatureAnnotationService">
+            Service for managing feature annotations including CRUD operations and specialized queries.
+          </component>
+          <component name="FeatureAnnotation">
+            Core data structure representing an annotation with its metadata.
+          </component>
+          <component name="OrganismFeatureService">
+            Service for managing relations between features and organisms.
+          </component>
+        </key_components>
+      </module>
+      <module name="annotation">
+        <purpose>
+          Provides general annotation capabilities including tagging, grouping, and querying annotations.
+          Includes support for managing annotation collections and working with ontology terms.
+        </purpose>
+        <key_components>
+          <component name="TaggedAnnotationService">
+            Service for managing tagged annotations with support for grouping and ontology integration.
+          </component>
+          <component name="TaggedAnnotation">
+            Core data structure representing an annotation with ontology-based tags.
+          </component>
+          <component name="TaggedAnnotationGroup">
+            Grouping mechanism for related annotations.
+          </component>
+        </key_components>
+      </module>
+    </modules>
+  </summary>
+  
+  <directory_structure>
+    <directory name="dictybaseapis">
+      <directory name="annotation">
+        <file name="annotation.pb.go"/>
+        <file name="annotation.validator.pb.go"/>
+        <file name="annotation_grpc.pb.go"/>
+      </directory>
+      <directory name="feature_annotation">
+        <file name="feature_annotation.pb.go"/>
+        <file name="feature_annotation.validator.pb.go"/>
+        <file name="feature_annotation_grpc.pb.go"/>
+        <file name="feature_annotation_organism.pb.go"/>
+        <file name="feature_annotation_organism.validator.pb.go"/>
+        <file name="feature_annotation_organism_grpc.pb.go"/>
+      </directory>
+    </directory>
+  </directory_structure>
+  
+  <files>
+    <!-- Files content from repomix output has been included here -->
+  </files>
+  
+  <services>
+    <service name="FeatureAnnotationService">
+      <description>
+        Service for managing feature annotations in a biological context.
+        Provides CRUD operations and specialized query methods.
+      </description>
+      <methods>
+        <method name="CreateFeatureAnnotation">
+          <description>Create a feature annotation</description>
+          <input>NewFeatureAnnotation</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="GetFeatureAnnotation">
+          <description>Retrieves the specified feature annotation</description>
+          <input>FeatureAnnotationId</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="GetFeatureAnnotationByName">
+          <description>Retrieves the specified feature annotation by its name</description>
+          <input>FeatureName</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="UpdateFeatureAnnotation">
+          <description>Update an existing feature annotation. Any given tag will be appended to the existing tags</description>
+          <input>FeatureAnnotationUpdate</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="DeleteFeatureAnnotation">
+          <description>Delete an existing feature annotation</description>
+          <input>DeleteFeatureAnnotationRequest</input>
+          <output>Empty</output>
+        </method>
+        <method name="AddTag">
+          <description>Add tag to an existing feature annotation</description>
+          <input>AddTagRequest</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="UpdateTag">
+          <description>Update an existing tag in a feature annotation</description>
+          <input>UpdateTagRequest</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="RemoveTag">
+          <description>Remove a tag from a feature annotation</description>
+          <input>RemoveTagRequest</input>
+          <output>FeatureAnnotation</output>
+        </method>
+        <method name="ListFeatureAnnotationsByPubmedId">
+          <description>Retrieves a list of feature annotations by PubMed ID</description>
+          <input>PubmedId</input>
+          <output>FeatureAnnotationCollection</output>
+        </method>
+        <method name="ListFeatureAnnotationsByDOI">
+          <description>Retrieves a list of feature annotations by DOI (Digital Object Identifier)</description>
+          <input>DOI</input>
+          <output>FeatureAnnotationCollection</output>
+        </method>
+      </methods>
+    </service>
+    
+    <service name="OrganismFeatureService">
+      <description>
+        Service for managing relationships between features and organisms.
+      </description>
+      <methods>
+        <method name="LinkFeatureToOrganism">
+          <description>Link a feature annotation to an organism</description>
+          <input>OrganismFeatureLink</input>
+          <output>Empty</output>
+        </method>
+        <method name="GetFeatureOrganism">
+          <description>Get organism for a feature</description>
+          <input>FeatureAnnotationId</input>
+          <output>Organism</output>
+        </method>
+        <method name="UpdateFeatureOrganism">
+          <description>Update feature's organism link</description>
+          <input>OrganismFeatureUpdate</input>
+          <output>Empty</output>
+        </method>
+        <method name="RemoveFeatureOrganism">
+          <description>Remove feature's organism link</description>
+          <input>FeatureAnnotationId</input>
+          <output>Empty</output>
+        </method>
+      </methods>
+    </service>
+    
+    <service name="TaggedAnnotationService">
+      <description>
+        Service for managing tagged annotations with support for grouping and ontology integration.
+      </description>
+      <methods>
+        <method name="GetAnnotation">
+          <description>Retrieves the specified tagged annotation</description>
+          <input>AnnotationId</input>
+          <output>TaggedAnnotation</output>
+        </method>
+        <method name="GetEntryAnnotation">
+          <description>Retrieves a single tagged annotation associated with a specific entry</description>
+          <input>EntryAnnotationRequest</input>
+          <output>TaggedAnnotation</output>
+        </method>
+        <method name="ListAnnotations">
+          <description>List tagged annotations using pagination, ten entries are retrieved by default</description>
+          <input>ListParameters</input>
+          <output>TaggedAnnotationCollection</output>
+        </method>
+        <method name="CreateAnnotation">
+          <description>Create a tagged annotation</description>
+          <input>NewTaggedAnnotation</input>
+          <output>TaggedAnnotation</output>
+        </method>
+        <method name="UpdateAnnotation">
+          <description>Update an existing annotation, in this case a new annotation entry is created with a link to the previous annotation (copy on write)</description>
+          <input>TaggedAnnotationUpdate</input>
+          <output>TaggedAnnotation</output>
+        </method>
+        <method name="DeleteAnnotation">
+          <description>Delete an existing annotation</description>
+          <input>DeleteAnnotationRequest</input>
+          <output>Empty</output>
+        </method>
+        <method name="CreateAnnotationGroup">
+          <description>Creates an annotation group from bunch of existing tagged annotations</description>
+          <input>AnnotationIdList</input>
+          <output>TaggedAnnotationGroup</output>
+        </method>
+        <method name="GetAnnotationGroup">
+          <description>Retrieves an annotation group</description>
+          <input>GroupEntryId</input>
+          <output>TaggedAnnotationGroup</output>
+        </method>
+        <method name="AddToAnnotationGroup">
+          <description>Adds an existing annotation into an existing annotation group</description>
+          <input>AnnotationGroupId</input>
+          <output>TaggedAnnotationGroup</output>
+        </method>
+        <method name="DeleteAnnotationGroup">
+          <description>Remove an annotation group</description>
+          <input>GroupEntryId</input>
+          <output>Empty</output>
+        </method>
+        <method name="ListAnnotationGroups">
+          <description>List tagged annotation groups using pagination, ten entries are retrieved by default</description>
+          <input>ListGroupParameters</input>
+          <output>TaggedAnnotationGroupCollection</output>
+        </method>
+        <method name="GetAnnotationTag">
+          <description>Retrieves tag information</description>
+          <input>TagRequest</input>
+          <output>AnnotationTag</output>
+        </method>
+        <method name="OboJSONFileUpload">
+          <description>Upload obojson formatted file through client side streaming</description>
+          <input>FileUploadRequest (streaming)</input>
+          <output>FileUploadResponse</output>
+        </method>
+      </methods>
+    </service>
+  </services>
+  
+  <data_models>
+    <model name="FeatureAnnotation">
+      <description>
+        Represents a complete feature annotation record with all its metadata.
+      </description>
+      <fields>
+        <field name="type" type="string"/>
+        <field name="id" type="string" description="unique identifier for the feature annotation"/>
+        <field name="attributes" type="FeatureAnnotationAttributes"/>
+        <field name="created_by" type="string" description="email id of the user who created the content"/>
+        <field name="updated_by" type="string" description="email id of the user who updated the content"/>
+        <field name="created_at" type="Timestamp"/>
+        <field name="updated_at" type="Timestamp"/>
+        <field name="is_obsolete" type="bool" description="Toggle the obsolete status"/>
+        <field name="version" type="int64" description="Deprecated"/>
+      </fields>
+    </model>
+    
+    <model name="TaggedAnnotation">
+      <description>
+        Definition of a tag value based biological annotation where the tag always
+        represents a term from ontology.
+      </description>
+      <fields>
+        <field name="data" type="TaggedAnnotation.Data"/>
+      </fields>
+    </model>
+    
+    <model name="TaggedAnnotationAttributes">
+      <description>
+        Definition of various tagged annotation attributes
+      </description>
+      <fields>
+        <field name="value" type="string" description="annotation in plain text format"/>
+        <field name="editable_value" type="string" description="serialized text content in a format recognized by frontend rich text editor"/>
+        <field name="created_by" type="string" description="Unique identifier(generally email) of the user who created the annotation"/>
+        <field name="created_at" type="Timestamp"/>
+        <field name="tag" type="string" description="An identifiable tagname for the annotation, primarily a structured tag, generally an ontology term."/>
+        <field name="version" type="int64" description="version refers to the current version no"/>
+        <field name="entry_id" type="string" description="unique identifier of a biological entity that is being annotated"/>
+        <field name="ontology" type="string" description="Name of ontology in which the tag name is taken"/>
+        <field name="rank" type="int64" description="Ordering of annotation when an entry has multiple annotations with identical tag from the same ontology."/>
+        <field name="is_obsolete" type="bool" description="Status for active or retired annotation"/>
+      </fields>
+    </model>
+  </data_models>
+</codebase>
