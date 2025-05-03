@@ -89,6 +89,9 @@ func (this *NewFeatureAnnotation) Validate() error {
 func (this *FeatureAnnotationId) Validate() error {
 	return nil
 }
+func (this *FeatureName) Validate() error {
+	return nil
+}
 func (this *DeleteFeatureAnnotationRequest) Validate() error {
 	return nil
 }

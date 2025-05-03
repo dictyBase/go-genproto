@@ -22,6 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	FeatureAnnotationService_CreateFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/CreateFeatureAnnotation"
 	FeatureAnnotationService_GetFeatureAnnotation_FullMethodName             = "/dictybase.feature_annotation.FeatureAnnotationService/GetFeatureAnnotation"
+	FeatureAnnotationService_GetFeatureAnnotationByName_FullMethodName       = "/dictybase.feature_annotation.FeatureAnnotationService/GetFeatureAnnotationByName"
 	FeatureAnnotationService_UpdateFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateFeatureAnnotation"
 	FeatureAnnotationService_DeleteFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/DeleteFeatureAnnotation"
 	FeatureAnnotationService_AddTag_FullMethodName                           = "/dictybase.feature_annotation.FeatureAnnotationService/AddTag"
@@ -39,6 +40,8 @@ type FeatureAnnotationServiceClient interface {
 	CreateFeatureAnnotation(ctx context.Context, in *NewFeatureAnnotation, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Retrieves the specified feature annotation
 	GetFeatureAnnotation(ctx context.Context, in *FeatureAnnotationId, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Retrieves the specified feature annotation by its name
+	GetFeatureAnnotationByName(ctx context.Context, in *FeatureName, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Update an existing feature annotation. Any given tag will be appended to the existing tags
 	UpdateFeatureAnnotation(ctx context.Context, in *FeatureAnnotationUpdate, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Delete an existing feature annotation
@@ -75,6 +78,15 @@ func (c *featureAnnotationServiceClient) CreateFeatureAnnotation(ctx context.Con
 func (c *featureAnnotationServiceClient) GetFeatureAnnotation(ctx context.Context, in *FeatureAnnotationId, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
 	out := new(FeatureAnnotation)
 	err := c.cc.Invoke(ctx, FeatureAnnotationService_GetFeatureAnnotation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *featureAnnotationServiceClient) GetFeatureAnnotationByName(ctx context.Context, in *FeatureName, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
+	out := new(FeatureAnnotation)
+	err := c.cc.Invoke(ctx, FeatureAnnotationService_GetFeatureAnnotationByName_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -152,6 +164,8 @@ type FeatureAnnotationServiceServer interface {
 	CreateFeatureAnnotation(context.Context, *NewFeatureAnnotation) (*FeatureAnnotation, error)
 	// Retrieves the specified feature annotation
 	GetFeatureAnnotation(context.Context, *FeatureAnnotationId) (*FeatureAnnotation, error)
+	// Retrieves the specified feature annotation by its name
+	GetFeatureAnnotationByName(context.Context, *FeatureName) (*FeatureAnnotation, error)
 	// Update an existing feature annotation. Any given tag will be appended to the existing tags
 	UpdateFeatureAnnotation(context.Context, *FeatureAnnotationUpdate) (*FeatureAnnotation, error)
 	// Delete an existing feature annotation
@@ -178,6 +192,9 @@ func (UnimplementedFeatureAnnotationServiceServer) CreateFeatureAnnotation(conte
 }
 func (UnimplementedFeatureAnnotationServiceServer) GetFeatureAnnotation(context.Context, *FeatureAnnotationId) (*FeatureAnnotation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFeatureAnnotation not implemented")
+}
+func (UnimplementedFeatureAnnotationServiceServer) GetFeatureAnnotationByName(context.Context, *FeatureName) (*FeatureAnnotation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFeatureAnnotationByName not implemented")
 }
 func (UnimplementedFeatureAnnotationServiceServer) UpdateFeatureAnnotation(context.Context, *FeatureAnnotationUpdate) (*FeatureAnnotation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateFeatureAnnotation not implemented")
@@ -246,6 +263,24 @@ func _FeatureAnnotationService_GetFeatureAnnotation_Handler(srv interface{}, ctx
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FeatureAnnotationServiceServer).GetFeatureAnnotation(ctx, req.(*FeatureAnnotationId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeatureAnnotationService_GetFeatureAnnotationByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FeatureName)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeatureAnnotationServiceServer).GetFeatureAnnotationByName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeatureAnnotationService_GetFeatureAnnotationByName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeatureAnnotationServiceServer).GetFeatureAnnotationByName(ctx, req.(*FeatureName))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -390,6 +425,10 @@ var FeatureAnnotationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetFeatureAnnotation",
 			Handler:    _FeatureAnnotationService_GetFeatureAnnotation_Handler,
+		},
+		{
+			MethodName: "GetFeatureAnnotationByName",
+			Handler:    _FeatureAnnotationService_GetFeatureAnnotationByName_Handler,
 		},
 		{
 			MethodName: "UpdateFeatureAnnotation",
