@@ -26,8 +26,11 @@ const (
 	FeatureAnnotationService_UpdateFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateFeatureAnnotation"
 	FeatureAnnotationService_DeleteFeatureAnnotation_FullMethodName          = "/dictybase.feature_annotation.FeatureAnnotationService/DeleteFeatureAnnotation"
 	FeatureAnnotationService_AddTag_FullMethodName                           = "/dictybase.feature_annotation.FeatureAnnotationService/AddTag"
+	FeatureAnnotationService_AddTags_FullMethodName                          = "/dictybase.feature_annotation.FeatureAnnotationService/AddTags"
+	FeatureAnnotationService_SetTags_FullMethodName                          = "/dictybase.feature_annotation.FeatureAnnotationService/SetTags"
 	FeatureAnnotationService_UpdateTag_FullMethodName                        = "/dictybase.feature_annotation.FeatureAnnotationService/UpdateTag"
 	FeatureAnnotationService_RemoveTag_FullMethodName                        = "/dictybase.feature_annotation.FeatureAnnotationService/RemoveTag"
+	FeatureAnnotationService_RemoveTags_FullMethodName                       = "/dictybase.feature_annotation.FeatureAnnotationService/RemoveTags"
 	FeatureAnnotationService_ListFeatureAnnotationsByPubmedId_FullMethodName = "/dictybase.feature_annotation.FeatureAnnotationService/ListFeatureAnnotationsByPubmedId"
 	FeatureAnnotationService_ListFeatureAnnotationsByDOI_FullMethodName      = "/dictybase.feature_annotation.FeatureAnnotationService/ListFeatureAnnotationsByDOI"
 )
@@ -42,16 +45,25 @@ type FeatureAnnotationServiceClient interface {
 	GetFeatureAnnotation(ctx context.Context, in *FeatureAnnotationId, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Retrieves the specified feature annotation by its name
 	GetFeatureAnnotationByName(ctx context.Context, in *FeatureName, opts ...grpc.CallOption) (*FeatureAnnotation, error)
-	// Update an existing feature annotation. Any given tag will be appended to the existing tags
+	// Update an existing feature annotation. Any included tags will replace all
+	// existing tags (identical behavior to SetTags)
 	UpdateFeatureAnnotation(ctx context.Context, in *FeatureAnnotationUpdate, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Delete an existing feature annotation
 	DeleteFeatureAnnotation(ctx context.Context, in *DeleteFeatureAnnotationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Add tag to an existing feature annotation
 	AddTag(ctx context.Context, in *AddTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Add multiple tags to an existing feature annotation
+	AddTags(ctx context.Context, in *AddTagsRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Replace all tags for a feature annotation (idempotent full-update)
+	SetTags(ctx context.Context, in *SetTagsRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Deprecated: Do not use.
 	// Update an existing tag in a feature annotation
 	UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Deprecated: Do not use.
 	// Remove a tag from a feature annotation
 	RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
+	// Remove a tag from a feature annotation
+	RemoveTags(ctx context.Context, in *RemoveTagsRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error)
 	// Retrieves a list of feature annotations by PubMed ID
 	ListFeatureAnnotationsByPubmedId(ctx context.Context, in *PubmedId, opts ...grpc.CallOption) (*FeatureAnnotationCollection, error)
 	// Retrieves a list of feature annotations by DOI (Digital Object Identifier)
@@ -120,6 +132,25 @@ func (c *featureAnnotationServiceClient) AddTag(ctx context.Context, in *AddTagR
 	return out, nil
 }
 
+func (c *featureAnnotationServiceClient) AddTags(ctx context.Context, in *AddTagsRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
+	out := new(FeatureAnnotation)
+	err := c.cc.Invoke(ctx, FeatureAnnotationService_AddTags_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *featureAnnotationServiceClient) SetTags(ctx context.Context, in *SetTagsRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
+	out := new(FeatureAnnotation)
+	err := c.cc.Invoke(ctx, FeatureAnnotationService_SetTags_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// Deprecated: Do not use.
 func (c *featureAnnotationServiceClient) UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
 	out := new(FeatureAnnotation)
 	err := c.cc.Invoke(ctx, FeatureAnnotationService_UpdateTag_FullMethodName, in, out, opts...)
@@ -129,9 +160,19 @@ func (c *featureAnnotationServiceClient) UpdateTag(ctx context.Context, in *Upda
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *featureAnnotationServiceClient) RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
 	out := new(FeatureAnnotation)
 	err := c.cc.Invoke(ctx, FeatureAnnotationService_RemoveTag_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *featureAnnotationServiceClient) RemoveTags(ctx context.Context, in *RemoveTagsRequest, opts ...grpc.CallOption) (*FeatureAnnotation, error) {
+	out := new(FeatureAnnotation)
+	err := c.cc.Invoke(ctx, FeatureAnnotationService_RemoveTags_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,16 +207,25 @@ type FeatureAnnotationServiceServer interface {
 	GetFeatureAnnotation(context.Context, *FeatureAnnotationId) (*FeatureAnnotation, error)
 	// Retrieves the specified feature annotation by its name
 	GetFeatureAnnotationByName(context.Context, *FeatureName) (*FeatureAnnotation, error)
-	// Update an existing feature annotation. Any given tag will be appended to the existing tags
+	// Update an existing feature annotation. Any included tags will replace all
+	// existing tags (identical behavior to SetTags)
 	UpdateFeatureAnnotation(context.Context, *FeatureAnnotationUpdate) (*FeatureAnnotation, error)
 	// Delete an existing feature annotation
 	DeleteFeatureAnnotation(context.Context, *DeleteFeatureAnnotationRequest) (*emptypb.Empty, error)
 	// Add tag to an existing feature annotation
 	AddTag(context.Context, *AddTagRequest) (*FeatureAnnotation, error)
+	// Add multiple tags to an existing feature annotation
+	AddTags(context.Context, *AddTagsRequest) (*FeatureAnnotation, error)
+	// Replace all tags for a feature annotation (idempotent full-update)
+	SetTags(context.Context, *SetTagsRequest) (*FeatureAnnotation, error)
+	// Deprecated: Do not use.
 	// Update an existing tag in a feature annotation
 	UpdateTag(context.Context, *UpdateTagRequest) (*FeatureAnnotation, error)
+	// Deprecated: Do not use.
 	// Remove a tag from a feature annotation
 	RemoveTag(context.Context, *RemoveTagRequest) (*FeatureAnnotation, error)
+	// Remove a tag from a feature annotation
+	RemoveTags(context.Context, *RemoveTagsRequest) (*FeatureAnnotation, error)
 	// Retrieves a list of feature annotations by PubMed ID
 	ListFeatureAnnotationsByPubmedId(context.Context, *PubmedId) (*FeatureAnnotationCollection, error)
 	// Retrieves a list of feature annotations by DOI (Digital Object Identifier)
@@ -205,11 +255,20 @@ func (UnimplementedFeatureAnnotationServiceServer) DeleteFeatureAnnotation(conte
 func (UnimplementedFeatureAnnotationServiceServer) AddTag(context.Context, *AddTagRequest) (*FeatureAnnotation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddTag not implemented")
 }
+func (UnimplementedFeatureAnnotationServiceServer) AddTags(context.Context, *AddTagsRequest) (*FeatureAnnotation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTags not implemented")
+}
+func (UnimplementedFeatureAnnotationServiceServer) SetTags(context.Context, *SetTagsRequest) (*FeatureAnnotation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTags not implemented")
+}
 func (UnimplementedFeatureAnnotationServiceServer) UpdateTag(context.Context, *UpdateTagRequest) (*FeatureAnnotation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTag not implemented")
 }
 func (UnimplementedFeatureAnnotationServiceServer) RemoveTag(context.Context, *RemoveTagRequest) (*FeatureAnnotation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveTag not implemented")
+}
+func (UnimplementedFeatureAnnotationServiceServer) RemoveTags(context.Context, *RemoveTagsRequest) (*FeatureAnnotation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveTags not implemented")
 }
 func (UnimplementedFeatureAnnotationServiceServer) ListFeatureAnnotationsByPubmedId(context.Context, *PubmedId) (*FeatureAnnotationCollection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListFeatureAnnotationsByPubmedId not implemented")
@@ -339,6 +398,42 @@ func _FeatureAnnotationService_AddTag_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FeatureAnnotationService_AddTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddTagsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeatureAnnotationServiceServer).AddTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeatureAnnotationService_AddTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeatureAnnotationServiceServer).AddTags(ctx, req.(*AddTagsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeatureAnnotationService_SetTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTagsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeatureAnnotationServiceServer).SetTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeatureAnnotationService_SetTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeatureAnnotationServiceServer).SetTags(ctx, req.(*SetTagsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _FeatureAnnotationService_UpdateTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateTagRequest)
 	if err := dec(in); err != nil {
@@ -371,6 +466,24 @@ func _FeatureAnnotationService_RemoveTag_Handler(srv interface{}, ctx context.Co
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(FeatureAnnotationServiceServer).RemoveTag(ctx, req.(*RemoveTagRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FeatureAnnotationService_RemoveTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveTagsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FeatureAnnotationServiceServer).RemoveTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FeatureAnnotationService_RemoveTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FeatureAnnotationServiceServer).RemoveTags(ctx, req.(*RemoveTagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -443,12 +556,24 @@ var FeatureAnnotationService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _FeatureAnnotationService_AddTag_Handler,
 		},
 		{
+			MethodName: "AddTags",
+			Handler:    _FeatureAnnotationService_AddTags_Handler,
+		},
+		{
+			MethodName: "SetTags",
+			Handler:    _FeatureAnnotationService_SetTags_Handler,
+		},
+		{
 			MethodName: "UpdateTag",
 			Handler:    _FeatureAnnotationService_UpdateTag_Handler,
 		},
 		{
 			MethodName: "RemoveTag",
 			Handler:    _FeatureAnnotationService_RemoveTag_Handler,
+		},
+		{
+			MethodName: "RemoveTags",
+			Handler:    _FeatureAnnotationService_RemoveTags_Handler,
 		},
 		{
 			MethodName: "ListFeatureAnnotationsByPubmedId",

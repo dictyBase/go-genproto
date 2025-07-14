@@ -7,9 +7,9 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
+	_ "google.golang.org/protobuf/types/known/emptypb"
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	_ "github.com/dictyBase/go-genproto/dictybaseapis/organism"
-	_ "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -138,6 +138,26 @@ func (this *AddTagRequest) Validate() error {
 	}
 	return nil
 }
+func (this *AddTagsRequest) Validate() error {
+	for _, item := range this.Tags {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Tags", err)
+			}
+		}
+	}
+	return nil
+}
+func (this *SetTagsRequest) Validate() error {
+	for _, item := range this.Tags {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Tags", err)
+			}
+		}
+	}
+	return nil
+}
 func (this *UpdateTagRequest) Validate() error {
 	if this.Tag != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Tag); err != nil {
@@ -147,6 +167,9 @@ func (this *UpdateTagRequest) Validate() error {
 	return nil
 }
 func (this *RemoveTagRequest) Validate() error {
+	return nil
+}
+func (this *RemoveTagsRequest) Validate() error {
 	return nil
 }
 func (this *PubmedId) Validate() error {
