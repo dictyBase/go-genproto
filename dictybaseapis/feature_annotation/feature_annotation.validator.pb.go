@@ -7,9 +7,9 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	_ "google.golang.org/protobuf/types/known/emptypb"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -60,10 +60,32 @@ func (this *FeatureAnnotationAttributes) Validate() error {
 	}
 	return nil
 }
+func (this *FeatureAnnotationUpdateAttributes) Validate() error {
+	for _, item := range this.Dblinks {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Dblinks", err)
+			}
+		}
+	}
+	for _, item := range this.Properties {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Properties", err)
+			}
+		}
+	}
+	return nil
+}
 func (this *FeatureAnnotationUpdate) Validate() error {
 	if this.Attributes != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	if this.UpdateAttributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.UpdateAttributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("UpdateAttributes", err)
 		}
 	}
 	return nil
