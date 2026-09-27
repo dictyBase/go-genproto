@@ -43,6 +43,9 @@ func (this *Order_Data) Validate() error {
 	}
 	return nil
 }
+func (this *UserInfo) Validate() error {
+	return nil
+}
 func (this *OrderAttributes) Validate() error {
 	if nil == this.CreatedAt {
 		return github_com_mwitkow_go_proto_validators.FieldError("CreatedAt", fmt.Errorf("message must exist"))
@@ -58,6 +61,16 @@ func (this *OrderAttributes) Validate() error {
 	if this.UpdatedAt != nil {
 		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.UpdatedAt); err != nil {
 			return github_com_mwitkow_go_proto_validators.FieldError("UpdatedAt", err)
+		}
+	}
+	if this.ConsumerInfo != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.ConsumerInfo); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("ConsumerInfo", err)
+		}
+	}
+	if this.PayerInfo != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.PayerInfo); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("PayerInfo", err)
 		}
 	}
 	return nil
@@ -105,6 +118,16 @@ func (this *NewOrderAttributes) Validate() error {
 	}
 	if len(this.Items) < 1 {
 		return github_com_mwitkow_go_proto_validators.FieldError("Items", fmt.Errorf(`value '%v' must contain at least 1 elements`, this.Items))
+	}
+	if this.ConsumerInfo != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.ConsumerInfo); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("ConsumerInfo", err)
+		}
+	}
+	if this.PayerInfo != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.PayerInfo); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("PayerInfo", err)
+		}
 	}
 	return nil
 }
