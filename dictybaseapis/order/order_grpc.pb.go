@@ -20,12 +20,13 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	OrderService_GetOrder_FullMethodName        = "/dictybase.order.OrderService/GetOrder"
-	OrderService_CreateOrder_FullMethodName     = "/dictybase.order.OrderService/CreateOrder"
-	OrderService_UpdateOrder_FullMethodName     = "/dictybase.order.OrderService/UpdateOrder"
-	OrderService_ListOrders_FullMethodName      = "/dictybase.order.OrderService/ListOrders"
-	OrderService_LoadOrder_FullMethodName       = "/dictybase.order.OrderService/LoadOrder"
-	OrderService_PrepareForOrder_FullMethodName = "/dictybase.order.OrderService/PrepareForOrder"
+	OrderService_GetOrder_FullMethodName          = "/dictybase.order.OrderService/GetOrder"
+	OrderService_CreateOrder_FullMethodName       = "/dictybase.order.OrderService/CreateOrder"
+	OrderService_UpdateOrder_FullMethodName       = "/dictybase.order.OrderService/UpdateOrder"
+	OrderService_ListOrders_FullMethodName        = "/dictybase.order.OrderService/ListOrders"
+	OrderService_LoadOrder_FullMethodName         = "/dictybase.order.OrderService/LoadOrder"
+	OrderService_AutocompleteOrder_FullMethodName = "/dictybase.order.OrderService/AutocompleteOrder"
+	OrderService_PrepareForOrder_FullMethodName   = "/dictybase.order.OrderService/PrepareForOrder"
 )
 
 // OrderServiceClient is the client API for OrderService service.
@@ -42,6 +43,8 @@ type OrderServiceClient interface {
 	ListOrders(ctx context.Context, in *ListParameters, opts ...grpc.CallOption) (*OrderCollection, error)
 	// Load existing order
 	LoadOrder(ctx context.Context, in *ExistingOrder, opts ...grpc.CallOption) (*Order, error)
+	// Suggest orders for autocomplete input; returns at most 5 entries
+	AutocompleteOrder(ctx context.Context, in *AutocompleteParameters, opts ...grpc.CallOption) (*OrderSuggestionCollection, error)
 	// Clear database before loading existing orders
 	PrepareForOrder(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
@@ -99,6 +102,15 @@ func (c *orderServiceClient) LoadOrder(ctx context.Context, in *ExistingOrder, o
 	return out, nil
 }
 
+func (c *orderServiceClient) AutocompleteOrder(ctx context.Context, in *AutocompleteParameters, opts ...grpc.CallOption) (*OrderSuggestionCollection, error) {
+	out := new(OrderSuggestionCollection)
+	err := c.cc.Invoke(ctx, OrderService_AutocompleteOrder_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *orderServiceClient) PrepareForOrder(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, OrderService_PrepareForOrder_FullMethodName, in, out, opts...)
@@ -122,6 +134,8 @@ type OrderServiceServer interface {
 	ListOrders(context.Context, *ListParameters) (*OrderCollection, error)
 	// Load existing order
 	LoadOrder(context.Context, *ExistingOrder) (*Order, error)
+	// Suggest orders for autocomplete input; returns at most 5 entries
+	AutocompleteOrder(context.Context, *AutocompleteParameters) (*OrderSuggestionCollection, error)
 	// Clear database before loading existing orders
 	PrepareForOrder(context.Context, *emptypb.Empty) (*emptypb.Empty, error)
 	mustEmbedUnimplementedOrderServiceServer()
@@ -145,6 +159,9 @@ func (UnimplementedOrderServiceServer) ListOrders(context.Context, *ListParamete
 }
 func (UnimplementedOrderServiceServer) LoadOrder(context.Context, *ExistingOrder) (*Order, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoadOrder not implemented")
+}
+func (UnimplementedOrderServiceServer) AutocompleteOrder(context.Context, *AutocompleteParameters) (*OrderSuggestionCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AutocompleteOrder not implemented")
 }
 func (UnimplementedOrderServiceServer) PrepareForOrder(context.Context, *emptypb.Empty) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PrepareForOrder not implemented")
@@ -252,6 +269,24 @@ func _OrderService_LoadOrder_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OrderService_AutocompleteOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AutocompleteParameters)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OrderServiceServer).AutocompleteOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OrderService_AutocompleteOrder_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OrderServiceServer).AutocompleteOrder(ctx, req.(*AutocompleteParameters))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _OrderService_PrepareForOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
@@ -296,6 +331,10 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoadOrder",
 			Handler:    _OrderService_LoadOrder_Handler,
+		},
+		{
+			MethodName: "AutocompleteOrder",
+			Handler:    _OrderService_AutocompleteOrder_Handler,
 		},
 		{
 			MethodName: "PrepareForOrder",
