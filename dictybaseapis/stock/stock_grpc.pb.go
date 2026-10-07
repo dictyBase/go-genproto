@@ -33,6 +33,8 @@ const (
 	StockService_ListPlasmids_FullMethodName      = "/dictybase.stock.StockService/ListPlasmids"
 	StockService_LoadStrain_FullMethodName        = "/dictybase.stock.StockService/LoadStrain"
 	StockService_LoadPlasmid_FullMethodName       = "/dictybase.stock.StockService/LoadPlasmid"
+	StockService_AutocompleteStock_FullMethodName = "/dictybase.stock.StockService/AutocompleteStock"
+	StockService_SearchStock_FullMethodName       = "/dictybase.stock.StockService/SearchStock"
 	StockService_OboJSONFileUpload_FullMethodName = "/dictybase.stock.StockService/OboJSONFileUpload"
 )
 
@@ -64,6 +66,12 @@ type StockServiceClient interface {
 	LoadStrain(ctx context.Context, in *ExistingStrain, opts ...grpc.CallOption) (*Strain, error)
 	// Load existing plasmid
 	LoadPlasmid(ctx context.Context, in *ExistingPlasmid, opts ...grpc.CallOption) (*Plasmid, error)
+	// AutocompleteStock returns short type-ahead suggestions for a partial
+	// search text. The default list length is 5.
+	AutocompleteStock(ctx context.Context, in *StockAutocompleteParameters, opts ...grpc.CallOption) (*StockSuggestionCollection, error)
+	// SearchStock returns a ranked list of stocks for a search text. The
+	// default list length is 50.
+	SearchStock(ctx context.Context, in *StockSearchParameters, opts ...grpc.CallOption) (*StockSearchResultCollection, error)
 	// Upload obojson formatted file through client side streaming
 	OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJSONFileUploadClient, error)
 }
@@ -184,6 +192,24 @@ func (c *stockServiceClient) LoadPlasmid(ctx context.Context, in *ExistingPlasmi
 	return out, nil
 }
 
+func (c *stockServiceClient) AutocompleteStock(ctx context.Context, in *StockAutocompleteParameters, opts ...grpc.CallOption) (*StockSuggestionCollection, error) {
+	out := new(StockSuggestionCollection)
+	err := c.cc.Invoke(ctx, StockService_AutocompleteStock_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *stockServiceClient) SearchStock(ctx context.Context, in *StockSearchParameters, opts ...grpc.CallOption) (*StockSearchResultCollection, error) {
+	out := new(StockSearchResultCollection)
+	err := c.cc.Invoke(ctx, StockService_SearchStock_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *stockServiceClient) OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (StockService_OboJSONFileUploadClient, error) {
 	stream, err := c.cc.NewStream(ctx, &StockService_ServiceDesc.Streams[0], StockService_OboJSONFileUpload_FullMethodName, opts...)
 	if err != nil {
@@ -246,6 +272,12 @@ type StockServiceServer interface {
 	LoadStrain(context.Context, *ExistingStrain) (*Strain, error)
 	// Load existing plasmid
 	LoadPlasmid(context.Context, *ExistingPlasmid) (*Plasmid, error)
+	// AutocompleteStock returns short type-ahead suggestions for a partial
+	// search text. The default list length is 5.
+	AutocompleteStock(context.Context, *StockAutocompleteParameters) (*StockSuggestionCollection, error)
+	// SearchStock returns a ranked list of stocks for a search text. The
+	// default list length is 50.
+	SearchStock(context.Context, *StockSearchParameters) (*StockSearchResultCollection, error)
 	// Upload obojson formatted file through client side streaming
 	OboJSONFileUpload(StockService_OboJSONFileUploadServer) error
 	mustEmbedUnimplementedStockServiceServer()
@@ -290,6 +322,12 @@ func (UnimplementedStockServiceServer) LoadStrain(context.Context, *ExistingStra
 }
 func (UnimplementedStockServiceServer) LoadPlasmid(context.Context, *ExistingPlasmid) (*Plasmid, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoadPlasmid not implemented")
+}
+func (UnimplementedStockServiceServer) AutocompleteStock(context.Context, *StockAutocompleteParameters) (*StockSuggestionCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AutocompleteStock not implemented")
+}
+func (UnimplementedStockServiceServer) SearchStock(context.Context, *StockSearchParameters) (*StockSearchResultCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchStock not implemented")
 }
 func (UnimplementedStockServiceServer) OboJSONFileUpload(StockService_OboJSONFileUploadServer) error {
 	return status.Errorf(codes.Unimplemented, "method OboJSONFileUpload not implemented")
@@ -523,6 +561,42 @@ func _StockService_LoadPlasmid_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StockService_AutocompleteStock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StockAutocompleteParameters)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).AutocompleteStock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StockService_AutocompleteStock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).AutocompleteStock(ctx, req.(*StockAutocompleteParameters))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StockService_SearchStock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StockSearchParameters)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StockServiceServer).SearchStock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StockService_SearchStock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StockServiceServer).SearchStock(ctx, req.(*StockSearchParameters))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _StockService_OboJSONFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
 	return srv.(StockServiceServer).OboJSONFileUpload(&stockServiceOboJSONFileUploadServer{stream})
 }
@@ -603,6 +677,14 @@ var StockService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoadPlasmid",
 			Handler:    _StockService_LoadPlasmid_Handler,
+		},
+		{
+			MethodName: "AutocompleteStock",
+			Handler:    _StockService_AutocompleteStock_Handler,
+		},
+		{
+			MethodName: "SearchStock",
+			Handler:    _StockService_SearchStock_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
