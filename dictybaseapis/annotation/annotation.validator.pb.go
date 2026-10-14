@@ -7,10 +7,10 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
+	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
 	_ "google.golang.org/protobuf/types/known/emptypb"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
 
@@ -186,5 +186,42 @@ func (this *ListGroupParameters) Validate() error {
 	return nil
 }
 func (this *Meta) Validate() error {
+	return nil
+}
+func (this *AnnotationAutocompleteParameters) Validate() error {
+	if this.Data != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Data); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+		}
+	}
+	return nil
+}
+func (this *AnnotationAutocompleteParameters_Data) Validate() error {
+	if this.Attributes != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Attributes); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Attributes", err)
+		}
+	}
+	return nil
+}
+func (this *AnnotationAutocompleteAttributes) Validate() error {
+	return nil
+}
+func (this *AnnotationSuggestion) Validate() error {
+	return nil
+}
+func (this *AnnotationSuggestionCollection) Validate() error {
+	for _, item := range this.Data {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Data", err)
+			}
+		}
+	}
+	if this.Meta != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Meta); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Meta", err)
+		}
+	}
 	return nil
 }
