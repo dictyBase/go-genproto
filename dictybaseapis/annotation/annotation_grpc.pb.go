@@ -21,19 +21,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TaggedAnnotationService_GetAnnotation_FullMethodName         = "/dictybase.annotation.TaggedAnnotationService/GetAnnotation"
-	TaggedAnnotationService_GetEntryAnnotation_FullMethodName    = "/dictybase.annotation.TaggedAnnotationService/GetEntryAnnotation"
-	TaggedAnnotationService_ListAnnotations_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/ListAnnotations"
-	TaggedAnnotationService_CreateAnnotation_FullMethodName      = "/dictybase.annotation.TaggedAnnotationService/CreateAnnotation"
-	TaggedAnnotationService_UpdateAnnotation_FullMethodName      = "/dictybase.annotation.TaggedAnnotationService/UpdateAnnotation"
-	TaggedAnnotationService_DeleteAnnotation_FullMethodName      = "/dictybase.annotation.TaggedAnnotationService/DeleteAnnotation"
-	TaggedAnnotationService_CreateAnnotationGroup_FullMethodName = "/dictybase.annotation.TaggedAnnotationService/CreateAnnotationGroup"
-	TaggedAnnotationService_GetAnnotationGroup_FullMethodName    = "/dictybase.annotation.TaggedAnnotationService/GetAnnotationGroup"
-	TaggedAnnotationService_AddToAnnotationGroup_FullMethodName  = "/dictybase.annotation.TaggedAnnotationService/AddToAnnotationGroup"
-	TaggedAnnotationService_DeleteAnnotationGroup_FullMethodName = "/dictybase.annotation.TaggedAnnotationService/DeleteAnnotationGroup"
-	TaggedAnnotationService_ListAnnotationGroups_FullMethodName  = "/dictybase.annotation.TaggedAnnotationService/ListAnnotationGroups"
-	TaggedAnnotationService_GetAnnotationTag_FullMethodName      = "/dictybase.annotation.TaggedAnnotationService/GetAnnotationTag"
-	TaggedAnnotationService_OboJSONFileUpload_FullMethodName     = "/dictybase.annotation.TaggedAnnotationService/OboJSONFileUpload"
+	TaggedAnnotationService_GetAnnotation_FullMethodName          = "/dictybase.annotation.TaggedAnnotationService/GetAnnotation"
+	TaggedAnnotationService_GetEntryAnnotation_FullMethodName     = "/dictybase.annotation.TaggedAnnotationService/GetEntryAnnotation"
+	TaggedAnnotationService_ListAnnotations_FullMethodName        = "/dictybase.annotation.TaggedAnnotationService/ListAnnotations"
+	TaggedAnnotationService_CreateAnnotation_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/CreateAnnotation"
+	TaggedAnnotationService_UpdateAnnotation_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/UpdateAnnotation"
+	TaggedAnnotationService_DeleteAnnotation_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/DeleteAnnotation"
+	TaggedAnnotationService_CreateAnnotationGroup_FullMethodName  = "/dictybase.annotation.TaggedAnnotationService/CreateAnnotationGroup"
+	TaggedAnnotationService_GetAnnotationGroup_FullMethodName     = "/dictybase.annotation.TaggedAnnotationService/GetAnnotationGroup"
+	TaggedAnnotationService_AddToAnnotationGroup_FullMethodName   = "/dictybase.annotation.TaggedAnnotationService/AddToAnnotationGroup"
+	TaggedAnnotationService_DeleteAnnotationGroup_FullMethodName  = "/dictybase.annotation.TaggedAnnotationService/DeleteAnnotationGroup"
+	TaggedAnnotationService_ListAnnotationGroups_FullMethodName   = "/dictybase.annotation.TaggedAnnotationService/ListAnnotationGroups"
+	TaggedAnnotationService_GetAnnotationTag_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/GetAnnotationTag"
+	TaggedAnnotationService_AutocompleteAnnotation_FullMethodName = "/dictybase.annotation.TaggedAnnotationService/AutocompleteAnnotation"
+	TaggedAnnotationService_OboJSONFileUpload_FullMethodName      = "/dictybase.annotation.TaggedAnnotationService/OboJSONFileUpload"
 )
 
 // TaggedAnnotationServiceClient is the client API for TaggedAnnotationService service.
@@ -65,6 +66,9 @@ type TaggedAnnotationServiceClient interface {
 	ListAnnotationGroups(ctx context.Context, in *ListGroupParameters, opts ...grpc.CallOption) (*TaggedAnnotationGroupCollection, error)
 	// Retrieves tag information
 	GetAnnotationTag(ctx context.Context, in *TagRequest, opts ...grpc.CallOption) (*AnnotationTag, error)
+	// AutocompleteAnnotation returns short type-ahead suggestions for a
+	// partial search text. The default list length is 5.
+	AutocompleteAnnotation(ctx context.Context, in *AnnotationAutocompleteParameters, opts ...grpc.CallOption) (*AnnotationSuggestionCollection, error)
 	// Upload obojson formatted file through client side streaming
 	OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJSONFileUploadClient, error)
 }
@@ -185,6 +189,15 @@ func (c *taggedAnnotationServiceClient) GetAnnotationTag(ctx context.Context, in
 	return out, nil
 }
 
+func (c *taggedAnnotationServiceClient) AutocompleteAnnotation(ctx context.Context, in *AnnotationAutocompleteParameters, opts ...grpc.CallOption) (*AnnotationSuggestionCollection, error) {
+	out := new(AnnotationSuggestionCollection)
+	err := c.cc.Invoke(ctx, TaggedAnnotationService_AutocompleteAnnotation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *taggedAnnotationServiceClient) OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJSONFileUploadClient, error) {
 	stream, err := c.cc.NewStream(ctx, &TaggedAnnotationService_ServiceDesc.Streams[0], TaggedAnnotationService_OboJSONFileUpload_FullMethodName, opts...)
 	if err != nil {
@@ -248,6 +261,9 @@ type TaggedAnnotationServiceServer interface {
 	ListAnnotationGroups(context.Context, *ListGroupParameters) (*TaggedAnnotationGroupCollection, error)
 	// Retrieves tag information
 	GetAnnotationTag(context.Context, *TagRequest) (*AnnotationTag, error)
+	// AutocompleteAnnotation returns short type-ahead suggestions for a
+	// partial search text. The default list length is 5.
+	AutocompleteAnnotation(context.Context, *AnnotationAutocompleteParameters) (*AnnotationSuggestionCollection, error)
 	// Upload obojson formatted file through client side streaming
 	OboJSONFileUpload(TaggedAnnotationService_OboJSONFileUploadServer) error
 	mustEmbedUnimplementedTaggedAnnotationServiceServer()
@@ -292,6 +308,9 @@ func (UnimplementedTaggedAnnotationServiceServer) ListAnnotationGroups(context.C
 }
 func (UnimplementedTaggedAnnotationServiceServer) GetAnnotationTag(context.Context, *TagRequest) (*AnnotationTag, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAnnotationTag not implemented")
+}
+func (UnimplementedTaggedAnnotationServiceServer) AutocompleteAnnotation(context.Context, *AnnotationAutocompleteParameters) (*AnnotationSuggestionCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AutocompleteAnnotation not implemented")
 }
 func (UnimplementedTaggedAnnotationServiceServer) OboJSONFileUpload(TaggedAnnotationService_OboJSONFileUploadServer) error {
 	return status.Errorf(codes.Unimplemented, "method OboJSONFileUpload not implemented")
@@ -526,6 +545,24 @@ func _TaggedAnnotationService_GetAnnotationTag_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TaggedAnnotationService_AutocompleteAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AnnotationAutocompleteParameters)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TaggedAnnotationServiceServer).AutocompleteAnnotation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TaggedAnnotationService_AutocompleteAnnotation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TaggedAnnotationServiceServer).AutocompleteAnnotation(ctx, req.(*AnnotationAutocompleteParameters))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TaggedAnnotationService_OboJSONFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
 	return srv.(TaggedAnnotationServiceServer).OboJSONFileUpload(&taggedAnnotationServiceOboJSONFileUploadServer{stream})
 }
@@ -606,6 +643,10 @@ var TaggedAnnotationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAnnotationTag",
 			Handler:    _TaggedAnnotationService_GetAnnotationTag_Handler,
+		},
+		{
+			MethodName: "AutocompleteAnnotation",
+			Handler:    _TaggedAnnotationService_AutocompleteAnnotation_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
