@@ -34,6 +34,7 @@ const (
 	TaggedAnnotationService_ListAnnotationGroups_FullMethodName   = "/dictybase.annotation.TaggedAnnotationService/ListAnnotationGroups"
 	TaggedAnnotationService_GetAnnotationTag_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/GetAnnotationTag"
 	TaggedAnnotationService_AutocompleteAnnotation_FullMethodName = "/dictybase.annotation.TaggedAnnotationService/AutocompleteAnnotation"
+	TaggedAnnotationService_SearchAnnotation_FullMethodName       = "/dictybase.annotation.TaggedAnnotationService/SearchAnnotation"
 	TaggedAnnotationService_OboJSONFileUpload_FullMethodName      = "/dictybase.annotation.TaggedAnnotationService/OboJSONFileUpload"
 )
 
@@ -69,6 +70,9 @@ type TaggedAnnotationServiceClient interface {
 	// AutocompleteAnnotation returns short type-ahead suggestions for a
 	// partial search text. The default list length is 5.
 	AutocompleteAnnotation(ctx context.Context, in *AnnotationAutocompleteParameters, opts ...grpc.CallOption) (*AnnotationSuggestionCollection, error)
+	// SearchAnnotation returns a ranked list of strain annotations for a
+	// search text, deduplicated by entry_id. The default list length is 50.
+	SearchAnnotation(ctx context.Context, in *AnnotationSearchParameters, opts ...grpc.CallOption) (*AnnotationSearchResultCollection, error)
 	// Upload obojson formatted file through client side streaming
 	OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJSONFileUploadClient, error)
 }
@@ -198,6 +202,15 @@ func (c *taggedAnnotationServiceClient) AutocompleteAnnotation(ctx context.Conte
 	return out, nil
 }
 
+func (c *taggedAnnotationServiceClient) SearchAnnotation(ctx context.Context, in *AnnotationSearchParameters, opts ...grpc.CallOption) (*AnnotationSearchResultCollection, error) {
+	out := new(AnnotationSearchResultCollection)
+	err := c.cc.Invoke(ctx, TaggedAnnotationService_SearchAnnotation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *taggedAnnotationServiceClient) OboJSONFileUpload(ctx context.Context, opts ...grpc.CallOption) (TaggedAnnotationService_OboJSONFileUploadClient, error) {
 	stream, err := c.cc.NewStream(ctx, &TaggedAnnotationService_ServiceDesc.Streams[0], TaggedAnnotationService_OboJSONFileUpload_FullMethodName, opts...)
 	if err != nil {
@@ -264,6 +277,9 @@ type TaggedAnnotationServiceServer interface {
 	// AutocompleteAnnotation returns short type-ahead suggestions for a
 	// partial search text. The default list length is 5.
 	AutocompleteAnnotation(context.Context, *AnnotationAutocompleteParameters) (*AnnotationSuggestionCollection, error)
+	// SearchAnnotation returns a ranked list of strain annotations for a
+	// search text, deduplicated by entry_id. The default list length is 50.
+	SearchAnnotation(context.Context, *AnnotationSearchParameters) (*AnnotationSearchResultCollection, error)
 	// Upload obojson formatted file through client side streaming
 	OboJSONFileUpload(TaggedAnnotationService_OboJSONFileUploadServer) error
 	mustEmbedUnimplementedTaggedAnnotationServiceServer()
@@ -311,6 +327,9 @@ func (UnimplementedTaggedAnnotationServiceServer) GetAnnotationTag(context.Conte
 }
 func (UnimplementedTaggedAnnotationServiceServer) AutocompleteAnnotation(context.Context, *AnnotationAutocompleteParameters) (*AnnotationSuggestionCollection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AutocompleteAnnotation not implemented")
+}
+func (UnimplementedTaggedAnnotationServiceServer) SearchAnnotation(context.Context, *AnnotationSearchParameters) (*AnnotationSearchResultCollection, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchAnnotation not implemented")
 }
 func (UnimplementedTaggedAnnotationServiceServer) OboJSONFileUpload(TaggedAnnotationService_OboJSONFileUploadServer) error {
 	return status.Errorf(codes.Unimplemented, "method OboJSONFileUpload not implemented")
@@ -563,6 +582,24 @@ func _TaggedAnnotationService_AutocompleteAnnotation_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TaggedAnnotationService_SearchAnnotation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AnnotationSearchParameters)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TaggedAnnotationServiceServer).SearchAnnotation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TaggedAnnotationService_SearchAnnotation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TaggedAnnotationServiceServer).SearchAnnotation(ctx, req.(*AnnotationSearchParameters))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TaggedAnnotationService_OboJSONFileUpload_Handler(srv interface{}, stream grpc.ServerStream) error {
 	return srv.(TaggedAnnotationServiceServer).OboJSONFileUpload(&taggedAnnotationServiceOboJSONFileUploadServer{stream})
 }
@@ -647,6 +684,10 @@ var TaggedAnnotationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AutocompleteAnnotation",
 			Handler:    _TaggedAnnotationService_AutocompleteAnnotation_Handler,
+		},
+		{
+			MethodName: "SearchAnnotation",
+			Handler:    _TaggedAnnotationService_SearchAnnotation_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
