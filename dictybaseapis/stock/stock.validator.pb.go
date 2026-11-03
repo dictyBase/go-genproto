@@ -7,11 +7,12 @@ import (
 	fmt "fmt"
 	math "math"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
-	_ "github.com/mwitkow/go-proto-validators"
 	_ "google.golang.org/protobuf/types/known/emptypb"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
+	_ "github.com/dictyBase/go-genproto/dictybaseapis/api/upload"
+	_ "github.com/mwitkow/go-proto-validators"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	regexp "regexp"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 )
@@ -21,6 +22,32 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+func (this *StockCounts) Validate() error {
+	if this.Strains != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Strains); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Strains", err)
+		}
+	}
+	if this.Plasmids != nil {
+		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.Plasmids); err != nil {
+			return github_com_mwitkow_go_proto_validators.FieldError("Plasmids", err)
+		}
+	}
+	return nil
+}
+func (this *StockEntityCounts) Validate() error {
+	for _, item := range this.Subtypes {
+		if item != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(item); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("Subtypes", err)
+			}
+		}
+	}
+	return nil
+}
+func (this *StockSubtypeCount) Validate() error {
+	return nil
+}
 func (this *StockId) Validate() error {
 	if this.Id == "" {
 		return github_com_mwitkow_go_proto_validators.FieldError("Id", fmt.Errorf(`value '%v' must not be an empty string`, this.Id))
